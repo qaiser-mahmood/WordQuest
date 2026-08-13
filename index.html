@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Dynamic 6-Letter Crossword Engine</title>
+    <title>Lexicon Legend</title>
     <style>
         * {
             box-sizing: border-box;
@@ -255,7 +255,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             z-index: 5;
         }
 
@@ -276,12 +276,39 @@
         .toast.wrong { background: #ef4444; color: #ffffff; }
         .toast.info { background: #6366f1; color: #ffffff; }
 
+        /* Central Hint Action Bar */
+        .hint-bar {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 8px;
+            z-index: 10;
+        }
+
+        .btn-action {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            border: 1px solid #818cf8;
+            color: #ffffff;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+            transition: transform 0.1s, background 0.2s;
+        }
+
+        .btn-action:active {
+            transform: scale(0.95);
+        }
+
         /* Letter Wheel Container */
         #wheel-wrapper {
             position: relative;
             width: 240px;
             height: 240px;
-            margin-bottom: 10px;
+            margin-bottom: 16px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -359,33 +386,6 @@
             box-shadow: 0 0 15px rgba(56, 189, 248, 0.8);
             pointer-events: none;
             transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        /* Bottom Control Panel */
-        .bottom-bar {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            z-index: 10;
-        }
-
-        .btn-action {
-            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-            border: 1px solid #818cf8;
-            color: #ffffff;
-            padding: 12px 28px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
-            transition: transform 0.1s;
-        }
-
-        .btn-action:active {
-            transform: scale(0.95);
         }
 
         /* Modals & Overlays */
@@ -493,7 +493,7 @@
                     <button class="btn-icon" id="btn-exit">Exit</button>
                 </div>
             </div>
-            <!-- Dynamic Player Title Badge Based On Score -->
+            <!-- Dynamic Player Title Badge -->
             <div class="title-badge" id="player-title-badge">TITLE: 🐣 WORD NOVICE</div>
         </div>
 
@@ -512,15 +512,15 @@
             <div id="toast" class="toast"></div>
         </div>
 
+        <!-- Hint Button Positioned Between Grid & Wheel -->
+        <div class="hint-bar">
+            <button class="btn-action" id="btn-hint">💡 Hint (-500)</button>
+        </div>
+
         <!-- Dynamic Circular Wheel -->
         <div id="wheel-wrapper">
             <div class="wheel-background"></div>
             <svg id="svg-canvas"></svg>
-        </div>
-
-        <!-- Bottom Control Actions -->
-        <div class="bottom-bar">
-            <button class="btn-action" id="btn-hint">💡 Hint (-500)</button>
         </div>
 
         <!-- Level Difficulty Notification Overlay -->
@@ -1140,7 +1140,7 @@
         }
 
         function handleHint() {
-            score -= 500; // Hint penalty adjusted to -500
+            score -= 500;
             updateScoreDisplay();
 
             const unsolvedCells = [];
@@ -1192,11 +1192,9 @@
         }
 
         function executeSkipLevel() {
-            // Deduct penalty of -5000
             score -= 5000;
             updateScoreDisplay();
 
-            // Reveal all grid tiles
             currentLevelData.words.forEach(wObj => {
                 solvedWords.add(wObj.word);
                 const { word, row, col, dir } = wObj;
