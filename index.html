@@ -28,9 +28,8 @@
         #game-container {
             width: 100%;
             max-width: 480px;
-            /* Adaptive dynamic height to accommodate address bars */
             height: 98dvh;
-            max-height: 840px;
+            max-height: 860px;
             background: linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%);
             border: 2px solid #334155;
             border-radius: 24px;
@@ -40,7 +39,6 @@
             justify-content: space-between;
             align-items: center;
             padding: 12px 14px;
-            /* Safe area insets for notches & dynamic Safari bottom bars */
             padding-top: max(12px, env(safe-area-inset-top));
             padding-bottom: max(16px, env(safe-area-inset-bottom));
             position: relative;
@@ -158,19 +156,20 @@
 
         #crossword-grid {
             display: grid;
-            gap: 4px;
+            gap: 5px;
             position: relative;
             transition: transform 0.3s ease;
         }
 
+        /* Larger Tile Size for Mobile Visibility */
         .tile {
-            width: 30px;
-            height: 30px;
-            border-radius: 8px;
+            width: 38px;
+            height: 38px;
+            border-radius: 9px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 14px;
+            font-size: 18px;
             font-weight: 800;
             text-transform: uppercase;
             box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1), 0 4px 6px rgba(0,0,0,0.3);
@@ -210,15 +209,15 @@
 
         @keyframes alreadyPulse {
             0% { transform: scale(1); }
-            25% { transform: scale(1.25) rotate(-3deg); }
-            50% { transform: scale(1.25) rotate(3deg); }
-            75% { transform: scale(1.15) rotate(-1deg); }
+            25% { transform: scale(1.2) rotate(-3deg); }
+            50% { transform: scale(1.2) rotate(3deg); }
+            75% { transform: scale(1.1) rotate(-1deg); }
             100% { transform: scale(1) rotate(0deg); }
         }
 
         @keyframes popIn {
             0% { transform: scale(0.6); opacity: 0; }
-            70% { transform: scale(1.2); }
+            70% { transform: scale(1.15); }
             100% { transform: scale(1); opacity: 1; }
         }
 
@@ -235,13 +234,13 @@
         #word-preview {
             background: rgba(30, 41, 59, 0.9);
             border: 2px solid #38bdf8;
-            padding: 3px 14px;
+            padding: 3px 16px;
             border-radius: 16px;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 800;
             letter-spacing: 2px;
             color: #f8fafc;
-            min-width: 90px;
+            min-width: 100px;
             text-align: center;
             box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
             opacity: 0;
@@ -295,9 +294,9 @@
             background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
             border: 1px solid #818cf8;
             color: #ffffff;
-            padding: 6px 20px;
+            padding: 8px 22px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 700;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
@@ -308,11 +307,11 @@
             transform: scale(0.95);
         }
 
-        /* Letter Wheel Container with auto-scaling gap */
+        /* Scaled Up Letter Wheel Container */
         #wheel-wrapper {
             position: relative;
-            width: 210px;
-            height: 210px;
+            width: 260px;
+            height: 260px;
             margin-bottom: max(8px, env(safe-area-inset-bottom));
             display: flex;
             justify-content: center;
@@ -332,37 +331,38 @@
 
         #svg-canvas line {
             stroke: #38bdf8;
-            stroke-width: 5;
+            stroke-width: 6;
             stroke-linecap: round;
             filter: drop-shadow(0 0 6px #0284c7);
         }
 
         .wheel-background {
             position: absolute;
-            width: 190px;
-            height: 190px;
+            width: 230px;
+            height: 230px;
             border-radius: 50%;
-            background: rgba(30, 41, 59, 0.5);
+            background: rgba(30, 41, 59, 0.55);
             border: 2px solid #334155;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+            box-shadow: inset 0 0 25px rgba(0,0,0,0.5);
         }
 
+        /* Bigger Wheel Nodes for Touch Devices */
         .wheel-node {
             position: absolute;
-            width: 44px;
-            height: 44px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
             border: 2px solid #475569;
             color: #f8fafc;
-            font-size: 18px;
+            font-size: 22px;
             font-weight: 800;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
             z-index: 3;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
             transition: transform 0.15s, border-color 0.15s;
         }
 
@@ -370,26 +370,26 @@
             background: linear-gradient(145deg, #0284c7 0%, #0369a1 100%);
             border-color: #38bdf8;
             color: #ffffff;
-            transform: scale(1.15);
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
+            transform: scale(1.18);
+            box-shadow: 0 0 18px rgba(56, 189, 248, 0.7);
         }
 
         /* Flying Letter Bubbles */
         .flying-tile {
             position: absolute;
-            width: 30px;
-            height: 30px;
-            border-radius: 8px;
+            width: 38px;
+            height: 38px;
+            border-radius: 9px;
             background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
             border: 1.5px solid #7dd3fc;
             color: #ffffff;
-            font-size: 14px;
+            font-size: 18px;
             font-weight: 800;
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 100;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.8);
+            box-shadow: 0 0 18px rgba(56, 189, 248, 0.8);
             pointer-events: none;
             transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
@@ -455,6 +455,30 @@
             background: linear-gradient(135deg, #475569 0%, #334155 100%);
         }
 
+        /* Rank Up Celebration Modal Styles */
+        .rank-up-card {
+            border-color: #c084fc !important;
+            box-shadow: 0 0 30px rgba(192, 132, 252, 0.4);
+            animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .rank-up-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+            animation: pulseGlow 1.5s infinite alternate;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(192, 132, 252, 0.5)); }
+            100% { transform: scale(1.15); filter: drop-shadow(0 0 20px rgba(192, 132, 252, 0.9)); }
+        }
+
         #level-start-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -500,7 +524,7 @@
                 </div>
             </div>
             <!-- Dynamic Player Title Badge -->
-            <div class="title-badge" id="player-title-badge">TITLE: 🐣 WORD NOVICE</div>
+            <div class="title-badge" id="player-title-badge">RANK: 🐣 WORD NOVICE</div>
         </div>
 
         <!-- Dynamic Crossword Matrix -->
@@ -538,6 +562,16 @@
             </div>
         </div>
 
+        <!-- Rank Up / Level Up Celebration Overlay -->
+        <div class="modal-overlay" id="rank-up-modal">
+            <div class="modal-card rank-up-card">
+                <div class="rank-up-icon">🌟</div>
+                <div class="modal-title" style="color: #c084fc;">RANK UP!</div>
+                <div class="modal-subtitle" id="rank-up-subtitle" style="font-size: 16px; font-weight: 700; color: #f8fafc;">You are now an Anagram Ace!</div>
+                <button class="modal-btn" id="btn-close-rank-up" style="background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);">AWESOME!</button>
+            </div>
+        </div>
+
         <!-- Win Celebration Modal Overlay -->
         <div class="modal-overlay" id="win-modal">
             <div class="modal-card">
@@ -570,23 +604,25 @@
     </div>
 
     <script>
-        /* ==================== ANAGRAM SEED POOL ==================== */
+        /* ==================== COMMON & RECOGNIZABLE ANAGRAM SEEDS ==================== */
         const ANAGRAM_SEEDS = [
-            { wheel: ["P", "L", "A", "N", "E", "T"], words: ["PLANET", "PLANE", "PLANT", "NEAT", "LANE", "PLATE", "PANEL", "LEAN", "TALE", "PEAT", "PALE", "LATE", "TAPE", "PEN", "PAN", "NET", "PET", "TAP", "PAT", "TAN", "TEA", "EAT", "ANT", "APE"] },
-            { wheel: ["S", "I", "L", "E", "N", "T"], words: ["SILENT", "LISTEN", "INLET", "LENT", "LINE", "LIST", "NEST", "NETS", "TILES", "TIES", "LIES", "SENT", "LINT", "SITE", "TIN", "TEN", "NET", "LET", "SET", "SIT", "LIE"] },
-            { wheel: ["C", "A", "S", "T", "L", "E"], words: ["CASTLE", "LACE", "CAST", "CATS", "ACTS", "TALE", "SEAT", "EAST", "LAST", "SALT", "SCALE", "CASE", "SEAL", "SLATE", "CAT", "ACT", "SAT", "TEA", "EAT", "LET", "ACE"] },
-            { wheel: ["F", "O", "R", "E", "S", "T"], words: ["FOREST", "STORE", "FORTE", "FORT", "REST", "ROSE", "SOFT", "SORT", "TORE", "FROST", "FORE", "ROTE", "FOR", "ROT", "SET", "TOE", "OFT"] },
-            { wheel: ["G", "A", "R", "D", "E", "N"], words: ["GARDEN", "DANGER", "GRADE", "GRAND", "READ", "DEAR", "GEAR", "RAGE", "EARN", "DARE", "GRANDE", "RANG", "RED", "EAR", "AGE", "ARE", "END", "DEN", "RAG"] },
-            { wheel: ["S", "P", "R", "I", "N", "G"], words: ["SPRING", "RING", "SING", "GRIN", "PINGS", "GRIPS", "RIPS", "PINS", "SPIN", "PING", "GRIP", "PIG", "PIN", "RIP", "SIP", "SIN", "GIN"] },
-            { wheel: ["W", "I", "N", "T", "E", "R"], words: ["WINTER", "WRITE", "TWINE", "WIRE", "TIRE", "RENT", "TWIN", "WINE", "WENT", "RITE", "NEWT", "WIN", "TIN", "TEN", "NET", "WET", "WIT"] },
-            { wheel: ["F", "L", "O", "W", "E", "R"], words: ["FLOWER", "LOWER", "ROWER", "WOLF", "FLOW", "ROLE", "FOWL", "LORE", "FLOE", "FORE", "LOW", "ROW", "FEW", "FOR", "OWL", "REF"] },
-            { wheel: ["S", "T", "R", "E", "A", "M"], words: ["STREAM", "MASTER", "SMART", "STEAM", "TEAM", "TEAR", "MEAT", "RATE", "REST", "SEAT", "EAST", "STAR", "MATS", "STEM", "MATE", "MAT", "RAM", "SAT", "TEA", "EAT", "SET", "MET"] },
-            { wheel: ["B", "R", "I", "D", "G", "E"], words: ["BRIDGE", "RIDGE", "DIRE", "BIRD", "RIDE", "GRID", "BRED", "GIRD", "RED", "BIG", "RIB", "BED", "DIE", "DIG", "BID"] }
+            { wheel: ["P", "L", "A", "N", "E", "T"], words: ["PLANET", "PLANE", "PLANT", "PLATE", "PANEL", "LANE", "LEAN", "TALE", "NEAT"] },
+            { wheel: ["S", "I", "L", "E", "N", "T"], words: ["SILENT", "LISTEN", "INLET", "LENT", "LINE", "LIST", "NEST", "SENT", "TILE"] },
+            { wheel: ["C", "A", "S", "T", "L", "E"], words: ["CASTLE", "SCALE", "LACE", "CAST", "TALE", "SEAT", "EAST", "LAST", "CASE"] },
+            { wheel: ["F", "O", "R", "E", "S", "T"], words: ["FOREST", "STORE", "FORT", "REST", "ROSE", "SOFT", "SORT", "FORE"] },
+            { wheel: ["G", "A", "R", "D", "E", "N"], words: ["GARDEN", "DANGER", "GRADE", "GRAND", "READ", "DEAR", "GEAR", "RAGE", "DARE"] },
+            { wheel: ["S", "P", "R", "I", "N", "G"], words: ["SPRING", "RING", "SING", "GRIN", "SPIN", "PING", "GRIP"] },
+            { wheel: ["W", "I", "N", "T", "E", "R"], words: ["WINTER", "WRITE", "WIRE", "TIRE", "RENT", "TWIN", "WINE", "WENT"] },
+            { wheel: ["F", "L", "O", "W", "E", "R"], words: ["FLOWER", "LOWER", "WOLF", "FLOW", "ROLE", "LORE", "FORE"] },
+            { wheel: ["S", "T", "R", "E", "A", "M"], words: ["STREAM", "SMART", "STEAM", "TEAM", "TEAR", "MEAT", "RATE", "REST", "SEAT"] },
+            { wheel: ["B", "R", "I", "D", "G", "E"], words: ["BRIDGE", "RIDGE", "DIRE", "BIRD", "RIDE", "GRID", "BRED"] }
         ];
 
         /* ==================== GAME STATE ==================== */
         let currentLevelIdx = 0;
         let score = 0;
+        let currentRankTitle = "";
+        let lastUsedSeedIndex = -1; // Prevents consecutive levels from using the same letters
         let solvedWords = new Set();
         let currentLevelData = null;
         let wheelLetters = [];
@@ -608,6 +644,8 @@
         const winModal = document.getElementById('win-modal');
         const exitModal = document.getElementById('exit-modal');
         const skipConfirmModal = document.getElementById('skip-confirm-modal');
+        const rankUpModal = document.getElementById('rank-up-modal');
+        const rankUpSubtitle = document.getElementById('rank-up-subtitle');
         const levelStartOverlay = document.getElementById('level-start-overlay');
         const startLevelTitle = document.getElementById('start-level-title');
         const startDiffTag = document.getElementById('start-diff-tag');
@@ -618,6 +656,7 @@
         const btnExit = document.getElementById('btn-exit');
         const btnNextLevel = document.getElementById('btn-next-level');
         const btnResume = document.getElementById('btn-resume');
+        const btnCloseRankUp = document.getElementById('btn-close-rank-up');
 
         /* ==================== INITIALIZATION ==================== */
         function init() {
@@ -626,7 +665,7 @@
             loadLevel(currentLevelIdx);
         }
 
-        /* ==================== TITLE CALCULATION SYSTEM ==================== */
+        /* ==================== TITLE & RANK SYSTEM ==================== */
         function getTitleForScore(currentScore) {
             if (currentScore >= 20000) return "🔮 OMNISCIENT ORACLE";
             if (currentScore >= 10000) return "👑 GRAND VIRTUOSO";
@@ -637,17 +676,18 @@
             return "🐣 WORD NOVICE";
         }
 
-        /* ==================== BOUNDARY CONDITIONS & GENERATOR ==================== */
-        function validateWordBoundary(word, wheelPool) {
-            const poolCounts = {};
-            for (let char of wheelPool) poolCounts[char] = (poolCounts[char] || 0) + 1;
-            for (let char of word) {
-                if (!poolCounts[char] || poolCounts[char] <= 0) return false;
-                poolCounts[char]--;
+        function checkRankPromotion(newScore) {
+            const newTitle = getTitleForScore(newScore);
+            if (currentRankTitle && newTitle !== currentRankTitle) {
+                // Trigger Rank Up Celebration Modal
+                rankUpSubtitle.textContent = `You have been promoted to:\n${newTitle}`;
+                rankUpModal.classList.add('active');
             }
-            return true;
+            currentRankTitle = newTitle;
+            playerTitleBadge.textContent = `RANK: ${currentRankTitle}`;
         }
 
+        /* ==================== BOUNDARY & GENERATOR ==================== */
         function getRandomDifficulty() {
             const difficulties = ["Easy", "Medium", "Hard", "Hardest"];
             const weights = [0.35, 0.35, 0.20, 0.10];
@@ -660,25 +700,32 @@
         }
 
         function generateLevelForDifficulty(difficulty) {
-            const gridWidth = 10;
-            const gridHeight = 10;
+            const gridWidth = 7;
+            const gridHeight = 7;
 
-            let seed = ANAGRAM_SEEDS[Math.floor(Math.random() * ANAGRAM_SEEDS.length)];
+            // Pick a seed different from the last used level
+            let availableIndices = [];
+            for (let i = 0; i < ANAGRAM_SEEDS.length; i++) {
+                if (i !== lastUsedSeedIndex) availableIndices.push(i);
+            }
+            const chosenIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+            lastUsedSeedIndex = chosenIndex;
+
+            let seed = ANAGRAM_SEEDS[chosenIndex];
             const wheelLetters = [...seed.wheel];
-            const validWordPool = seed.words.filter(w => validateWordBoundary(w, wheelLetters));
 
             let attempts = 0;
-            while (attempts < 200) {
+            while (attempts < 150) {
                 attempts++;
                 const grid = Array(gridHeight).fill(null).map(() => Array(gridWidth).fill(null));
                 const placedWords = [];
 
-                let pool = shuffleArray([...validWordPool]);
+                let pool = shuffleArray([...seed.words]);
                 pool.sort((a, b) => b.length - a.length);
 
                 const firstWord = pool[0];
-                const startRow = 5;
-                const startCol = Math.floor((gridWidth - firstWord.length) / 2);
+                const startRow = 3;
+                const startCol = Math.max(0, Math.floor((gridWidth - firstWord.length) / 2));
 
                 for (let i = 0; i < firstWord.length; i++) {
                     grid[startRow][startCol + i] = firstWord[i];
@@ -686,13 +733,14 @@
                 placedWords.push({ word: firstWord, row: startRow, col: startCol, dir: "H" });
 
                 for (let wIdx = 1; wIdx < pool.length; wIdx++) {
+                    if (placedWords.length >= 5) break; // Keep maximum words capped at ~4-5 for space
                     const wordToPlace = pool[wIdx];
                     let placed = false;
 
                     for (let r = 0; r < gridHeight && !placed; r++) {
                         for (let c = 0; c < gridWidth && !placed; c++) {
                             ["H", "V"].forEach(dir => {
-                                if (placed) return;
+                                if (placed || placedWords.length >= 5) return;
                                 if (canPlaceWordStrict(grid, wordToPlace, r, c, dir, gridWidth, gridHeight)) {
                                     placeWordOnGrid(grid, wordToPlace, r, c, dir);
                                     placedWords.push({ word: wordToPlace, row: r, col: c, dir });
@@ -703,7 +751,7 @@
                     }
                 }
 
-                if (placedWords.length >= 6) {
+                if (placedWords.length >= 3) {
                     return { difficulty, gridWidth, gridHeight, words: placedWords, wheelLetters };
                 }
             }
@@ -758,14 +806,12 @@
         function generateFallbackLevel(difficulty, seed) {
             const wheel = seed ? seed.wheel : ["P", "L", "A", "N", "E", "T"];
             const fallbackWords = [
-                { word: "PLANET", row: 2, col: 1, dir: "H" },
-                { word: "LANE",   row: 2, col: 2, dir: "V" },
-                { word: "NEAT",   row: 2, col: 4, dir: "V" },
-                { word: "PLANT",  row: 5, col: 1, dir: "H" },
-                { word: "PANEL",  row: 5, col: 1, dir: "V" },
-                { word: "LEAN",   row: 7, col: 1, dir: "H" }
+                { word: "PLANET", row: 1, col: 0, dir: "H" },
+                { word: "LANE",   row: 1, col: 1, dir: "V" },
+                { word: "NEAT",   row: 1, col: 3, dir: "V" },
+                { word: "PLANT",  row: 4, col: 0, dir: "H" }
             ];
-            return { difficulty, gridWidth: 10, gridHeight: 10, wheelLetters: wheel, words: fallbackWords };
+            return { difficulty, gridWidth: 7, gridHeight: 7, wheelLetters: wheel, words: fallbackWords };
         }
 
         /* ==================== PERSISTENCE ==================== */
@@ -773,30 +819,32 @@
             const data = {
                 levelIdx: currentLevelIdx,
                 score: score,
+                lastUsedSeedIndex: lastUsedSeedIndex,
                 solved: Array.from(solvedWords),
                 levelData: currentLevelData
             };
-            localStorage.setItem('word_game_save_v8', JSON.stringify(data));
+            localStorage.setItem('word_game_save_v9', JSON.stringify(data));
         }
 
         function loadProgress() {
-            const saved = localStorage.getItem('word_game_save_v8');
+            const saved = localStorage.getItem('word_game_save_v9');
             if (saved) {
                 try {
                     const data = JSON.parse(saved);
                     if (data.levelIdx !== undefined) currentLevelIdx = data.levelIdx;
                     if (data.score !== undefined) score = data.score;
+                    if (data.lastUsedSeedIndex !== undefined) lastUsedSeedIndex = data.lastUsedSeedIndex;
                     if (data.solved) solvedWords = new Set(data.solved);
                     if (data.levelData) currentLevelData = data.levelData;
                 } catch (e) {}
             }
+            currentRankTitle = getTitleForScore(score);
             updateScoreDisplay();
         }
 
         function updateScoreDisplay() {
             scoreBadge.textContent = `SCORE: ${score}`;
-            const title = getTitleForScore(score);
-            playerTitleBadge.textContent = `RANK: ${title}`;
+            checkRankPromotion(score);
         }
 
         /* ==================== LEVEL RENDER ENGINE ==================== */
@@ -836,8 +884,8 @@
             crosswordGrid.innerHTML = '';
             const { gridWidth, gridHeight, words } = currentLevelData;
 
-            crosswordGrid.style.gridTemplateColumns = `repeat(${gridWidth}, 30px)`;
-            crosswordGrid.style.gridTemplateRows = `repeat(${gridHeight}, 30px)`;
+            crosswordGrid.style.gridTemplateColumns = `repeat(${gridWidth}, 38px)`;
+            crosswordGrid.style.gridTemplateRows = `repeat(${gridHeight}, 38px)`;
 
             const matrix = Array(gridHeight).fill(null).map(() => Array(gridWidth).fill(null));
 
@@ -896,14 +944,14 @@
             wheelLetters = shuffleArray([...currentLevelData.wheelLetters]);
 
             const totalNodes = wheelLetters.length;
-            const radius = 73;
-            const centerX = 105;
-            const centerY = 105;
+            const radius = 90; // Scaled up circle radius
+            const centerX = 130;
+            const centerY = 130;
 
             wheelLetters.forEach((letter, idx) => {
                 const angle = (idx * (360 / totalNodes) - 90) * (Math.PI / 180);
-                const x = centerX + radius * Math.cos(angle) - 22;
-                const y = centerY + radius * Math.sin(angle) - 22;
+                const x = centerX + radius * Math.cos(angle) - 25;
+                const y = centerY + radius * Math.sin(angle) - 25;
 
                 const node = document.createElement('div');
                 node.classList.add('wheel-node');
@@ -932,6 +980,8 @@
 
             btnExit.addEventListener('click', () => exitModal.classList.add('active'));
             btnResume.addEventListener('click', () => exitModal.classList.remove('active'));
+            btnCloseRankUp.addEventListener('click', () => rankUpModal.classList.remove('active'));
+
             btnNextLevel.addEventListener('click', () => {
                 winModal.classList.remove('active');
                 currentLevelData = null;
@@ -943,8 +993,8 @@
             const nodes = wheelWrapper.querySelectorAll('.wheel-node');
             for (let node of nodes) {
                 const rect = node.getBoundingClientRect();
-                if (x >= rect.left - 10 && x <= rect.right + 10 &&
-                    y >= rect.top - 10 && y <= rect.bottom + 10) {
+                if (x >= rect.left - 12 && x <= rect.right + 12 &&
+                    y >= rect.top - 12 && y <= rect.bottom + 12) {
                     return parseInt(node.dataset.index);
                 }
             }
@@ -1072,12 +1122,12 @@
                 if (nodeIdx !== undefined) {
                     const nodeEl = wheelWrapper.querySelector(`.wheel-node[data-index="${nodeIdx}"]`);
                     const nodeRect = nodeEl.getBoundingClientRect();
-                    startX = nodeRect.left + nodeRect.width / 2 - 15 - containerRect.left;
-                    startY = nodeRect.top + nodeRect.height / 2 - 15 - containerRect.top;
+                    startX = nodeRect.left + nodeRect.width / 2 - 19 - containerRect.left;
+                    startY = nodeRect.top + nodeRect.height / 2 - 19 - containerRect.top;
                 } else {
                     const wheelRect = wheelWrapper.getBoundingClientRect();
-                    startX = wheelRect.left + wheelRect.width / 2 - 15 - containerRect.left;
-                    startY = wheelRect.top + wheelRect.height / 2 - 15 - containerRect.top;
+                    startX = wheelRect.left + wheelRect.width / 2 - 19 - containerRect.left;
+                    startY = wheelRect.top + wheelRect.height / 2 - 19 - containerRect.top;
                 }
 
                 const r = dir === "V" ? row + i : row;
@@ -1115,7 +1165,7 @@
 
         /* ==================== VALIDATION, HINT & REVEAL SYSTEM ==================== */
         function calculateWordScore(wordLength) {
-            return wordLength * 20 + Math.max(0, (wordLength - 3) * 10);
+            return wordLength * 25 + Math.max(0, (wordLength - 3) * 15);
         }
 
         function validateWord(word) {
