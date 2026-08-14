@@ -22,7 +22,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 8px;
+            padding: 4px;
         }
 
         #game-container {
@@ -38,9 +38,9 @@
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 14px;
-            padding-top: max(12px, env(safe-area-inset-top));
-            padding-bottom: max(16px, env(safe-area-inset-bottom));
+            padding: 8px 10px;
+            padding-top: max(8px, env(safe-area-inset-top));
+            padding-bottom: max(8px, env(safe-area-inset-bottom));
             position: relative;
             overflow: hidden;
         }
@@ -50,13 +50,14 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 4px;
             background: rgba(30, 41, 59, 0.7);
             backdrop-filter: blur(8px);
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-radius: 16px;
             border: 1px solid #334155;
             z-index: 10;
+            flex-shrink: 0;
         }
 
         .top-bar-row {
@@ -149,26 +150,27 @@
             font-weight: 700;
         }
 
-        /* Crossword Matrix Area */
+        /* Crossword Matrix Area - Constrained to prevent top/bottom overlap */
         #crossword-container {
             width: 100%;
-            flex: 1;
+            flex: 1 1 auto;
+            min-height: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
-            margin: 4px 0;
+            margin: 2px 0;
             overflow: hidden;
         }
 
         #crossword-grid {
             display: grid;
-            gap: 5px;
+            gap: 4px;
             position: relative;
             transition: transform 0.3s ease;
         }
 
-        /* Scaled Up Tile Size for Mobile Visibility */
+        /* Scaled Up Tile Size */
         .tile {
             width: 44px;
             height: 44px;
@@ -228,30 +230,31 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* Selection Preview Pill */
+        /* Compact Selection Preview Pill */
         #preview-container {
-            height: 32px;
+            height: 26px;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 2px;
+            margin: 0;
             z-index: 5;
+            flex-shrink: 0;
         }
 
         #word-preview {
             background: rgba(30, 41, 59, 0.9);
             border: 2px solid #38bdf8;
-            padding: 3px 16px;
-            border-radius: 16px;
-            font-size: 16px;
+            padding: 2px 14px;
+            border-radius: 14px;
+            font-size: 15px;
             font-weight: 800;
             letter-spacing: 2px;
             color: #f8fafc;
-            min-width: 100px;
+            min-width: 90px;
             text-align: center;
             box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
             opacity: 0;
-            transform: translateY(5px);
+            transform: translateY(3px);
             transition: opacity 0.2s, transform 0.2s;
         }
 
@@ -260,22 +263,23 @@
             transform: translateY(0);
         }
 
-        /* Toast Overlay */
+        /* Compact Feedback Toast */
         #toast-container {
-            height: 26px;
+            height: 22px;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 4px;
+            margin: 0;
             z-index: 5;
+            flex-shrink: 0;
         }
 
         .toast {
             font-size: 11px;
             font-weight: 800;
             letter-spacing: 1px;
-            padding: 3px 10px;
-            border-radius: 10px;
+            padding: 2px 8px;
+            border-radius: 8px;
             text-transform: uppercase;
             opacity: 0;
             transition: all 0.3s ease;
@@ -287,12 +291,12 @@
         .toast.wrong { background: #ef4444; color: #ffffff; }
         .toast.info { background: #6366f1; color: #ffffff; }
 
-        /* Scaled Up Letter Wheel Container */
+        /* Scaled Up 340px Letter Wheel Container */
         #wheel-wrapper {
             position: relative;
-            width: 300px;
-            height: 300px;
-            margin-bottom: max(8px, env(safe-area-inset-bottom));
+            width: 340px;
+            height: 340px;
+            margin-bottom: max(2px, env(safe-area-inset-bottom));
             display: flex;
             justify-content: center;
             align-items: center;
@@ -318,19 +322,19 @@
 
         .wheel-background {
             position: absolute;
-            width: 270px;
-            height: 270px;
+            width: 310px;
+            height: 310px;
             border-radius: 50%;
             background: rgba(30, 41, 59, 0.55);
             border: 2px solid #334155;
             box-shadow: inset 0 0 25px rgba(0,0,0,0.5);
         }
 
-        /* Larger Wheel Touch Nodes */
+        /* 36px Touch Nodes (Letters font size preserved) */
         .wheel-node {
             position: absolute;
-            width: 58px;
-            height: 58px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
             border: 2px solid #475569;
@@ -350,7 +354,7 @@
             background: linear-gradient(145deg, #0284c7 0%, #0369a1 100%);
             border-color: #38bdf8;
             color: #ffffff;
-            transform: scale(1.18);
+            transform: scale(1.22);
             box-shadow: 0 0 18px rgba(56, 189, 248, 0.7);
         }
 
@@ -522,7 +526,7 @@
             <div id="toast" class="toast"></div>
         </div>
 
-        <!-- Dynamic Circular Wheel -->
+        <!-- 340px Dynamic Circular Wheel -->
         <div id="wheel-wrapper">
             <div class="wheel-background"></div>
             <svg id="svg-canvas"></svg>
@@ -900,19 +904,20 @@
             return arr;
         }
 
+        /* Scaled 340px Wheel with 36px Nodes Placement */
         function renderWheel() {
             wheelWrapper.querySelectorAll('.wheel-node').forEach(n => n.remove());
             wheelLetters = shuffleArray([...currentLevelData.wheelLetters]);
 
             const totalNodes = wheelLetters.length;
-            const radius = 105;
-            const centerX = 150;
-            const centerY = 150;
+            const radius = 125;
+            const centerX = 170;
+            const centerY = 170;
 
             wheelLetters.forEach((letter, idx) => {
                 const angle = (idx * (360 / totalNodes) - 90) * (Math.PI / 180);
-                const x = centerX + radius * Math.cos(angle) - 29;
-                const y = centerY + radius * Math.sin(angle) - 29;
+                const x = centerX + radius * Math.cos(angle) - 18;
+                const y = centerY + radius * Math.sin(angle) - 18;
 
                 const node = document.createElement('div');
                 node.classList.add('wheel-node');
