@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Lexicon Legend</title>
+    
+    <!-- iOS / Web App Home Screen Icon & Title Settings -->
+    <title>WordQuest</title>
+    <meta name="apple-mobile-web-app-title" content="WordQuest">
+    <meta name="application-name" content="WordQuest">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='512' height='512'><rect width='512' height='512' rx='128' fill='%230f172a'/><rect x='32' y='32' width='448' height='448' rx='96' fill='none' stroke='%2338bdf8' stroke-width='16'/><text x='50%' y='68%' font-family='sans-serif' font-weight='900' font-size='320' fill='%2338bdf8' text-anchor='middle'>W</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='512' height='512'><rect width='512' height='512' rx='128' fill='%230f172a'/><text x='50%' y='68%' font-family='sans-serif' font-weight='900' font-size='320' fill='%2338bdf8' text-anchor='middle'>W</text></svg>">
+
     <style>
         * {
             box-sizing: border-box;
@@ -150,7 +159,7 @@
             font-weight: 700;
         }
 
-        /* Crossword Matrix Area - Constrained to prevent top/bottom overlap */
+        /* Crossword Matrix Area */
         #crossword-container {
             width: 100%;
             flex: 1 1 auto;
@@ -166,18 +175,18 @@
         #crossword-grid {
             display: grid;
             position: relative;
+            gap: 3px;
             transition: transform 0.3s ease;
         }
 
-        /* Scaled Up Tile Size */
         .tile {
             width: 36px;
             height: 36px;
-            border-radius: 9px;
+            border-radius: 8px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 32px;
+            font-size: 20px;
             font-weight: 800;
             text-transform: uppercase;
             box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1), 0 4px 6px rgba(0,0,0,0.3);
@@ -290,7 +299,7 @@
         .toast.wrong { background: #ef4444; color: #ffffff; }
         .toast.info { background: #6366f1; color: #ffffff; }
 
-        /* Scaled Up 340px Letter Wheel Container */
+        /* Scaled Circular Wheel */
         #wheel-wrapper {
             position: relative;
             width: 280px;
@@ -324,20 +333,19 @@
             width: 280px;
             height: 280px;
             border-radius: 50%;
-           background: rgba(30, 41, 59, 0.55);
+            background: rgba(30, 41, 59, 0.55);
             border: 2px solid #334155;
             box-shadow: inset 0 0 25px rgba(0,0,0,0.5);
         }
 
-        /* 36px Touch Nodes (Letters font size preserved) */
         .wheel-node {
             position: absolute;
-            width: 36px;
-            height: 36px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
             color: #f8fafc;
-            font-size: 36px;
+            font-size: 22px;
             font-weight: 800;
             display: flex;
             justify-content: center;
@@ -359,13 +367,13 @@
         /* Flying Letter Bubbles */
         .flying-tile {
             position: absolute;
-            width: 44px;
-            height: 44px;
-            border-radius: 9px;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
             background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
             border: 1.5px solid #7dd3fc;
             color: #ffffff;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 800;
             display: flex;
             justify-content: center;
@@ -524,7 +532,7 @@
             <div id="toast" class="toast"></div>
         </div>
 
-        <!-- 340px Dynamic Circular Wheel -->
+        <!-- Circular Wheel -->
         <div id="wheel-wrapper">
             <div class="wheel-background"></div>
             <svg id="svg-canvas"></svg>
@@ -572,18 +580,48 @@
     </div>
 
     <script>
-        /* ==================== COMMON & RECOGNIZABLE ANAGRAM SEEDS ==================== */
+        /* ==================== EXPANDED SEEDS WITH 3-6 LETTER WORDS ==================== */
         const ANAGRAM_SEEDS = [
-            { wheel: ["P", "L", "A", "N", "E", "T"], words: ["PLANET", "PLANE", "PLANT", "PLATE", "PANEL", "LANE", "LEAN", "TALE", "NEAT"] },
-            { wheel: ["S", "I", "L", "E", "N", "T"], words: ["SILENT", "LISTEN", "INLET", "LENT", "LINE", "LIST", "NEST", "SENT", "TILE"] },
-            { wheel: ["C", "A", "S", "T", "L", "E"], words: ["CASTLE", "SCALE", "LACE", "CAST", "TALE", "SEAT", "EAST", "LAST", "CASE"] },
-            { wheel: ["F", "O", "R", "E", "S", "T"], words: ["FOREST", "STORE", "FORT", "REST", "ROSE", "SOFT", "SORT", "FORE"] },
-            { wheel: ["G", "A", "R", "D", "E", "N"], words: ["GARDEN", "DANGER", "GRADE", "GRAND", "READ", "DEAR", "GEAR", "RAGE", "DARE"] },
-            { wheel: ["S", "P", "R", "I", "N", "G"], words: ["SPRING", "RING", "SING", "GRIN", "SPIN", "PING", "GRIP"] },
-            { wheel: ["W", "I", "N", "T", "E", "R"], words: ["WINTER", "WRITE", "WIRE", "TIRE", "RENT", "TWIN", "WINE", "WENT"] },
-            { wheel: ["F", "L", "O", "W", "E", "R"], words: ["FLOWER", "LOWER", "WOLF", "FLOW", "ROLE", "LORE", "FORE"] },
-            { wheel: ["S", "T", "R", "E", "A", "M"], words: ["STREAM", "SMART", "STEAM", "TEAM", "TEAR", "MEAT", "RATE", "REST", "SEAT"] },
-            { wheel: ["B", "R", "I", "D", "G", "E"], words: ["BRIDGE", "RIDGE", "DIRE", "BIRD", "RIDE", "GRID", "BRED"] }
+            { 
+                wheel: ["P", "L", "A", "N", "E", "T"], 
+                words: ["PLANET", "PLANE", "PLANT", "PLATE", "PANEL", "LANE", "LEAN", "TALE", "NEAT", "TEA", "PAN", "PET", "NET", "PAT", "TAP", "ALE", "APE", "PEN", "ANT", "TEN"] 
+            },
+            { 
+                wheel: ["S", "I", "L", "E", "N", "T"], 
+                words: ["SILENT", "LISTEN", "INLET", "LENT", "LINE", "LIST", "NEST", "SENT", "TILE", "TIE", "NET", "SET", "TIN", "LIT", "NIL", "SIT", "TEN"] 
+            },
+            { 
+                wheel: ["C", "A", "S", "T", "L", "E"], 
+                words: ["CASTLE", "SCALE", "LACE", "CAST", "TALE", "SEAT", "EAST", "LAST", "CASE", "CAT", "ACT", "LET", "TEA", "SET", "ACE", "SAT", "SIT"] 
+            },
+            { 
+                wheel: ["F", "O", "R", "E", "S", "T"], 
+                words: ["FOREST", "STORE", "FORT", "REST", "ROSE", "SOFT", "SORT", "FORE", "FOR", "SET", "TOE", "ROT", "ORE", "FRO"] 
+            },
+            { 
+                wheel: ["G", "A", "R", "D", "E", "N"], 
+                words: ["GARDEN", "DANGER", "GRADE", "GRAND", "READ", "DEAR", "GEAR", "RAGE", "DARE", "RED", "EAR", "AGE", "END", "ARE", "DEN", "RAN"] 
+            },
+            { 
+                wheel: ["S", "P", "R", "I", "N", "G"], 
+                words: ["SPRING", "RING", "SING", "GRIN", "SPIN", "PING", "GRIP", "PIN", "SIP", "SIP", "NIP", "RIG", "PIG", "GIN"] 
+            },
+            { 
+                wheel: ["W", "I", "N", "T", "E", "R"], 
+                words: ["WINTER", "WRITE", "WIRE", "TIRE", "RENT", "TWIN", "WINE", "WENT", "WIN", "NET", "TEN", "TIE", "WET", "TIN", "NEW"] 
+            },
+            { 
+                wheel: ["F", "L", "O", "W", "E", "R"], 
+                words: ["FLOWER", "LOWER", "WOLF", "FLOW", "ROLE", "LORE", "FORE", "FOR", "ROW", "LOW", "FEW", "OWL", "REF"] 
+            },
+            { 
+                wheel: ["S", "T", "R", "E", "A", "M"], 
+                words: ["STREAM", "SMART", "STEAM", "TEAM", "TEAR", "MEAT", "RATE", "REST", "SEAT", "MAT", "TEA", "SEA", "MET", "RAM", "ART", "SET", "RAT"] 
+            },
+            { 
+                wheel: ["B", "R", "I", "D", "G", "E"], 
+                words: ["BRIDGE", "RIDGE", "DIRE", "BIRD", "RIDE", "GRID", "BRED", "RED", "BIG", "BID", "RIB", "DIE", "BEG"] 
+            }
         ];
 
         /* ==================== GAME STATE ==================== */
@@ -651,7 +689,7 @@
             playerTitleBadge.textContent = `RANK: ${currentRankTitle}`;
         }
 
-        /* ==================== BOUNDARY & GENERATOR ==================== */
+        /* ==================== GENERATOR ENGINE ==================== */
         function getRandomDifficulty() {
             const difficulties = ["Easy", "Medium", "Hard", "Hardest"];
             const weights = [0.35, 0.35, 0.20, 0.10];
@@ -664,8 +702,9 @@
         }
 
         function generateLevelForDifficulty(difficulty) {
-            const gridWidth = 7;
-            const gridHeight = 7;
+            const gridWidth = 8;
+            const gridHeight = 8;
+            const targetWordCount = 7; // Aiming for 7-8 words per crossword matrix
 
             let availableIndices = [];
             for (let i = 0; i < ANAGRAM_SEEDS.length; i++) {
@@ -678,13 +717,28 @@
             const wheelLetters = [...seed.wheel];
 
             let attempts = 0;
-            while (attempts < 150) {
+            while (attempts < 300) {
                 attempts++;
                 const grid = Array(gridHeight).fill(null).map(() => Array(gridWidth).fill(null));
                 const placedWords = [];
 
                 let pool = shuffleArray([...seed.words]);
-                pool.sort((a, b) => b.length - a.length);
+
+                // Sort pool depending on Difficulty rules
+                if (difficulty === "Easy") {
+                    // Easy: More 3 & 4 letter words, fewer large words
+                    pool.sort((a, b) => {
+                        if (a.length <= 4 && b.length > 4) return -1;
+                        if (a.length > 4 && b.length <= 4) return 1;
+                        return a.length - b.length;
+                    });
+                } else if (difficulty === "Medium") {
+                    // Balanced distribution across lengths
+                    pool.sort((a, b) => (Math.random() - 0.5));
+                } else {
+                    // Hard / Hardest: Prioritize larger words first
+                    pool.sort((a, b) => b.length - a.length);
+                }
 
                 const firstWord = pool[0];
                 const startRow = 3;
@@ -696,14 +750,14 @@
                 placedWords.push({ word: firstWord, row: startRow, col: startCol, dir: "H" });
 
                 for (let wIdx = 1; wIdx < pool.length; wIdx++) {
-                    if (placedWords.length >= 5) break;
+                    if (placedWords.length >= 8) break;
                     const wordToPlace = pool[wIdx];
                     let placed = false;
 
                     for (let r = 0; r < gridHeight && !placed; r++) {
                         for (let c = 0; c < gridWidth && !placed; c++) {
                             ["H", "V"].forEach(dir => {
-                                if (placed || placedWords.length >= 5) return;
+                                if (placed || placedWords.length >= 8) return;
                                 if (canPlaceWordStrict(grid, wordToPlace, r, c, dir, gridWidth, gridHeight)) {
                                     placeWordOnGrid(grid, wordToPlace, r, c, dir);
                                     placedWords.push({ word: wordToPlace, row: r, col: c, dir });
@@ -714,7 +768,7 @@
                     }
                 }
 
-                if (placedWords.length >= 3) {
+                if (placedWords.length >= targetWordCount) {
                     return { difficulty, gridWidth, gridHeight, words: placedWords, wheelLetters };
                 }
             }
@@ -772,9 +826,12 @@
                 { word: "PLANET", row: 1, col: 0, dir: "H" },
                 { word: "LANE",   row: 1, col: 1, dir: "V" },
                 { word: "NEAT",   row: 1, col: 3, dir: "V" },
-                { word: "PLANT",  row: 4, col: 0, dir: "H" }
+                { word: "TEA",    row: 3, col: 3, dir: "H" },
+                { word: "PET",    row: 1, col: 0, dir: "V" },
+                { word: "PLANT",  row: 5, col: 0, dir: "H" },
+                { word: "ANT",    row: 5, col: 2, dir: "V" }
             ];
-            return { difficulty, gridWidth: 7, gridHeight: 7, wheelLetters: wheel, words: fallbackWords };
+            return { difficulty, gridWidth: 8, gridHeight: 8, wheelLetters: wheel, words: fallbackWords };
         }
 
         /* ==================== PERSISTENCE ==================== */
@@ -786,11 +843,11 @@
                 solved: Array.from(solvedWords),
                 levelData: currentLevelData
             };
-            localStorage.setItem('word_game_save_v9', JSON.stringify(data));
+            localStorage.setItem('wordquest_save_v1', JSON.stringify(data));
         }
 
         function loadProgress() {
-            const saved = localStorage.getItem('word_game_save_v9');
+            const saved = localStorage.getItem('wordquest_save_v1');
             if (saved) {
                 try {
                     const data = JSON.parse(saved);
@@ -847,8 +904,8 @@
             crosswordGrid.innerHTML = '';
             const { gridWidth, gridHeight, words } = currentLevelData;
 
-            crosswordGrid.style.gridTemplateColumns = `repeat(${gridWidth}, 44px)`;
-            crosswordGrid.style.gridTemplateRows = `repeat(${gridHeight}, 44px)`;
+            crosswordGrid.style.gridTemplateColumns = `repeat(${gridWidth}, 36px)`;
+            crosswordGrid.style.gridTemplateRows = `repeat(${gridHeight}, 36px)`;
 
             const matrix = Array(gridHeight).fill(null).map(() => Array(gridWidth).fill(null));
 
@@ -902,20 +959,19 @@
             return arr;
         }
 
-        /* Scaled 340px Wheel with 36px Nodes Placement */
         function renderWheel() {
             wheelWrapper.querySelectorAll('.wheel-node').forEach(n => n.remove());
             wheelLetters = shuffleArray([...currentLevelData.wheelLetters]);
 
             const totalNodes = wheelLetters.length;
-            const radius = 115;
+            const radius = 105;
             const centerX = 140;
             const centerY = 140;
 
             wheelLetters.forEach((letter, idx) => {
                 const angle = (idx * (360 / totalNodes) - 90) * (Math.PI / 180);
-                const x = centerX + radius * Math.cos(angle) - 18;
-                const y = centerY + radius * Math.sin(angle) - 18;
+                const x = centerX + radius * Math.cos(angle) - 22;
+                const y = centerY + radius * Math.sin(angle) - 22;
 
                 const node = document.createElement('div');
                 node.classList.add('wheel-node');
@@ -1084,12 +1140,12 @@
                 if (nodeIdx !== undefined) {
                     const nodeEl = wheelWrapper.querySelector(`.wheel-node[data-index="${nodeIdx}"]`);
                     const nodeRect = nodeEl.getBoundingClientRect();
-                    startX = nodeRect.left + nodeRect.width / 2 - 22 - containerRect.left;
-                    startY = nodeRect.top + nodeRect.height / 2 - 22 - containerRect.top;
+                    startX = nodeRect.left + nodeRect.width / 2 - 18 - containerRect.left;
+                    startY = nodeRect.top + nodeRect.height / 2 - 18 - containerRect.top;
                 } else {
                     const wheelRect = wheelWrapper.getBoundingClientRect();
-                    startX = wheelRect.left + wheelRect.width / 2 - 22 - containerRect.left;
-                    startY = wheelRect.top + wheelRect.height / 2 - 22 - containerRect.top;
+                    startX = wheelRect.left + wheelRect.width / 2 - 18 - containerRect.left;
+                    startY = wheelRect.top + wheelRect.height / 2 - 18 - containerRect.top;
                 }
 
                 const r = dir === "V" ? row + i : row;
