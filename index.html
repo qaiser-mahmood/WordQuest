@@ -293,8 +293,8 @@
         /* Scaled Up 340px Letter Wheel Container */
         #wheel-wrapper {
             position: relative;
-            width: 310px;
-            height: 310px;
+            width: 280px;
+            height: 280px;
             margin-bottom: max(2px, env(safe-area-inset-bottom));
             display: flex;
             justify-content: center;
@@ -321,10 +321,10 @@
 
         .wheel-background {
             position: absolute;
-            width: 310px;
-            height: 310px;
+            width: 280px;
+            height: 280px;
             border-radius: 50%;
-            background: rgba(30, 41, 59, 0.55);
+           background: rgba(30, 41, 59, 0.55);
             border: 2px solid #334155;
             box-shadow: inset 0 0 25px rgba(0,0,0,0.5);
         }
@@ -908,9 +908,9 @@
             wheelLetters = shuffleArray([...currentLevelData.wheelLetters]);
 
             const totalNodes = wheelLetters.length;
-            const radius = 125;
-            const centerX = 155;
-            const centerY = 155;
+            const radius = 115;
+            const centerX = 140;
+            const centerY = 140;
 
             wheelLetters.forEach((letter, idx) => {
                 const angle = (idx * (360 / totalNodes) - 90) * (Math.PI / 180);
