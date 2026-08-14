@@ -172,8 +172,8 @@
 
         /* Scaled Up Tile Size */
         .tile {
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             border-radius: 9px;
             display: flex;
             justify-content: center;
@@ -294,8 +294,8 @@
         /* Scaled Up 340px Letter Wheel Container */
         #wheel-wrapper {
             position: relative;
-            width: 340px;
-            height: 340px;
+            width: 310px;
+            height: 310px;
             margin-bottom: max(2px, env(safe-area-inset-bottom));
             display: flex;
             justify-content: center;
@@ -337,9 +337,8 @@
             height: 36px;
             border-radius: 50%;
             background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
-            border: 2px solid #475569;
             color: #f8fafc;
-            font-size: 24px;
+            font-size: 32px;
             font-weight: 800;
             display: flex;
             justify-content: center;
@@ -911,8 +910,8 @@
 
             const totalNodes = wheelLetters.length;
             const radius = 125;
-            const centerX = 170;
-            const centerY = 170;
+            const centerX = 155;
+            const centerY = 155;
 
             wheelLetters.forEach((letter, idx) => {
                 const angle = (idx * (360 / totalNodes) - 90) * (Math.PI / 180);
