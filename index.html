@@ -142,6 +142,13 @@
             color: #f87171;
         }
 
+        .btn-hint-top {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            border: 1px solid #818cf8;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
         /* Crossword Matrix Area */
         #crossword-container {
             width: 100%;
@@ -161,15 +168,15 @@
             transition: transform 0.3s ease;
         }
 
-        /* Larger Tile Size for Mobile Visibility */
+        /* Scaled Up Tile Size for Mobile Visibility */
         .tile {
-            width: 38px;
-            height: 38px;
+            width: 44px;
+            height: 44px;
             border-radius: 9px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 18px;
+            font-size: 22px;
             font-weight: 800;
             text-transform: uppercase;
             box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1), 0 4px 6px rgba(0,0,0,0.3);
@@ -280,38 +287,11 @@
         .toast.wrong { background: #ef4444; color: #ffffff; }
         .toast.info { background: #6366f1; color: #ffffff; }
 
-        /* Central Hint Action Bar */
-        .hint-bar {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 6px;
-            z-index: 10;
-        }
-
-        .btn-action {
-            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-            border: 1px solid #818cf8;
-            color: #ffffff;
-            padding: 8px 22px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
-            transition: transform 0.1s, background 0.2s;
-        }
-
-        .btn-action:active {
-            transform: scale(0.95);
-        }
-
         /* Scaled Up Letter Wheel Container */
         #wheel-wrapper {
             position: relative;
-            width: 260px;
-            height: 260px;
+            width: 300px;
+            height: 300px;
             margin-bottom: max(8px, env(safe-area-inset-bottom));
             display: flex;
             justify-content: center;
@@ -338,24 +318,24 @@
 
         .wheel-background {
             position: absolute;
-            width: 230px;
-            height: 230px;
+            width: 270px;
+            height: 270px;
             border-radius: 50%;
             background: rgba(30, 41, 59, 0.55);
             border: 2px solid #334155;
             box-shadow: inset 0 0 25px rgba(0,0,0,0.5);
         }
 
-        /* Bigger Wheel Nodes for Touch Devices */
+        /* Larger Wheel Touch Nodes */
         .wheel-node {
             position: absolute;
-            width: 50px;
-            height: 50px;
+            width: 58px;
+            height: 58px;
             border-radius: 50%;
             background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
             border: 2px solid #475569;
             color: #f8fafc;
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 800;
             display: flex;
             justify-content: center;
@@ -377,13 +357,13 @@
         /* Flying Letter Bubbles */
         .flying-tile {
             position: absolute;
-            width: 38px;
-            height: 38px;
+            width: 44px;
+            height: 44px;
             border-radius: 9px;
             background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
             border: 1.5px solid #7dd3fc;
             color: #ffffff;
-            font-size: 18px;
+            font-size: 22px;
             font-weight: 800;
             display: flex;
             justify-content: center;
@@ -515,16 +495,16 @@
         <!-- Top Navigation Header -->
         <div class="top-bar">
             <div class="top-bar-row">
-                <div class="badge" id="level-badge">LVL 1</div>
+                <button class="btn-icon btn-hint-top" id="btn-hint">💡 Hint (-500)</button>
                 <div class="difficulty-badge diff-easy" id="diff-badge">EASY</div>
                 <div class="score-badge" id="score-badge">SCORE: 0</div>
-                <div class="btn-top-group">
-                    <button class="btn-icon btn-skip-top" id="btn-skip">Reveal All</button>
-                    <button class="btn-icon" id="btn-exit">Exit</button>
-                </div>
+                <button class="btn-icon btn-skip-top" id="btn-skip">Reveal All</button>
             </div>
-            <!-- Dynamic Player Title Badge -->
-            <div class="title-badge" id="player-title-badge">RANK: 🐣 WORD NOVICE</div>
+            <!-- Rank Row with Level Badge Included -->
+            <div class="top-bar-row">
+                <div class="badge" id="level-badge">LVL 1</div>
+                <div class="title-badge" id="player-title-badge">RANK: 🐣 WORD NOVICE</div>
+            </div>
         </div>
 
         <!-- Dynamic Crossword Matrix -->
@@ -540,11 +520,6 @@
         <!-- Feedback Toast -->
         <div id="toast-container">
             <div id="toast" class="toast"></div>
-        </div>
-
-        <!-- Hint Button Positioned Between Grid & Wheel -->
-        <div class="hint-bar">
-            <button class="btn-action" id="btn-hint">💡 Hint (-500)</button>
         </div>
 
         <!-- Dynamic Circular Wheel -->
@@ -592,15 +567,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Pause / Exit Modal Overlay -->
-        <div class="modal-overlay" id="exit-modal">
-            <div class="modal-card">
-                <div class="modal-title">GAME PAUSED</div>
-                <div class="modal-subtitle">Your progress is automatically saved.</div>
-                <button class="modal-btn" id="btn-resume">RESUME GAME</button>
-            </div>
-        </div>
     </div>
 
     <script>
@@ -622,7 +588,7 @@
         let currentLevelIdx = 0;
         let score = 0;
         let currentRankTitle = "";
-        let lastUsedSeedIndex = -1; // Prevents consecutive levels from using the same letters
+        let lastUsedSeedIndex = -1;
         let solvedWords = new Set();
         let currentLevelData = null;
         let wheelLetters = [];
@@ -642,7 +608,6 @@
         const wheelWrapper = document.getElementById('wheel-wrapper');
         const svgCanvas = document.getElementById('svg-canvas');
         const winModal = document.getElementById('win-modal');
-        const exitModal = document.getElementById('exit-modal');
         const skipConfirmModal = document.getElementById('skip-confirm-modal');
         const rankUpModal = document.getElementById('rank-up-modal');
         const rankUpSubtitle = document.getElementById('rank-up-subtitle');
@@ -653,9 +618,7 @@
         const btnSkip = document.getElementById('btn-skip');
         const btnConfirmSkip = document.getElementById('btn-confirm-skip');
         const btnCancelSkip = document.getElementById('btn-cancel-skip');
-        const btnExit = document.getElementById('btn-exit');
         const btnNextLevel = document.getElementById('btn-next-level');
-        const btnResume = document.getElementById('btn-resume');
         const btnCloseRankUp = document.getElementById('btn-close-rank-up');
 
         /* ==================== INITIALIZATION ==================== */
@@ -679,7 +642,6 @@
         function checkRankPromotion(newScore) {
             const newTitle = getTitleForScore(newScore);
             if (currentRankTitle && newTitle !== currentRankTitle) {
-                // Trigger Rank Up Celebration Modal
                 rankUpSubtitle.textContent = `You have been promoted to:\n${newTitle}`;
                 rankUpModal.classList.add('active');
             }
@@ -703,7 +665,6 @@
             const gridWidth = 7;
             const gridHeight = 7;
 
-            // Pick a seed different from the last used level
             let availableIndices = [];
             for (let i = 0; i < ANAGRAM_SEEDS.length; i++) {
                 if (i !== lastUsedSeedIndex) availableIndices.push(i);
@@ -733,7 +694,7 @@
                 placedWords.push({ word: firstWord, row: startRow, col: startCol, dir: "H" });
 
                 for (let wIdx = 1; wIdx < pool.length; wIdx++) {
-                    if (placedWords.length >= 5) break; // Keep maximum words capped at ~4-5 for space
+                    if (placedWords.length >= 5) break;
                     const wordToPlace = pool[wIdx];
                     let placed = false;
 
@@ -884,8 +845,8 @@
             crosswordGrid.innerHTML = '';
             const { gridWidth, gridHeight, words } = currentLevelData;
 
-            crosswordGrid.style.gridTemplateColumns = `repeat(${gridWidth}, 38px)`;
-            crosswordGrid.style.gridTemplateRows = `repeat(${gridHeight}, 38px)`;
+            crosswordGrid.style.gridTemplateColumns = `repeat(${gridWidth}, 44px)`;
+            crosswordGrid.style.gridTemplateRows = `repeat(${gridHeight}, 44px)`;
 
             const matrix = Array(gridHeight).fill(null).map(() => Array(gridWidth).fill(null));
 
@@ -944,14 +905,14 @@
             wheelLetters = shuffleArray([...currentLevelData.wheelLetters]);
 
             const totalNodes = wheelLetters.length;
-            const radius = 90; // Scaled up circle radius
-            const centerX = 130;
-            const centerY = 130;
+            const radius = 105;
+            const centerX = 150;
+            const centerY = 150;
 
             wheelLetters.forEach((letter, idx) => {
                 const angle = (idx * (360 / totalNodes) - 90) * (Math.PI / 180);
-                const x = centerX + radius * Math.cos(angle) - 25;
-                const y = centerY + radius * Math.sin(angle) - 25;
+                const x = centerX + radius * Math.cos(angle) - 29;
+                const y = centerY + radius * Math.sin(angle) - 29;
 
                 const node = document.createElement('div');
                 node.classList.add('wheel-node');
@@ -978,8 +939,6 @@
                 executeSkipLevel();
             });
 
-            btnExit.addEventListener('click', () => exitModal.classList.add('active'));
-            btnResume.addEventListener('click', () => exitModal.classList.remove('active'));
             btnCloseRankUp.addEventListener('click', () => rankUpModal.classList.remove('active'));
 
             btnNextLevel.addEventListener('click', () => {
@@ -1122,12 +1081,12 @@
                 if (nodeIdx !== undefined) {
                     const nodeEl = wheelWrapper.querySelector(`.wheel-node[data-index="${nodeIdx}"]`);
                     const nodeRect = nodeEl.getBoundingClientRect();
-                    startX = nodeRect.left + nodeRect.width / 2 - 19 - containerRect.left;
-                    startY = nodeRect.top + nodeRect.height / 2 - 19 - containerRect.top;
+                    startX = nodeRect.left + nodeRect.width / 2 - 22 - containerRect.left;
+                    startY = nodeRect.top + nodeRect.height / 2 - 22 - containerRect.top;
                 } else {
                     const wheelRect = wheelWrapper.getBoundingClientRect();
-                    startX = wheelRect.left + wheelRect.width / 2 - 19 - containerRect.left;
-                    startY = wheelRect.top + wheelRect.height / 2 - 19 - containerRect.top;
+                    startX = wheelRect.left + wheelRect.width / 2 - 22 - containerRect.left;
+                    startY = wheelRect.top + wheelRect.height / 2 - 22 - containerRect.top;
                 }
 
                 const r = dir === "V" ? row + i : row;
