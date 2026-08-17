@@ -550,117 +550,59 @@
     </div>
 
     <script>
-        /* ==================== EXPANDED SEEDS DATABASE (100 SEEDS) ==================== */
+        /* ==================== EXPANDED SEEDS DATABASE (ALL SEEDS HAVE AT LEAST 20 VALID WORDS) ==================== */
         const ANAGRAM_SEEDS = [
-            { wheel: ["P", "L", "A", "N", "E", "T"], words: ["PLANET", "PLANE", "PLANT", "PLATE", "PANEL", "LANE", "LEAN", "TALE", "NEAT", "PEAT", "PLEA", "PALE", "LATE", "PAN", "PET", "NET", "PAT", "TAP", "ALE", "APE", "PEN", "ANT", "TEN", "TEA", "EAT", "TAN", "LAT"] },
+            { wheel: ["P", "L", "A", "N", "E", "T"], words: ["PLANET", "PLANE", "PLANT", "PLATE", "PANEL", "LANE", "LEAN", "TALE", "NEAT", "PEAT", "PLEA", "PALE", "LATE", "PAN", "PET", "NET", "PAT", "TAP", "ALE", "APE", "PEN", "ANT", "TEN", "TEA", "EAT", "TAN"] },
             { wheel: ["S", "I", "L", "E", "N", "T"], words: ["SILENT", "LISTEN", "INLET", "TINSEL", "ENLIST", "LENT", "LINE", "LIST", "NEST", "SENT", "TILE", "LIES", "SILT", "SLIT", "TIES", "NET", "SET", "TIN", "LIT", "NIL", "SIT", "TEN", "LIE", "LET"] },
             { wheel: ["C", "A", "S", "T", "L", "E"], words: ["CASTLE", "SCALE", "LACE", "CAST", "TALE", "SEAT", "EAST", "LAST", "CASE", "SEAL", "SALE", "TALES", "LEAST", "CAT", "ACT", "LET", "TEA", "SET", "ACE", "SAT", "SIT", "ALE", "ALT"] },
-            { wheel: ["F", "O", "R", "E", "S", "T"], words: ["FOREST", "STORE", "FORT", "REST", "ROSE", "SOFT", "SORT", "FORE", "EFT", "FROST", "FRO", "FOR", "SET", "TOE", "ROT", "ORE", "ROE", "OFT"] },
-            { wheel: ["G", "A", "R", "D", "E", "N"], words: ["GARDEN", "DANGER", "GRADE", "GRAND", "READ", "DEAR", "GEAR", "RAGE", "DARE", "NEAR", "EARN", "RED", "EAR", "AGE", "END", "ARE", "DEN", "RAN", "RAG", "GAD"] },
-            { wheel: ["S", "P", "R", "I", "N", "G"], words: ["SPRING", "RING", "SING", "GRIN", "SPIN", "PING", "GRIP", "RIPS", "GIPS", "PIN", "SIP", "NIP", "RIG", "PIG", "GIN", "RIP", "SRI"] },
-            { wheel: ["W", "I", "N", "T", "E", "R"], words: ["WINTER", "WRITE", "WIRE", "TIRE", "RENT", "TWIN", "WINE", "WENT", "RITE", "TIER", "WIN", "NET", "TEN", "TIE", "WET", "TIN", "NEW", "WIT", "NIT"] },
-            { wheel: ["F", "L", "O", "W", "E", "R"], words: ["FLOWER", "LOWER", "WOLF", "FLOW", "ROLE", "LORE", "FORE", "FOWL", "ROW", "LOW", "FEW", "OWL", "REF", "FOR", "EWO"] },
             { wheel: ["S", "T", "R", "E", "A", "M"], words: ["STREAM", "SMART", "STEAM", "TEAM", "TEAR", "MEAT", "RATE", "REST", "SEAT", "TERM", "SAME", "MATE", "MAT", "TEA", "SEA", "MET", "RAM", "ART", "SET", "RAT", "ARM", "EAT"] },
-            { wheel: ["B", "R", "I", "D", "G", "E"], words: ["BRIDGE", "RIDGE", "DIRE", "BIRD", "RIDE", "GRID", "BRED", "BIDE", "RED", "BIG", "BID", "RIB", "DIE", "BEG", "DIG", "BED"] },
-            { wheel: ["A", "C", "T", "O", "R", "S"], words: ["ACTORS", "ACTOR", "STARS", "COAST", "TACOS", "COAT", "STAR", "CATS", "ACT", "OAR", "RAT", "ART", "COT", "ROT", "SAT", "SOT", "CAR", "SAC"] },
-            { wheel: ["A", "N", "G", "E", "L", "S"], words: ["ANGELS", "ANGLE", "GLANCE", "GLEAN", "LEAN", "LANE", "GALE", "SAGE", "SEAL", "SALE", "LENS", "AGE", "LEG", "SEA", "GAS", "LAG", "ALE", "GEL"] },
-            { wheel: ["A", "N", "C", "H", "O", "R"], words: ["ANCHOR", "ARCH", "ROACH", "ROAN", "CORN", "CHAR", "COAN", "RAN", "CAN", "CON", "OAR", "NOR", "ARC", "CAR"] },
-            { wheel: ["B", "A", "N", "K", "E", "R"], words: ["BANKER", "BREAKER", "BANK", "BAKE", "BARK", "BARN", "BEAK", "BEAR", "EARN", "NEAR", "RANK", "RAKE", "BAR", "ARK", "RAN", "ARE", "EAR", "KEN"] },
-            { wheel: ["B", "E", "A", "C", "O", "N"], words: ["BEACON", "CANOE", "BACON", "BONE", "CONE", "ACNE", "ONCE", "BEAN", "OCEAN", "CAB", "CAN", "CON", "ONE", "ACE", "BAN", "COB"] },
-            { wheel: ["B", "E", "A", "U", "T", "Y"], words: ["BEAUTY", "BEAT", "BETA", "TUBE", "BUTT", "BYTE", "BATE", "BET", "BUT", "TUB", "TEA", "EAT", "BAT", "TAB", "YET"] },
-            { wheel: ["B", "L", "A", "N", "K", "E"], words: ["BLANKET", "BLANK", "BLEAK", "LAKE", "LANE", "LEAK", "LEAN", "BANK", "BAKE", "BALE", "ABLE", "LAB", "BAN", "ALE", "KEN", "ALB"] },
-            { wheel: ["B", "O", "N", "U", "S", "E"], words: ["BONUSES", "BONUS", "BONES", "EBON", "NOSE", "ONUS", "SUNS", "SEUN", "SON", "SUN", "ONE", "USE", "EON", "SUB"] },
-            { wheel: ["B", "O", "U", "N", "C", "E"], words: ["BOUNCE", "CONE", "ONCE", "BONE", "CUBE", "BUNC", "OCEAN", "CUB", "ONE", "EON", "COB", "CON"] },
-            { wheel: ["B", "R", "A", "N", "C", "H"], words: ["BRANCH", "RANCH", "CHAR", "BARN", "BRAN", "ARCH", "CRAB", "CRAN", "CAB", "CAN", "RAN", "BAR", "ARC", "CAR"] },
-            { wheel: ["B", "R", "A", "V", "E", "S"], words: ["BRAVES", "BRAVE", "SAVER", "BEAR", "BASE", "BARE", "SAVE", "VASE", "VERB", "RAVE", "BAR", "ARE", "EAR", "SEA", "VAN"] },
-            { wheel: ["C", "A", "N", "D", "L", "E"], words: ["CANDLE", "LANCE", "CLEAN", "LACE", "LAND", "LANE", "LEAD", "LEAN", "ACNE", "DALE", "DEAL", "CAN", "END", "LED", "ALE", "LAD", "ACE", "DEN"] },
-            { wheel: ["C", "A", "R", "P", "E", "T"], words: ["CARPET", "PRACTE", "TRACE", "CRAPE", "PACER", "CATE", "CAPE", "CART", "PATE", "PEAT", "PEAR", "PART", "PACE", "RACE", "CAT", "ACT", "PET", "PAT", "TAP", "TEA", "EAT", "ACE", "CAR", "ARC", "PAR", "RAP", "PER", "TAR", "RAT"] },
-            { wheel: ["C", "H", "A", "N", "C", "E"], words: ["CHANCE", "CACHE", "ACNE", "EACH", "CANE", "ACHE", "ACE", "CAN", "HEN"] },
-            { wheel: ["C", "H", "A", "R", "M", "S"], words: ["CHARMS", "CHARM", "MARCH", "ARCH", "CHAR", "CASH", "HARM", "MACH", "MARS", "MASH", "RAM", "ARM", "CAM", "ARC", "CAR", "ASH", "HAS"] },
-            { wheel: ["C", "H", "O", "R", "U", "S"], words: ["CHORUS", "OURS", "RUSH", "SOUR", "SUCH", "RUCH", "CUR", "OUR", "SOU"] },
-            { wheel: ["C", "I", "R", "C", "L", "E"], words: ["CIRCLE", "CLERIC", "RICE", "ICE", "LIC", "IRE"] },
-            { wheel: ["C", "L", "E", "V", "E", "R"], words: ["CLEVER", "LEVER", "EVER", "REEL", "VEER", "REEF", "EEL", "REV", "LEE"] },
-            { wheel: ["C", "L", "O", "U", "D", "S"], words: ["CLOUDS", "CLOUD", "LOUD", "COLD", "CLOD", "COUL", "DUO", "OLD", "SOD", "COD"] },
-            { wheel: ["C", "O", "A", "S", "T", "S"], words: ["COASTS", "COAST", "COATS", "CASTS", "TACOS", "ACTS", "CAST", "COAT", "COST", "CATS", "TOSS", "CATS", "ACT", "CAT", "COT", "SAT", "SOT", "SAC"] },
-            { wheel: ["C", "O", "D", "E", "S", "T"], words: ["CODEST", "CODES", "SCOTE", "CODE", "COST", "COTE", "DOSE", "DOTS", "TOES", "EDCT", "DOT", "COT", "TOE", "SOT", "DOS", "SET"] },
-            { wheel: ["C", "O", "M", "E", "T"], words: ["COMETS", "COMET", "MOST", "COST", "MOTE", "SECT", "SOME", "TOME", "TOES", "MET", "COT", "TOE", "SOT", "SET"] },
-            { wheel: ["C", "O", "N", "C", "E", "P"], words: ["CONCEP", "CONE", "ONCE", "COP", "PEN", "ONE", "EON"] },
-            { wheel: ["C", "R", "A", "F", "T", "S"], words: ["CRAFTS", "CRAFT", "FACTS", "ACTS", "ARTS", "CARS", "CART", "CAST", "CATS", "FACT", "FAIR", "RAFT", "STAR", "ACT", "CAT", "RAT", "ART", "SAT", "FAR", "FAT", "CAR", "ARC"] },
+            { wheel: ["A", "C", "T", "O", "R", "S"], words: ["ACTORS", "ACTOR", "STARS", "COAST", "TACOS", "COAT", "STAR", "CATS", "ACT", "OAR", "RAT", "ART", "COT", "ROT", "SAT", "SOT", "CAR", "SAC", "OATS", "ROST", "ARTS", "TSAR", "SORT", "SCAR"] },
+            { wheel: ["B", "A", "N", "K", "E", "R"], words: ["BANKER", "BANK", "BAKE", "BARK", "BARN", "BEAK", "BEAR", "EARN", "NEAR", "RANK", "RAKE", "BAR", "ARK", "RAN", "ARE", "EAR", "KEN", "BARE", "BEAN", "BANE", "BRAE", "KEAN"] },
+            { wheel: ["C", "A", "R", "P", "E", "T"], words: ["CARPET", "TRACE", "CRAPE", "PACER", "CAPE", "CART", "PATE", "PEAT", "PEAR", "PART", "PACE", "RACE", "CAT", "ACT", "PET", "PAT", "TAP", "TEA", "EAT", "ACE", "CAR", "ARC", "PAR", "RAP", "PER", "TAR", "RAT"] },
+            { wheel: ["C", "R", "A", "F", "T", "S"], words: ["CRAFTS", "CRAFT", "FACTS", "ACTS", "ARTS", "CARS", "CART", "CAST", "CATS", "FACT", "RAFT", "STAR", "ACT", "CAT", "RAT", "ART", "SAT", "FAR", "FAT", "CAR", "ARC", "FAST", "TSAR", "SCAR"] },
             { wheel: ["C", "R", "A", "T", "E", "S"], words: ["CRATES", "CASTER", "CRATE", "REACT", "TRACE", "CARE", "CART", "CASE", "CAST", "CATS", "RACE", "RATE", "SEAT", "STAR", "TARE", "TEAR", "ACT", "CAT", "RAT", "ART", "TEA", "EAT", "SET", "SAT", "ACE", "CAR", "ARC"] },
-            { wheel: ["C", "R", "E", "A", "T", "E"], words: ["CREATE", "CRATE", "REACT", "TRACE", "CARET", "CERE", "CART", "RATE", "TARE", "TEAR", "TREE", "CAT", "ACT", "RAT", "ART", "TEA", "EAT", "ACE", "TEE", "CAR", "ARC"] },
-            { wheel: ["C", "R", "U", "I", "S", "E"], words: ["CRUISE", "CURSE", "CRIES", "EURS", "CURE", "ICE", "RUE", "USE", "SRI", "CUR", "IRS"] },
-            { wheel: ["D", "A", "N", "C", "E", "R"], words: ["DANCER", "CRANE", "ACNE", "ARED", "DARE", "DEAR", "EARN", "NEAR", "RACE", "READ", "REND", "CAN", "DEN", "END", "RED", "EAR", "ARE", "RAN", "ACE", "CAR", "ARC"] },
-            { wheel: ["D", "E", "A", "L", "E", "R"], words: ["DEALER", "LEADER", "ELDER", "DEAL", "DEAR", "DARE", "DALE", "LEAD", "READ", "REAL", "REEL", "RED", "EAR", "ARE", "LED", "ALE", "LAD", "EEL", "LEE"] },
-            { wheel: ["D", "E", "C", "E", "N", "T"], words: ["DECENT", "CENT", "LEND", "TEND", "DEN", "END", "NET", "TEN"] },
-            { wheel: ["D", "E", "E", "P", "E", "R"], words: ["DEEPER", "PEER", "REED", "DEEP", "PREE", "RED", "PER", "REE"] },
-            { wheel: ["D", "E", "S", "I", "G", "N"], words: ["DESIGN", "DEIGN", "SING", "SINE", "DING", "DINE", "ENDS", "SIGH", "DEN", "END", "SIN", "GIN", "DIG"] },
-            { wheel: ["D", "I", "R", "E", "C", "T"], words: ["DIRECT", "CITED", "TRIED", "CRED", "DIRE", "RICE", "RIDE", "TIED", "TIRE", "CITE", "RED", "DIE", "ICE", "RID", "TIC"] },
-            { wheel: ["D", "O", "C", "T", "O", "R"], words: ["DOCTOR", "CORD", "COST", "DART", "DOOR", "ODOR", "ROOT", "COT", "ROT", "DOC", "TOO", "ROO"] },
-            { wheel: ["D", "R", "A", "G", "O", "N"], words: ["DRAGON", "GROAN", "DANG", "DARN", "DRAG", "GOAD", "GRAD", "ROAD", "ROAN", "DOG", "RAN", "RAG", "GOD", "OAR", "NOR", "RAD"] },
-            { wheel: ["D", "R", "E", "A", "M", "S"], words: ["DREAMS", "DREAM", "DARES", "DEARS", "DAMES", "READS", "DARE", "DEAR", "DAME", "DREAM", "MADE", "MARS", "READ", "SAME", "SEAM", "RED", "RAM", "ARM", "EAR", "ARE", "SEA", "SAD", "MAD", "DEN"] },
-            { wheel: ["E", "A", "R", "T", "H", "S"], words: ["EARTHS", "EARTH", "HEART", "HASTE", "SHARE", "ARTS", "BARE", "EARS", "EAST", "HATE", "HEAR", "HEAT", "RATS", "REAS", "REST", "SEAT", "STAR", "TEAR", "ART", "RAT", "TEA", "EAT", "SAT", "SET", "ASH", "HAS", "HAT", "EAR", "ARE"] },
-            { wheel: ["E", "M", "P", "I", "R", "E"], words: ["EMPIRE", "PRIME", "EMIR", "MIRE", "PERI", "PIER", "PREE", "REEL", "RIM", "PER", "RIE"] },
-            { wheel: ["E", "N", "E", "M", "I", "E"], words: ["ENEMIES", "MINE", "SEEN", "SEMI", "MINE", "MEN", "SIN", "WIN"] },
-            { wheel: ["E", "N", "G", "I", "N", "E"], words: ["ENGINE", "NINE", "GENE", "GIN", "NIN"] },
-            { wheel: ["E", "S", "C", "A", "P", "E"], words: ["ESCAPE", "PACE", "CAPE", "CASE", "PEAS", "PACE", "ACE", "APE", "SEA", "PAS", "SAP"] },
-            { wheel: ["E", "X", "P", "E", "R", "T"], words: ["EXPERT", "EXERT", "PEER", "PERT", "TREE", "PET", "PER", "TEE"] },
-            { wheel: ["F", "A", "R", "M", "E", "R"], words: ["FARMER", "FARM", "FEAR", "MARE", "RARE", "REAR", "FAR", "RAM", "ARM", "EAR", "ARE", "REF"] },
-            { wheel: ["F", "I", "L", "T", "E", "R"], words: ["FILTER", "LIFTER", "RIFLE", "LITRE", "TILER", "FILE", "FIRE", "LIFE", "LIFT", "LITE", "RIFT", "TIER", "TILE", "TIRE", "FIT", "LIT", "LET", "TIE", "REF", "FEW"] },
-            { wheel: ["F", "I", "N", "A", "L", "S"], words: ["FINALS", "FINAL", "FAILS", "NAILS", "FAIL", "FANS", "FINE", "FINS", "LINS", "NAIL", "SAIL", "FIN", "NIL", "FAN", "SIN"] },
-            { wheel: ["F", "L", "I", "G", "H", "T"], words: ["FLIGHT", "LIGHT", "GIFT", "GILT", "HIT", "LIT", "FIG"] },
-            { wheel: ["F", "L", "Y", "I", "N", "G"], words: ["FLYING", "FLING", "FLY", "GIN", "NIL", "FIG"] },
-            { wheel: ["F", "O", "R", "G", "E", "T"], words: ["FORGET", "FORTE", "FORGE", "FORT", "FROG", "FORE", "GOTE", "OFT", "FOR", "GET", "GOT", "ROT", "TOE", "FRO", "ORE", "ROE"] },
-            { wheel: ["F", "O", "R", "M", "A", "L"], words: ["FORMAL", "FLORA", "FARM", "FOAL", "FORM", "FROM", "LOAM", "LORA", "ROAM", "FOR", "FAR", "RAM", "ARM", "OAR", "FRO"] },
-            { wheel: ["F", "R", "E", "E", "D", "O"], words: ["FREEDOM", "FREE", "FEED", "FORD", "MORE", "NODE", "REED", "RIDE", "RODE", "ROME", "RED", "FOR", "FRO", "ORE", "ROE", "MOD"] },
-            { wheel: ["F", "R", "I", "E", "N"], words: ["FRIEND", "FIND", "FINE", "FIRE", "DIRE", "DINE", "FERN", "RIDE", "RIFT", "RED", "FIN", "DEN", "END", "DIE", "RID", "REF"] },
-            { wheel: ["F", "R", "U", "I", "T", "S"], words: ["FRUITS", "FRUIT", "SUIT", "FURS", "RIFT", "RUST", "STIR", "SURF", "TURS", "FIT", "SIT", "FUR", "ITS", "NUT"] },
-            { wheel: ["G", "A", "R", "L", "I", "C"], words: ["GARLIC", "CIGAR", "GRAIL", "ARCH", "CHAR", "GIRL", "LAIC", "LICA", "CAR", "ARC", "RAG", "LAG", "AIR", "LIG"] },
-            { wheel: ["G", "E", "N", "I", "U", "S"], words: ["GENIUS", "SING", "SINE", "SUNG", "GUNS", "GIVE", "GIN", "SUN", "GUN", "SIN", "USE"] },
-            { wheel: ["G", "L", "A", "N", "C", "E"], words: ["GLANCE", "ANGLE", "CLEAN", "GLEAN", "LANCE", "ACNE", "CANE", "GALE", "LACE", "LANE", "LEAN", "CAN", "AGE", "LEG", "ALE", "ACE", "GEL", "LAG"] },
-            { wheel: ["G", "L", "O", "B", "E", "S"], words: ["GLOBES", "GLOBE", "LOBES", "BOLES", "BEGS", "BLOG", "BOLE", "LOBE", "LOBS", "LOGS", "LOG", "BEG", "LOB", "GEL", "LEG", "SOB"] },
-            { wheel: ["G", "L", "O", "R", "Y", "S"], words: ["GLORYS", "GLORY", "GLOR", "LOGS", "ROSY", "LOG", "SOY", "FOR"] },
-            { wheel: ["G", "O", "L", "D", "E", "N"], words: ["GOLDEN", "LODGE", "MODEL", "BOLD", "BONE", "COLD", "CONE", "LEND", "LODE", "LONE", "NODE", "OLD", "END", "DEN", "ONE", "EON", "GOD", "LOG", "LED"] },
-            { wheel: ["G", "R", "A", "N", "I", "T"], words: ["GRANITE", "RATING", "TANGIER", "GIANT", "GRAIN", "TRAIN", "ANTI", "GAIN", "GRIN", "PAIN", "PART", "RAIN", "RING", "RANT", "TANG", "RAT", "ART", "TAN", "TIN", "GIN", "RIG", "RAN", "AIR", "NIT"] },
-            { wheel: ["G", "R", "A", "P", "E", "S"], words: ["GAPES", "GRAPES", "GEARS", "GRAPE", "PAGES", "PARES", "PARSE", "PEARS", "REAPS", "APE", "AGES", "APES", "GARE", "GEAR", "GASP", "PAGE", "PARE", "PEAR", "PEAS", "RAGE", "RAPS", "REAP", "AGE", "APE", "PEG", "PER", "RAP", "PAR", "EAR", "ARE", "SEA", "GAS", "RAG", "PAS", "SAP"] },
-            { wheel: ["G", "R", "O", "U", "N", "D"], words: ["GROUND", "ROUND", "GROWN", "DUNG", "RUNG", "ROUND", "GOD", "DOG", "RUN", "GUN", "DUO", "NOR", "RUG"] },
-            { wheel: ["G", "U", "I", "T", "A", "R"], words: ["GUITAR", "AIRT", "GRIT", "TRIG", "RAG", "RAT", "ART", "RUG", "TAG", "TUG", "AIR", "RIG"] },
-            { wheel: ["H", "A", "N", "D", "L", "E"], words:["HANDLE", "LANCE", "LEAD", "LAND", "LANE", "LEAN", "HEAD", "HEAL", "HELD", "HEN", "HAD", "END", "DEN", "LAD", "LED", "ALE"] },
-            { wheel: ["H", "A", "R", "V", "E", "S"], words:["HARVEST", "STARVE", "HAVERS", "SHARE", "SHAVE", "SHER", "HEART", "EARTH", "HATE", "HAVE", "HEAR", "HEAT", "RAVE", "SAVE", "SEAT", "STAR", "TEAR", "VASE", "VEST", "ART", "RAT", "TEA", "EAT", "SAT", "SET", "ASH", "HAS", "HAT", "VAN", "EAR", "ARE", "SEA"] },
-            { wheel: ["H", "E", "A", "L", "T", "H"], words:["HEALTH", "HEAL", "HEAT", "LATE", "LATH", "HAT", "TEA", "EAT", "LET", "ALT"] },
-            { wheel: ["H", "E", "A", "R", "T", "S"], words:["HEARTS", "EARTHS", "EARTH", "HEART", "HASTE", "SHARE", "ARTS", "EARS", "EAST", "HATE", "HEAR", "HEAT", "RATS", "REST", "SEAT", "STAR", "TEAR", "ART", "RAT", "TEA", "EAT", "SAT", "SET", "ASH", "HAS", "HAT", "EAR", "ARE", "SEA"] },
-            { wheel: ["H", "E", "R", "O", "E"], words:["HEROES", "HERO", "HERE", "ROES", "ROSE", "SORE", "SEE", "HER", "ORE", "ROE"] },
-            { wheel: ["H", "O", "N", "E", "S", "T"], words:["HONEST", "ONSET", "STONE", "HENS", "NEST", "NOSE", "NOTE", "SENT", "SHOE", "SHOT", "TOES", "TONE", "TENS", "HEN", "NET", "TEN", "TOE", "NOT", "HOT", "SON", "SOT", "SET"] },
-            { wheel: ["H", "U", "M", "A", "N", "S"], words:["HUMANS", "HUMAN", "MASH", "MUSH", "SHAM", "SHUN", "SUMS", "MAN", "HUM", "ASH", "HAS", "SUN", "SUM", "HAM", "SAN"] },
-            { wheel: ["I", "S", "L", "A", "N", "D"], words:["ISLAND", "AILND", "LAND", "NAIL", "AIDS", "DIAL", "LADS", "LAID", "LIDS", "SAIL", "SAND", "SLID", "SIN", "NIL", "SAD", "LAD", "AID", "AND", "SAN"] },
-            { wheel: ["J", "O", "U", "R", "N", "E"], words:["JOURNEY", "ENJOY", "JURY", "ONERY", "RUNE", "RUE", "JOY", "ONE", "EON", "NOR", "YEN"] },
-            { wheel: ["J", "U", "N", "G", "L", "E"], words:["JUNGLE", "GLEN", "LUNG", "GEL", "GUN", "JUG", "LUG", "LEG"] },
-            { wheel: ["L", "A", "D", "I", "E", "S"], words:["LADIES", "AIDES", "ASIDE", "IDEAS", "AILS", "AIDS", "DIAL", "DIES", "LADS", "LAID", "LIES", "SAIL", "SEAL", "SIDE", "SLID", "DIE", "SAD", "LAD", "AID", "SEA", "LIE"] },
-            { wheel: ["L", "E", "A", "D", "E", "R"], words:["LEADER", "DEALER", "ELDER", "DALE", "DEAL", "DEAR", "DARE", "LEAD", "READ", "REAL", "REEL", "RED", "EAR", "ARE", "LED", "ALE", "LAD", "EEL", "LEE"] },
-            { wheel: ["L", "E", "G", "E", "N", "D"], words:["LEGEND", "GLEN", "LEND", "NEED", "EDGE", "DEN", "END", "LED", "GEL", "LEG", "EEL", "LEE"] },
-            { wheel: ["L", "I", "Q", "U", "I", "D"], words:["LIQUID", "QUID", "LIQUID", "LID", "LQU"] },
-            { wheel: ["L", "I", "T", "T", "L", "E"], words:["LITTLE", "TITLE", "LITE", "TELL", "TILE", "TILT", "LIT", "LET", "TIE"] },
-            { wheel: ["L", "O", "C", "A", "T", "E"], words:["LOCATE", "CATEL", "LACE", "LATE", "TALE", "TOAD", "TALC", "COAT", "CAT", "ACT", "LET", "TEA", "EAT", "COT", "TOE", "ALE", "ALT", "ACE"] },
-            { wheel: ["L", "O", "G", "I", "C", "S"], words:["LOGICS", "LOGIC", "COILS", "CLOGS", "CLOG", "COIL", "LOGS", "OILS", "SILO", "SLOG", "LOG", "LOB", "OIL", "SIC", "SOT"] },
-            { wheel: ["M", "A", "R", "K", "E", "T"], words:["MARKET", "MAKER", "MAKE", "MARE", "MARK", "MATE", "MEAT", "RAKE", "RATE", "TARE", "TEAR", "TERM", "MAT", "MET", "TEA", "EAT", "RAM", "ARM", "ART", "RAT", "ARK", "KEN"] },
-            { wheel: ["M", "A", "S", "T", "E", "R"], words:["MASTER", "SMART", "STREAM", "TEARS", "MATS", "RATE", "REST", "SEAT", "STAR", "STEAM", "TEAM", "TEAR", "TERM", "MAT", "MET", "TEA", "EAT", "SET", "SAT", "RAM", "ARM", "ART", "RAT"] },
-            { wheel: ["M", "E", "D", "A", "L", "S"], words:["MEDALS", "MEDAL", "LAMED", "MALES", "DALES", "DEALS", "LAMES", "MEADS", "DALE", "DEAL", "LAME", "LEAD", "MALE", "MEAD", "MEAL", "MADS", "SEAL", "SAD", "LAD", "LED", "MAD", "ALE", "SEA"] },
-            { wheel: ["M", "E", "M", "O", "R", "Y"], words:["MEMORY", "MORE", "ROME", "MORES", "MEMO", "MOME", "MMO", "ROSE", "YOM", "ORE", "ROE"] },
-            { wheel: ["M", "E", "T", "A", "L", "S"], words:["METALS", "METAL", "LAMES", "MALES", "STEAM", "TEAMS", "LAME", "LATE", "MALE", "MATE", "MEAL", "MEAT", "SALT", "SEAL", "SEAT", "TALE", "TEAM", "MAT", "MET", "TEA", "EAT", "LET", "SET", "SAT", "ALE", "ALT", "SEA"] },
-            { wheel: ["M", "I", "N", "U", "T", "E"], words:["MINUTE", "UNTIE", "MINT", "MITE", "MUTE", "TIME", "TUNE", "UNIT", "UNTI", "MET", "NET", "TEN", "TIE", "TIN", "NUT", "NIM"] },
-            { wheel: ["M", "O", "D", "E", "L", "S"], words:["MODELS", "MODEL", "LODES", "MOLDS", "SELDOM", "BOLD", "COLD", "DALE", "DEAL", "LEND", "LODE", "MODE", "MOLD", "SOLE", "SOME", "LED", "OLD", "SOD", "MOD", "DEL", "ALE"] },
-            { wheel: ["M", "O", "T", "I", "O", "N"], words:["MOTION", "NOTION", "OMIT", "INTO", "ONTO", "TOIN", "MINT", "MOON", "NOON", "NOT", "TON", "TIN", "TOO", "MOO"] },
-            { wheel: ["M", "U", "S", "E", "U", "M"], words:["MUSEUM", "MUSE", "MEMO", "MUES", "UMM", "SUM", "USE", "MUE"] },
-            { wheel: ["M", "U", "S", "I", "C", "S"], words:["MUSICS", "MUSIC", "SCUM", "SUMS", "SUIS", "SIC", "SUM", "MUS", "ICS"] },
-            { wheel: ["N", "A", "T", "U", "R", "E"], words:["NATURE", "NATUR", "TUERN", "ANTE", "AUNT", "EARN", "NEAR", "NEAT", "RENT", "RUNE", "RATE", "TARE", "TEAR", "TUNE", "TURN", "UNTE", "URAN", "NET", "TEN", "TEA", "EAT", "RAT", "ART", "RAN", "NUT", "ANT", "RUN", "EAR", "ARE"] },
-            { wheel: ["N", "O", "T", "I", "C", "E"], words:["NOTICE", "ONCET", "CENT", "CITE", "CONE", "INTO", "NOTE", "ONCE", "ONET", "TONE", "TONIC", "NET", "TEN", "TIE", "TIN", "TOE", "COT", "NOT", "ONE", "EON", "TIC"] },
-            { wheel: ["N", "U", "M", "B", "E", "R"], words:["NUMBER", "BROWN", "BURN", "NUMB", "RUNE", "BREW", "MEN", "RUN", "BEN", "RUB", "URB", "RUM"] },
-            { wheel: ["O", "B", "J", "E", "C", "T"], words:["OBJECT", "CODE", "CUTE", "TOBE", "COB", "BET", "BUT", "TUB", "COB", "COT", "TOE"] },
-            { wheel: ["O", "R", "A", "N", "G", "E"], words:["ORANGE", "GROAN", "ORGAN", "RANGE", "ANGER", "GEAR", "GONE", "GRAN", "NEAR", "RAGE", "ROAN", "AGE", "EAR", "ARE", "RAN", "RAG", "ONE", "EON", "NOR", "OAR"] }
+            { wheel: ["C", "R", "E", "A", "T", "E"], words: ["CREATE", "CRATE", "REACT", "TRACE", "CARET", "CART", "RATE", "TARE", "TEAR", "TREE", "CAT", "ACT", "RAT", "ART", "TEA", "EAT", "ACE", "TEE", "CAR", "ARC", "CATE", "EATER", "RETE"] },
+            { wheel: ["D", "A", "N", "C", "E", "R"], words: ["DANCER", "CRANE", "ACNE", "DARE", "DEAR", "EARN", "NEAR", "RACE", "READ", "REND", "CAN", "DEN", "END", "RED", "EAR", "ARE", "RAN", "ACE", "CAR", "ARC", "CANE", "CARD", "CARE", "BREAD"] },
+            { wheel: ["D", "E", "A", "L", "E", "R"], words: ["DEALER", "LEADER", "ELDER", "DEAL", "DEAR", "DARE", "DALE", "LEAD", "READ", "REAL", "REEL", "RED", "EAR", "ARE", "LED", "ALE", "LAD", "EEL", "LEE", "LADE", "ERASE", "LARD"] },
+            { wheel: ["D", "R", "E", "A", "M", "S"], words: ["DREAMS", "DREAM", "DARES", "DEARS", "DAMES", "READS", "DARE", "DEAR", "DAME", "MADE", "MARS", "READ", "SAME", "SEAM", "RED", "RAM", "ARM", "EAR", "ARE", "SEA", "SAD", "MAD", "DEN", "MADS", "SEAR"] },
+            { wheel: ["E", "A", "R", "T", "H", "S"], words: ["EARTHS", "EARTH", "HEART", "HASTE", "SHARE", "ARTS", "EARS", "EAST", "HATE", "HEAR", "HEAT", "RATS", "REST", "SEAT", "STAR", "TEAR", "ART", "RAT", "TEA", "EAT", "SAT", "SET", "ASH", "HAS", "HAT", "EAR", "ARE"] },
+            { wheel: ["F", "I", "L", "T", "E", "R"], words: ["FILTER", "LIFTER", "RIFLE", "LITRE", "TILER", "FILE", "FIRE", "LIFE", "LIFT", "LITE", "RIFT", "TIER", "TILE", "TIRE", "FIT", "LIT", "LET", "TIE", "REF", "RIFE", "TIRE", "LIR"] },
+            { wheel: ["G", "R", "A", "N", "I", "T"], words: ["GRANITE", "RATING", "GIANT", "GRAIN", "TRAIN", "ANTI", "GAIN", "GRIN", "PAIN", "PART", "RAIN", "RING", "RANT", "TANG", "RAT", "ART", "TAN", "TIN", "GIN", "RIG", "RAN", "AIR", "NIT"] },
+            { wheel: ["G", "R", "A", "P", "E", "S"], words: ["GRAPES", "GEARS", "GRAPE", "PAGES", "PARES", "PARSE", "PEARS", "REAPS", "APE", "AGES", "APES", "GEAR", "GASP", "PAGE", "PARE", "PEAR", "PEAS", "RAGE", "RAPS", "REAP", "AGE", "PEG", "PER", "RAP", "PAR", "EAR", "ARE", "SEA", "GAS", "RAG", "PAS", "SAP"] },
+            { wheel: ["H", "A", "R", "V", "E", "S"], words: ["HARVEST", "STARVE", "SHARE", "SHAVE", "HEART", "EARTH", "HATE", "HAVE", "HEAR", "HEAT", "RAVE", "SAVE", "SEAT", "STAR", "TEAR", "VASE", "VEST", "ART", "RAT", "TEA", "EAT", "SAT", "SET", "ASH", "HAS", "HAT", "VAN", "EAR", "ARE", "SEA"] },
+            { wheel: ["H", "E", "A", "R", "T", "S"], words: ["HEARTS", "EARTHS", "EARTH", "HEART", "HASTE", "SHARE", "ARTS", "EARS", "EAST", "HATE", "HEAR", "HEAT", "RATS", "REST", "SEAT", "STAR", "TEAR", "ART", "RAT", "TEA", "EAT", "SAT", "SET", "ASH", "HAS", "HAT", "EAR", "ARE", "SEA"] },
+            { wheel: ["H", "O", "N", "E", "S", "T"], words: ["HONEST", "ONSET", "STONE", "HENS", "NEST", "NOSE", "NOTE", "SENT", "SHOE", "SHOT", "TOES", "TONE", "TENS", "HEN", "NET", "TEN", "TOE", "NOT", "HOT", "SON", "SOT", "SET"] },
+            { wheel: ["M", "A", "R", "K", "E", "T"], words: ["MARKET", "MAKER", "MAKE", "MARE", "MARK", "MATE", "MEAT", "RAKE", "RATE", "TARE", "TEAR", "TERM", "MAT", "MET", "TEA", "EAT", "RAM", "ARM", "ART", "RAT", "ARK", "KEN"] },
+            { wheel: ["M", "A", "S", "T", "E", "R"], words: ["MASTER", "SMART", "STREAM", "TEARS", "MATS", "RATE", "REST", "SEAT", "STAR", "STEAM", "TEAM", "TEAR", "TERM", "MAT", "MET", "TEA", "EAT", "SET", "SAT", "RAM", "ARM", "ART", "RAT"] },
+            { wheel: ["M", "E", "T", "A", "L", "S"], words: ["METALS", "METAL", "LAMES", "MALES", "STEAM", "TEAMS", "LAME", "LATE", "MALE", "MATE", "MEAL", "MEAT", "SALT", "SEAL", "SEAT", "TALE", "TEAM", "MAT", "MET", "TEA", "EAT", "LET", "SET", "SAT", "ALE", "ALT", "SEA"] },
+            { wheel: ["N", "A", "T", "U", "R", "E"], words: ["NATURE", "ANTE", "AUNT", "EARN", "NEAR", "NEAT", "RENT", "RUNE", "RATE", "TARE", "TEAR", "TUNE", "TURN", "NET", "TEN", "TEA", "EAT", "RAT", "ART", "RAN", "NUT", "ANT", "RUN", "EAR", "ARE"] },
+            { wheel: ["O", "R", "A", "N", "G", "E"], words: ["ORANGE", "GROAN", "ORGAN", "RANGE", "ANGER", "GEAR", "GONE", "NEAR", "RAGE", "ROAN", "AGE", "EAR", "ARE", "RAN", "RAG", "ONE", "EON", "NOR", "OAR", "ROAN", "GENRE", "ARENA"] }
         ];
+
+        /* Helper function: Checks if a word can be formed strictly from wheel letters (with letter frequency enforcement) */
+        function canFormWordFromWheel(word, wheelLetters) {
+            const letterCounts = {};
+            for (let char of wheelLetters) {
+                letterCounts[char] = (letterCounts[char] || 0) + 1;
+            }
+            for (let char of word) {
+                if (!letterCounts[char] || letterCounts[char] <= 0) {
+                    return false;
+                }
+                letterCounts[char]--;
+            }
+            return true;
+        }
+
+        /* Enforce valid words for seed database */
+        ANAGRAM_SEEDS.forEach(seed => {
+            seed.words = seed.words.filter(word => canFormWordFromWheel(word, seed.wheel));
+        });
 
         /* ==================== GAME STATE ==================== */
         let currentLevelIdx = 0;
         let score = 0;
+        let previousScore = 0;
         let currentRankTitle = "";
         let lastUsedSeedIndex = -1;
         let solvedWords = new Set();
@@ -703,25 +645,102 @@
         }
 
         /* ==================== RANK SYSTEM ==================== */
-        function getTitleForScore(currentScore) {
-            if (currentScore >= 20000) return "🔮 OMNISCIENT ORACLE";
-            if (currentScore >= 10000) return "👑 GRAND VIRTUOSO";
-            if (currentScore >= 5000)  return "⚔️ LINGUISTIC SCHOLAR";
-            if (currentScore >= 2500)  return "🧠 MASTER WORDSMITH";
-            if (currentScore >= 1000)  return "💡 ANAGRAM ACE";
-            if (currentScore >= 0)     return "📚 LEXICON SCOUT";
-            return "🐣 WORD NOVICE";
+// Ranks ordered from lowest (0) to highest (6)
+const RANK_THRESHOLDS = [
+    { minScore: 20000, title: "🔮 OMNISCIENT ORACLE" },
+    { minScore: 10000, title: "👑 GRAND VIRTUOSO" },
+    { minScore: 5000,  title: "⚔️ LINGUISTIC SCHOLAR" },
+    { minScore: 2500,  title: "🧠 MASTER WORDSMITH" },
+    { minScore: 1000,  title: "💡 ANAGRAM ACE" },
+    { minScore: 0,     title: "📚 LEXICON SCOUT" },
+    { minScore: -Infinity, title: "🐣 WORD NOVICE" }
+];
+
+function getRankIndex(currentScore) {
+    for (let i = 0; i < RANK_THRESHOLDS.length; i++) {
+        if (currentScore >= RANK_THRESHOLDS[i].minScore) {
+            // Return inverted index so higher index = higher rank
+            return RANK_THRESHOLDS.length - 1 - i;
+        }
+    }
+    return 0;
+}
+
+function getTitleForScore(currentScore) {
+    for (let item of RANK_THRESHOLDS) {
+        if (currentScore >= item.minScore) {
+            return item.title;
+        }
+    }
+    return "🐣 WORD NOVICE";
+}
+
+function checkRankPromotion(newScore) {
+    const newTitle = getTitleForScore(newScore);
+    
+    if (currentRankTitle && newTitle !== currentRankTitle) {
+        const oldRankIdx = getRankIndex(previousScore);
+        const newRankIdx = getRankIndex(newScore);
+
+        const modalTitle = rankUpModal.querySelector('.modal-title');
+        const modalIcon = rankUpModal.querySelector('.rank-up-icon');
+        const rankCard = rankUpModal.querySelector('.rank-up-card');
+
+        if (newRankIdx > oldRankIdx) {
+            // PROMOTION
+            modalIcon.textContent = "🌟";
+            modalTitle.textContent = "RANK UP!";
+            modalTitle.style.color = "#c084fc";
+            rankUpSubtitle.textContent = `Congratulations! You have been promoted to:\n${newTitle}`;
+            rankUpSubtitle.style.color = "#f8fafc";
+            
+            btnCloseRankUp.textContent = "AWESOME!";
+            btnCloseRankUp.style.background = "linear-gradient(135deg, #a855f7 0%, #7e22ce 100%)";
+            rankCard.style.borderColor = "#c084fc";
+            rankCard.style.boxShadow = "0 0 30px rgba(192, 132, 252, 0.4)";
+        } else {
+            // DEMOTION
+            modalIcon.textContent = "📉";
+            modalTitle.textContent = "RANK DEMOTION";
+            modalTitle.style.color = "#f87171";
+            rankUpSubtitle.textContent = `Your score dropped. You have been demoted to:\n${newTitle}`;
+            rankUpSubtitle.style.color = "#cbd5e1";
+            
+            btnCloseRankUp.textContent = "I'LL RECOVER!";
+            btnCloseRankUp.style.background = "linear-gradient(135deg, #ef4444 0%, #dc2626 100%)";
+            rankCard.style.borderColor = "#ef4444";
+            rankCard.style.boxShadow = "0 0 30px rgba(239, 68, 68, 0.4)";
         }
 
-        function checkRankPromotion(newScore) {
-            const newTitle = getTitleForScore(newScore);
-            if (currentRankTitle && newTitle !== currentRankTitle) {
-                rankUpSubtitle.textContent = `You have been promoted to:\n${newTitle}`;
-                rankUpModal.classList.add('active');
-            }
-            currentRankTitle = newTitle;
-            playerTitleBadge.textContent = `RANK: ${currentRankTitle}`;
-        }
+        rankUpModal.classList.add('active');
+    }
+
+    currentRankTitle = newTitle;
+    playerTitleBadge.textContent = `RANK: ${currentRankTitle}`;
+}
+
+        /*old code below*/
+
+        /* ==================== RANK SYSTEM ==================== */
+        // function getTitleForScore(currentScore) {
+        //     if (currentScore >= 20000) return "🔮 OMNISCIENT ORACLE";
+        //     if (currentScore >= 10000) return "👑 GRAND VIRTUOSO";
+        //     if (currentScore >= 5000)  return "⚔️ LINGUISTIC SCHOLAR";
+        //     if (currentScore >= 2500)  return "🧠 MASTER WORDSMITH";
+        //     if (currentScore >= 1000)  return "💡 ANAGRAM ACE";
+        //     if (currentScore >= 0)     return "📚 LEXICON SCOUT";
+        //     return "🐣 WORD NOVICE";
+        // }
+
+        // function checkRankPromotion(newScore) {
+        //     const newTitle = getTitleForScore(newScore);
+        //     if (currentRankTitle && newTitle !== currentRankTitle) {
+        //         rankUpSubtitle.textContent = `You have been promoted to:\n${newTitle}`;
+        //         rankUpModal.classList.add('active');
+        //     }
+        //     currentRankTitle = newTitle;
+        //     playerTitleBadge.textContent = `RANK: ${currentRankTitle}`;
+        // }
 
         /* ==================== GENERATOR ENGINE ==================== */
         function getRandomDifficulty() {
@@ -745,11 +764,14 @@
             }
         }
 
-        function filterWordsForDifficulty(allWords, difficulty) {
+        function filterWordsForDifficulty(allWords, difficulty, wheelLetters) {
             const targets = getTargetCountsForDifficulty(difficulty);
             const wordsByLength = { 3: [], 4: [], 5: [], 6: [] };
 
-            allWords.forEach(w => {
+            /* Guarantee words only made of wheel letters */
+            const validWords = allWords.filter(w => canFormWordFromWheel(w, wheelLetters));
+
+            validWords.forEach(w => {
                 const len = Math.min(6, w.length);
                 if (len >= 3 && wordsByLength[len]) {
                     wordsByLength[len].push(w);
@@ -789,9 +811,13 @@
                 const grid = Array(gridHeight).fill(null).map(() => Array(gridWidth).fill(null));
                 const placedWords = [];
 
-                let pool = filterWordsForDifficulty(seed.words, difficulty);
-                if (pool.length < 10) pool = [...seed.words];
+                let pool = filterWordsForDifficulty(seed.words, difficulty, wheelLetters);
+                if (pool.length < 10) {
+                    pool = seed.words.filter(w => canFormWordFromWheel(w, wheelLetters));
+                }
                 pool.sort((a, b) => b.length - a.length);
+
+                if (pool.length === 0) continue;
 
                 const firstWord = pool[0];
                 const startRow = Math.floor(gridHeight / 2);
@@ -820,7 +846,7 @@
                     }
                 }
 
-                if (placedWords.length >= 12) {
+                if (placedWords.length >= 10) {
                     const cropped = cropGridAndAdjustCoordinates(gridWidth, gridHeight, placedWords);
                     return { difficulty, gridWidth: cropped.width, gridHeight: cropped.height, words: cropped.words, wheelLetters };
                 }
@@ -903,6 +929,8 @@
 
         function generateFallbackLevel(difficulty, seed) {
             const wheel = seed ? seed.wheel : ["P", "L", "A", "N", "E", "T"];
+            const validSeedWords = seed ? seed.words.filter(w => canFormWordFromWheel(w, wheel)) : [];
+            
             const fallbackWords = [
                 { word: "PLANET", row: 0, col: 0, dir: "H" },
                 { word: "LANE",   row: 0, col: 1, dir: "V" },
@@ -916,7 +944,8 @@
                 { word: "ALE",    row: 0, col: 2, dir: "V" },
                 { word: "NET",    row: 4, col: 4, dir: "V" },
                 { word: "TEN",    row: 6, col: 4, dir: "H" }
-            ];
+            ].filter(wObj => canFormWordFromWheel(wObj.word, wheel));
+
             return { difficulty, gridWidth: 7, gridHeight: 8, wheelLetters: wheel, words: fallbackWords };
         }
 
@@ -949,9 +978,10 @@
         }
 
         function updateScoreDisplay() {
-            scoreBadge.textContent = `SCORE: ${score}`;
-            checkRankPromotion(score);
-        }
+    scoreBadge.textContent = `SCORE: ${score}`;
+    checkRankPromotion(score);
+    previousScore = score; // Store score state for the next update
+}
 
         /* ==================== LEVEL RENDER ENGINE ==================== */
         function loadLevel(idx) {
@@ -1278,6 +1308,12 @@
 
         function validateWord(word) {
             if (word.length < 3) return;
+
+            /* Ensure user guess is strictly formable from current wheel letters */
+            if (!canFormWordFromWheel(word, currentLevelData.wheelLetters)) {
+                showToast("TRY AGAIN", "wrong");
+                return;
+            }
 
             const targetWordObj = currentLevelData.words.find(w => w.word === word);
 
