@@ -17,45 +17,98 @@
 
     <style>
         :root {
-            --bg-gradient-start: #0a0f1d;
-            --bg-gradient-end: #161a38;
-            --card-bg: rgba(22, 30, 49, 0.75);
+            --bg-gradient-start: #14052b;
+            --bg-gradient-end: #2d0b4e;
+            --blob-1: #e11d48;
+            --blob-2: #8b5cf6;
+            --blob-3: #06b6d4;
+            --card-bg: rgba(22, 16, 44, 0.72);
             --accent-cyan: #38bdf8;
-            --accent-glow: rgba(56, 189, 248, 0.4);
+            --accent-glow: rgba(56, 189, 248, 0.5);
             --gold-gradient: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
-            --wheel-size: clamp(210px, 33vh, 260px);
+            --wheel-size: clamp(235px, 35vh, 290px);
         }
 
-        /* Theme Variations */
-        .theme-cosmic {
-            --bg-gradient-start: #090d16;
-            --bg-gradient-end: #1a1638;
+        /* 8 Funky Level Background Themes */
+        .theme-neon-disco {
+            --bg-gradient-start: #120324;
+            --bg-gradient-end: #280946;
+            --blob-1: #f43f5e;
+            --blob-2: #a855f7;
+            --blob-3: #06b6d4;
+            --card-bg: rgba(25, 12, 45, 0.75);
             --accent-cyan: #38bdf8;
-            --accent-glow: rgba(56, 189, 248, 0.4);
+            --accent-glow: rgba(56, 189, 248, 0.5);
         }
-        .theme-emerald {
-            --bg-gradient-start: #061714;
-            --bg-gradient-end: #0e2e28;
+        .theme-sunset-blaze {
+            --bg-gradient-start: #230818;
+            --bg-gradient-end: #3f1122;
+            --blob-1: #f97316;
+            --blob-2: #ec4899;
+            --blob-3: #eab308;
+            --card-bg: rgba(45, 15, 30, 0.75);
+            --accent-cyan: #fb923c;
+            --accent-glow: rgba(251, 146, 60, 0.5);
+        }
+        .theme-jungle-groove {
+            --bg-gradient-start: #041a14;
+            --bg-gradient-end: #092e23;
+            --blob-1: #10b981;
+            --blob-2: #84cc16;
+            --blob-3: #06b6d4;
+            --card-bg: rgba(8, 38, 30, 0.75);
             --accent-cyan: #34d399;
-            --accent-glow: rgba(52, 211, 153, 0.4);
+            --accent-glow: rgba(52, 211, 153, 0.5);
         }
-        .theme-amethyst {
-            --bg-gradient-start: #140920;
-            --bg-gradient-end: #28143f;
+        .theme-cyber-arcade {
+            --bg-gradient-start: #080d26;
+            --bg-gradient-end: #17103a;
+            --blob-1: #6366f1;
+            --blob-2: #d946ef;
+            --blob-3: #38bdf8;
+            --card-bg: rgba(18, 20, 52, 0.75);
             --accent-cyan: #c084fc;
-            --accent-glow: rgba(192, 132, 252, 0.4);
+            --accent-glow: rgba(192, 132, 252, 0.5);
         }
-        .theme-amber {
-            --bg-gradient-start: #1c0e08;
-            --bg-gradient-end: #331d10;
-            --accent-cyan: #fbbf24;
-            --accent-glow: rgba(251, 191, 36, 0.4);
+        .theme-bubblegum-pop {
+            --bg-gradient-start: #20061e;
+            --bg-gradient-end: #3b0d35;
+            --blob-1: #f43f5e;
+            --blob-2: #a855f7;
+            --blob-3: #fbbf24;
+            --card-bg: rgba(45, 14, 40, 0.75);
+            --accent-cyan: #f472b6;
+            --accent-glow: rgba(244, 114, 182, 0.5);
         }
-        .theme-ocean {
-            --bg-gradient-start: #05141e;
-            --bg-gradient-end: #0c2d3e;
+        .theme-oceanic-wave {
+            --bg-gradient-start: #041724;
+            --bg-gradient-end: #0a293d;
+            --blob-1: #0284c7;
+            --blob-2: #14b8a6;
+            --blob-3: #6366f1;
+            --card-bg: rgba(10, 32, 50, 0.75);
             --accent-cyan: #22d3ee;
-            --accent-glow: rgba(34, 211, 238, 0.4);
+            --accent-glow: rgba(34, 211, 238, 0.5);
+        }
+        .theme-cosmic-nebula {
+            --bg-gradient-start: #0d0722;
+            --bg-gradient-end: #1d0f3e;
+            --blob-1: #9333ea;
+            --blob-2: #3b82f6;
+            --blob-3: #f43f5e;
+            --card-bg: rgba(25, 14, 52, 0.75);
+            --accent-cyan: #a855f7;
+            --accent-glow: rgba(168, 85, 247, 0.5);
+        }
+        .theme-golden-galaxy {
+            --bg-gradient-start: #1c1103;
+            --bg-gradient-end: #362208;
+            --blob-1: #eab308;
+            --blob-2: #ea580c;
+            --blob-3: #ec4899;
+            --card-bg: rgba(42, 26, 8, 0.75);
+            --accent-cyan: #fbbf24;
+            --accent-glow: rgba(251, 191, 36, 0.5);
         }
 
         * {
@@ -96,16 +149,66 @@
             padding-bottom: max(10px, env(safe-area-inset-bottom));
             position: relative;
             overflow: hidden;
-            transition: background 0.6s ease;
+            transition: background 0.8s ease;
         }
 
         @media (min-width: 500px) {
             #game-container {
                 height: 96dvh;
                 border-radius: 28px;
-                border: 2px solid rgba(255, 255, 255, 0.12);
-                box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.1);
+                border: 2px solid rgba(255, 255, 255, 0.14);
+                box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px var(--accent-glow);
             }
+        }
+
+        /* Funky Floating Animated Blobs */
+        .funky-bg-blobs {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .funky-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(55px);
+            opacity: 0.42;
+            transition: background 0.8s ease;
+        }
+        .blob-1 {
+            width: 240px; height: 240px;
+            background: var(--blob-1);
+            top: 5%; left: -30px;
+            animation: floatBlob1 13s infinite alternate ease-in-out;
+        }
+        .blob-2 {
+            width: 260px; height: 260px;
+            background: var(--blob-2);
+            bottom: 12%; right: -40px;
+            animation: floatBlob2 16s infinite alternate ease-in-out;
+        }
+        .blob-3 {
+            width: 200px; height: 200px;
+            background: var(--blob-3);
+            top: 42%; left: 30%;
+            animation: floatBlob3 19s infinite alternate ease-in-out;
+        }
+
+        @keyframes floatBlob1 {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(35px, 25px) scale(1.18); }
+            100% { transform: translate(-20px, 40px) scale(0.9); }
+        }
+        @keyframes floatBlob2 {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-40px, -30px) scale(1.15); }
+            100% { transform: translate(25px, -20px) scale(0.95); }
+        }
+        @keyframes floatBlob3 {
+            0% { transform: translate(0, 0) scale(0.9); }
+            50% { transform: translate(-25px, 35px) scale(1.22); }
+            100% { transform: translate(30px, -25px) scale(1); }
         }
 
         /* ================= TOP BAR ================= */
@@ -115,14 +218,14 @@
             flex-direction: column;
             gap: 5px;
             background: var(--card-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             padding: 6px 10px;
             border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             z-index: 20;
             flex-shrink: 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
         }
 
         .top-bar-row {
@@ -137,10 +240,10 @@
             font-size: 11px;
             font-weight: 800;
             color: var(--accent-cyan);
-            background: rgba(56, 189, 248, 0.12);
+            background: rgba(255, 255, 255, 0.1);
             padding: 4px 9px;
             border-radius: 20px;
-            border: 1px solid rgba(56, 189, 248, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             white-space: nowrap;
             letter-spacing: 0.5px;
         }
@@ -155,19 +258,19 @@
             letter-spacing: 0.5px;
         }
 
-        .diff-easy { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
-        .diff-medium { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
-        .diff-hard { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
-        .diff-hardest { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4); }
+        .diff-easy { background: rgba(16, 185, 129, 0.25); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.45); }
+        .diff-medium { background: rgba(245, 158, 11, 0.25); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.45); }
+        .diff-hard { background: rgba(239, 68, 68, 0.25); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.45); }
+        .diff-hardest { background: rgba(168, 85, 247, 0.25); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.45); }
 
         .score-badge {
             font-size: 12px;
             font-weight: 800;
             color: #fbbf24;
-            background: rgba(245, 158, 11, 0.15);
+            background: rgba(245, 158, 11, 0.18);
             padding: 4px 10px;
             border-radius: 20px;
-            border: 1px solid rgba(245, 158, 11, 0.35);
+            border: 1px solid rgba(245, 158, 11, 0.4);
             white-space: nowrap;
             display: flex;
             align-items: center;
@@ -192,8 +295,8 @@
         }
 
         .btn-icon {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             color: #e2e8f0;
             padding: 4px 8px;
             border-radius: 12px;
@@ -214,8 +317,8 @@
         }
 
         .btn-bonus-jar {
-            background: rgba(234, 179, 8, 0.15);
-            border: 1px solid rgba(234, 179, 8, 0.4);
+            background: rgba(234, 179, 8, 0.2);
+            border: 1px solid rgba(234, 179, 8, 0.45);
             color: #fde047;
             font-weight: 800;
         }
@@ -235,11 +338,12 @@
             border: 1px solid #818cf8;
             color: #ffffff;
             font-weight: 800;
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.35);
         }
 
         .btn-skip-top {
-            background: rgba(239, 68, 68, 0.15);
-            border: 1px solid rgba(239, 68, 68, 0.4);
+            background: rgba(239, 68, 68, 0.18);
+            border: 1px solid rgba(239, 68, 68, 0.45);
             color: #fca5a5;
         }
 
@@ -253,26 +357,28 @@
             align-items: center;
             position: relative;
             margin: 4px 0;
+            padding: 4px;
             overflow: hidden;
+            z-index: 10;
         }
 
         #crossword-grid {
             display: grid;
             position: relative;
-            gap: 2px;
+            gap: 3px;
             transition: transform 0.25s ease;
             max-width: 100%;
             max-height: 100%;
         }
 
         .tile {
-            border-radius: 8px;
+            border-radius: 9px;
             display: flex;
             justify-content: center;
             align-items: center;
             font-weight: 900;
             text-transform: uppercase;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.35);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
             transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
             cursor: pointer;
@@ -285,17 +391,18 @@
         }
 
         .tile.unsolved {
-            background: rgba(30, 41, 59, 0.85);
-            border: 1.5px solid rgba(71, 85, 105, 0.5);
+            background: rgba(18, 24, 38, 0.88);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.55), 0 3px 8px rgba(0,0,0,0.3);
             color: transparent;
         }
 
         .tile.solved {
-            background: var(--gold-gradient);
-            border: 1.5px solid #fde047;
+            background: linear-gradient(145deg, #fbbf24 0%, #d97706 100%);
+            border: 2px solid #fef08a;
             color: #ffffff;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-            box-shadow: 0 0 12px rgba(251, 191, 36, 0.45);
+            text-shadow: 0 2px 5px rgba(0,0,0,0.6);
+            box-shadow: inset 0 2px 2px rgba(255,255,255,0.45), 0 5px 14px rgba(0,0,0,0.45), 0 0 16px rgba(251, 191, 36, 0.5);
         }
 
         .tile.solved-pop {
@@ -306,7 +413,7 @@
             animation: alreadyPulse 0.6s ease-in-out;
             background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%) !important;
             border-color: #7dd3fc !important;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.9) !important;
+            box-shadow: 0 0 22px rgba(56, 189, 248, 0.95) !important;
             z-index: 50;
         }
 
@@ -326,7 +433,7 @@
 
         /* ================= PREVIEW & TOAST ================= */
         #preview-container {
-            height: 28px;
+            height: 30px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -336,17 +443,17 @@
         }
 
         #word-preview {
-            background: rgba(15, 23, 42, 0.9);
+            background: rgba(15, 23, 42, 0.92);
             border: 2px solid var(--accent-cyan);
-            padding: 2px 16px;
+            padding: 3px 18px;
             border-radius: 16px;
-            font-size: 16px;
-            font-weight: 800;
+            font-size: 17px;
+            font-weight: 900;
             letter-spacing: 3px;
             color: #f8fafc;
-            min-width: 90px;
+            min-width: 95px;
             text-align: center;
-            box-shadow: 0 0 20px var(--accent-glow);
+            box-shadow: 0 0 22px var(--accent-glow);
             opacity: 0;
             transform: translateY(4px);
             transition: opacity 0.2s, transform 0.2s;
@@ -398,6 +505,7 @@
             flex-shrink: 0;
             touch-action: none;
             margin-bottom: max(4px, env(safe-area-inset-bottom));
+            z-index: 10;
         }
 
         #svg-canvas {
@@ -412,9 +520,9 @@
 
         #svg-canvas line {
             stroke: var(--accent-cyan);
-            stroke-width: 6;
+            stroke-width: 7;
             stroke-linecap: round;
-            filter: drop-shadow(0 0 8px var(--accent-cyan));
+            filter: drop-shadow(0 0 10px var(--accent-cyan));
         }
 
         .wheel-background {
@@ -422,72 +530,74 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: rgba(30, 41, 59, 0.45);
-            border: 2px solid rgba(255, 255, 255, 0.08);
-            box-shadow: inset 0 0 30px rgba(0,0,0,0.6), 0 10px 30px rgba(0,0,0,0.4);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: rgba(22, 16, 44, 0.5);
+            border: 2.5px solid rgba(255, 255, 255, 0.14);
+            box-shadow: inset 0 0 35px rgba(0,0,0,0.65), 0 12px 35px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
+        /* Enriched Bigger Wheel Letters */
         .wheel-node {
             position: absolute;
-            width: 44px;
-            height: 44px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
-            background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
-            border: 2px solid rgba(255, 255, 255, 0.12);
+            background: linear-gradient(145deg, #242b45 0%, #111628 100%);
+            border: 2.5px solid rgba(255, 255, 255, 0.22);
             color: #f8fafc;
-            font-size: 21px;
-            font-weight: 800;
+            font-size: 26px;
+            font-weight: 900;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
             z-index: 4;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            box-shadow: 0 5px 14px rgba(0,0,0,0.45);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
             transition: transform 0.15s, border-color 0.15s, background 0.15s;
             pointer-events: none;
         }
 
         .wheel-node.selected {
             background: linear-gradient(145deg, #0284c7 0%, #0369a1 100%);
-            border-color: #38bdf8;
+            border-color: #7dd3fc;
             color: #ffffff;
             transform: scale(1.22);
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.85);
+            box-shadow: 0 0 24px rgba(56, 189, 248, 0.95);
         }
 
         /* Shuffle button in center of wheel */
         .btn-shuffle {
             position: absolute;
-            width: 42px;
-            height: 42px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
-            background: rgba(15, 23, 42, 0.85);
-            border: 1.5px solid rgba(255, 255, 255, 0.18);
-            color: #e2e8f0;
+            background: rgba(18, 14, 38, 0.9);
+            border: 2px solid rgba(255, 255, 255, 0.22);
+            color: #f8fafc;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
             z-index: 5;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 5px 14px rgba(0, 0, 0, 0.55);
             transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s;
         }
         .btn-shuffle:active {
             transform: scale(0.88);
-            background: rgba(56, 189, 248, 0.2);
+            background: rgba(56, 189, 248, 0.25);
             border-color: var(--accent-cyan);
         }
         .btn-shuffle.spin {
-            transform: rotate(360deg) scale(1.1);
+            transform: rotate(360deg) scale(1.12);
         }
         .btn-shuffle svg {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             fill: none;
             stroke: currentColor;
-            stroke-width: 2.2;
+            stroke-width: 2.4;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
@@ -495,16 +605,16 @@
         /* Flying animation tile */
         .flying-tile {
             position: absolute;
-            border-radius: 8px;
+            border-radius: 9px;
             background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
-            border: 1.5px solid #7dd3fc;
+            border: 2px solid #7dd3fc;
             color: #ffffff;
-            font-weight: 800;
+            font-weight: 900;
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 100;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.9);
+            box-shadow: 0 0 24px rgba(56, 189, 248, 0.95);
             pointer-events: none;
             transition: all 0.48s cubic-bezier(0.25, 1, 0.5, 1);
         }
@@ -512,10 +622,10 @@
         /* Floating Score Text */
         .floating-score {
             position: absolute;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 900;
             color: #fbbf24;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.7);
             pointer-events: none;
             z-index: 150;
             animation: floatUp 0.85s ease-out forwards;
@@ -526,18 +636,18 @@
 
         @keyframes floatUp {
             0% { transform: translateY(0) scale(0.8); opacity: 0; }
-            20% { transform: translateY(-8px) scale(1.2); opacity: 1; }
+            20% { transform: translateY(-8px) scale(1.22); opacity: 1; }
             80% { opacity: 1; }
-            100% { transform: translateY(-38px) scale(0.9); opacity: 0; }
+            100% { transform: translateY(-40px) scale(0.9); opacity: 0; }
         }
 
         /* ================= MODALS ================= */
         .modal-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(9, 13, 22, 0.88);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(9, 6, 22, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -556,18 +666,18 @@
         }
 
         .modal-card {
-            background: #131b2e;
-            border: 2px solid rgba(255, 255, 255, 0.12);
+            background: #171131;
+            border: 2px solid rgba(255, 255, 255, 0.16);
             border-radius: 24px;
             padding: 26px 20px;
             width: 100%;
             max-width: 330px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.75);
             position: relative;
         }
 
         .modal-title { font-size: 24px; font-weight: 900; color: #f8fafc; margin-bottom: 8px; }
-        .modal-subtitle { font-size: 14px; color: #94a3b8; margin-bottom: 18px; line-height: 1.45; }
+        .modal-subtitle { font-size: 14px; color: #cbd5e1; margin-bottom: 18px; line-height: 1.45; }
 
         .modal-btn-group {
             display: flex;
@@ -585,12 +695,12 @@
             font-size: 14px;
             font-weight: 800;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
             transition: transform 0.15s ease;
         }
         .modal-btn:active { transform: scale(0.96); }
 
-        .modal-btn-danger { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3); }
+        .modal-btn-danger { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); box-shadow: 0 4px 14px rgba(239, 68, 68, 0.35); }
         .modal-btn-cancel { background: linear-gradient(135deg, #475569 0%, #334155 100%); box-shadow: none; }
 
         /* Confetti Canvas for Win */
@@ -616,10 +726,10 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
         .bonus-word-chip {
-            background: rgba(168, 85, 247, 0.2);
-            border: 1px solid rgba(168, 85, 247, 0.4);
-            color: #d8b4fe;
-            padding: 3px 8px;
+            background: rgba(168, 85, 247, 0.25);
+            border: 1px solid rgba(168, 85, 247, 0.45);
+            color: #e9d5ff;
+            padding: 3px 9px;
             border-radius: 8px;
             font-size: 12px;
             font-weight: 800;
@@ -652,9 +762,9 @@
         #level-start-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(9, 13, 22, 0.85);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: rgba(9, 6, 22, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -670,19 +780,26 @@
         }
 
         .start-card {
-            background: #131b2e;
+            background: #171131;
             border: 2px solid var(--accent-cyan);
             border-radius: 20px;
             padding: 24px;
             text-align: center;
-            box-shadow: 0 0 30px var(--accent-glow);
+            box-shadow: 0 0 32px var(--accent-glow);
             animation: popIn 0.3s ease-out;
         }
     </style>
 </head>
 <body>
 
-    <div id="game-container" class="theme-cosmic">
+    <div id="game-container" class="theme-neon-disco">
+        <!-- Floating Funky Background Blobs -->
+        <div class="funky-bg-blobs">
+            <div class="funky-blob blob-1"></div>
+            <div class="funky-blob blob-2"></div>
+            <div class="funky-blob blob-3"></div>
+        </div>
+
         <canvas id="confetti-canvas"></canvas>
 
         <div class="top-bar">
@@ -729,7 +846,7 @@
         <!-- Level Start Overlay -->
         <div id="level-start-overlay">
             <div class="start-card">
-                <div style="font-size: 13px; color: #94a3b8; font-weight: 700; letter-spacing: 1px;">STARTING LEVEL</div>
+                <div style="font-size: 13px; color: #cbd5e1; font-weight: 700; letter-spacing: 1px;">STARTING LEVEL</div>
                 <div id="start-level-title" style="font-size: 28px; font-weight: 900; color: #f8fafc; margin: 4px 0 10px 0;">LEVEL 1</div>
                 <div id="start-diff-tag" class="difficulty-badge diff-easy" style="font-size: 13px; display: inline-block; padding: 6px 14px;">DIFFICULTY: EASY</div>
             </div>
@@ -818,7 +935,6 @@
             constructor() {
                 this.ctx = null;
                 this.enabled = true;
-                // Pentatonic Scale frequencies: C4, D4, E4, G4, A4, C5, D5, E5, G5
                 this.scale = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25, 783.99];
             }
 
@@ -862,7 +978,7 @@
                 this.init();
                 if (!this.ctx) return;
 
-                const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+                const notes = [523.25, 659.25, 783.99, 1046.50];
                 notes.forEach((freq, idx) => {
                     const osc = this.ctx.createOscillator();
                     const gain = this.ctx.createGain();
@@ -887,7 +1003,7 @@
                 this.init();
                 if (!this.ctx) return;
 
-                const notes = [739.99, 880.00, 1108.73, 1318.51]; // F#5, A5, C#6, E6
+                const notes = [739.99, 880.00, 1108.73, 1318.51];
                 notes.forEach((freq, idx) => {
                     const osc = this.ctx.createOscillator();
                     const gain = this.ctx.createGain();
@@ -1003,8 +1119,17 @@
         let isDragging = false;
         let toastTimeout = null;
 
-        /* Themes */
-        const THEMES = ['theme-cosmic', 'theme-emerald', 'theme-amethyst', 'theme-amber', 'theme-ocean'];
+        /* 8 Funky Themes */
+        const THEMES = [
+            'theme-neon-disco',
+            'theme-sunset-blaze',
+            'theme-jungle-groove',
+            'theme-cyber-arcade',
+            'theme-bubblegum-pop',
+            'theme-oceanic-wave',
+            'theme-cosmic-nebula',
+            'theme-golden-galaxy'
+        ];
 
         /* ==================== DOM ELEMENTS ==================== */
         const gameContainer = document.getElementById('game-container');
@@ -1119,7 +1244,7 @@
             playerTitleBadge.textContent = currentRankTitle;
         }
 
-        /* ==================== GENERATOR ENGINE ==================== */
+        /* ==================== GENERATOR ENGINE (COMPACT & BOLD TILES) ==================== */
         function getRandomDifficulty() {
             const difficulties = ["Easy", "Medium", "Hard", "Hardest"];
             const weights = [0.35, 0.35, 0.20, 0.10];
@@ -1132,9 +1257,16 @@
         }
 
         function generateLevelForDifficulty(difficulty) {
-            const maxGridSize = 11;
-            const minRequiredCounts = { "Easy": 5, "Medium": 6, "Hard": 7, "Hardest": 8 };
-            const targetMin = minRequiredCounts[difficulty] || 6;
+            // Tighter bounds so crossword tiles are significantly larger on mobile screens
+            const config = {
+                "Easy": { maxGrid: 7, minWords: 4 },
+                "Medium": { maxGrid: 7, minWords: 5 },
+                "Hard": { maxGrid: 8, minWords: 6 },
+                "Hardest": { maxGrid: 8, minWords: 6 }
+            }[difficulty] || { maxGrid: 7, minWords: 5 };
+
+            const maxGridSize = config.maxGrid;
+            const targetMin = config.minWords;
 
             let availableIndices = [];
             for (let i = 0; i < ANAGRAM_SEEDS.length; i++) {
@@ -1150,12 +1282,11 @@
             pool.sort((a, b) => b.length - a.length);
 
             let attempts = 0;
-            while (attempts < 200) {
+            while (attempts < 250) {
                 attempts++;
                 const grid = Array(maxGridSize).fill(null).map(() => Array(maxGridSize).fill(null));
                 const placedWords = [];
 
-                // Group by length and shuffle slightly
                 const byLen = {};
                 pool.forEach(w => {
                     byLen[w.length] = byLen[w.length] || [];
@@ -1347,7 +1478,7 @@
         /* ==================== LEVEL RENDER ENGINE ==================== */
         function applyLevelTheme(lvl) {
             THEMES.forEach(t => gameContainer.classList.remove(t));
-            const themeIdx = Math.floor((lvl - 1) / 5) % THEMES.length;
+            const themeIdx = (lvl - 1) % THEMES.length;
             gameContainer.classList.add(THEMES[themeIdx]);
         }
 
@@ -1391,12 +1522,13 @@
             if (!currentLevelData) return;
             const { gridWidth, gridHeight, words } = currentLevelData;
 
-            // Responsive tile calculation based on current viewport
-            const containerW = crosswordContainer.clientWidth || 340;
-            const containerH = crosswordContainer.clientHeight || 280;
-            const sizeW = Math.floor((containerW - 16) / gridWidth);
-            const sizeH = Math.floor((containerH - 16) / gridHeight);
-            const tileSize = Math.max(22, Math.min(38, Math.min(sizeW, sizeH) - 2));
+            // Responsive large tile calculation based on container space
+            const containerW = crosswordContainer.clientWidth || 350;
+            const containerH = crosswordContainer.clientHeight || 290;
+            const sizeW = Math.floor((containerW - 14) / gridWidth);
+            const sizeH = Math.floor((containerH - 14) / gridHeight);
+            // Prominently enlarged tiles: clamp between 32px and 52px
+            const tileSize = Math.max(32, Math.min(52, Math.min(sizeW, sizeH) - 2));
 
             crosswordGrid.style.gridTemplateColumns = "repeat(" + gridWidth + ", " + tileSize + "px)";
             crosswordGrid.style.gridTemplateRows = "repeat(" + gridHeight + ", " + tileSize + "px)";
@@ -1418,7 +1550,7 @@
                     tile.classList.add('tile');
                     tile.style.width = tileSize + "px";
                     tile.style.height = tileSize + "px";
-                    tile.style.fontSize = Math.floor(tileSize * 0.55) + "px";
+                    tile.style.fontSize = Math.floor(tileSize * 0.58) + "px";
                     tile.dataset.row = r;
                     tile.dataset.col = c;
 
@@ -1473,14 +1605,15 @@
             }
 
             const totalNodes = wheelLetters.length;
-            const radius = Math.min(wheelWrapper.clientWidth, wheelWrapper.clientHeight) * 0.38;
+            const radius = Math.min(wheelWrapper.clientWidth, wheelWrapper.clientHeight) * 0.385;
             const centerX = wheelWrapper.clientWidth / 2;
             const centerY = wheelWrapper.clientHeight / 2;
 
             wheelLetters.forEach((letter, idx) => {
                 const angle = (idx * (360 / totalNodes) - 90) * (Math.PI / 180);
-                const x = centerX + radius * Math.cos(angle) - 22;
-                const y = centerY + radius * Math.sin(angle) - 22;
+                // 52px node: half size is 26px
+                const x = centerX + radius * Math.cos(angle) - 26;
+                const y = centerY + radius * Math.sin(angle) - 26;
 
                 const node = document.createElement('div');
                 node.classList.add('wheel-node');
@@ -1545,7 +1678,7 @@
         function openBonusJarModal() {
             bonusWordsList.innerHTML = '';
             if (bonusWords.size === 0) {
-                bonusWordsList.innerHTML = '<div style="color: #94a3b8; font-size: 13px; padding: 12px;">No bonus words collected yet! Find valid words not on the grid to earn bonus stars.</div>';
+                bonusWordsList.innerHTML = '<div style="color: #cbd5e1; font-size: 13px; padding: 12px;">No bonus words collected yet! Find valid words not on the grid to earn bonus stars.</div>';
             } else {
                 Array.from(bonusWords).forEach(w => {
                     const chip = document.createElement('div');
@@ -1561,8 +1694,8 @@
             const nodes = wheelWrapper.querySelectorAll('.wheel-node');
             for (let node of nodes) {
                 const rect = node.getBoundingClientRect();
-                if (x >= rect.left - 10 && x <= rect.right + 10 &&
-                    y >= rect.top - 10 && y <= rect.bottom + 10) {
+                if (x >= rect.left - 14 && x <= rect.right + 14 &&
+                    y >= rect.top - 14 && y <= rect.bottom + 14) {
                     return parseInt(node.dataset.index);
                 }
             }
@@ -1738,7 +1871,7 @@
                 flyer.className = 'flying-tile';
                 flyer.style.width = targetRect.width + "px";
                 flyer.style.height = targetRect.height + "px";
-                flyer.style.fontSize = Math.floor(targetRect.height * 0.55) + "px";
+                flyer.style.fontSize = Math.floor(targetRect.height * 0.58) + "px";
                 flyer.textContent = word[i];
                 flyer.style.left = startX + "px";
                 flyer.style.top = startY + "px";
@@ -1802,7 +1935,6 @@
                     }, 500 + word.length * 60);
                 }
             } else if (currentLevelData.allSeedWords && currentLevelData.allSeedWords.includes(word)) {
-                // BONUS WORD DISCOVERY!
                 if (bonusWords.has(word)) {
                     showToast("BONUS ALREADY FOUND!", "already");
                 } else {
