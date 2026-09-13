@@ -2,68 +2,127 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>WordQuest</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>WordQuest - Crossword Adventure</title>
     <meta name="apple-mobile-web-app-title" content="WordQuest">
     <meta name="application-name" content="WordQuest">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='512' height='512'><rect width='512' height='512' rx='128' fill='%230f172a'/><rect x='32' y='32' width='448' height='448' rx='96' fill='none' stroke='%2338bdf8' stroke-width='16'/><text x='50%' y='68%' font-family='sans-serif' font-weight='900' font-size='320' fill='%2338bdf8' text-anchor='middle'>W</text></svg>">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='512' height='512'><rect width='512' height='512' rx='128' fill='%230f172a'/><text x='50%' y='68%' font-family='sans-serif' font-weight='900' font-size='320' fill='%2338bdf8' text-anchor='middle'>W</text></svg>">
+    <meta name="theme-color" content="#090d16">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='512' height='512'><rect width='512' height='512' rx='128' fill='%230f172a'/><rect x='32' y='32' width='448' height='448' rx='96' fill='none' stroke='%2338bdf8' stroke-width='16'/><text x='50%' y='68%' font-family='Outfit, sans-serif' font-weight='900' font-size='320' fill='%2338bdf8' text-anchor='middle'>W</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='512' height='512'><rect width='512' height='512' rx='128' fill='%230f172a'/><text x='50%' y='68%' font-family='Outfit, sans-serif' font-weight='900' font-size='320' fill='%2338bdf8' text-anchor='middle'>W</text></svg>">
 
     <style>
+        :root {
+            --bg-gradient-start: #0a0f1d;
+            --bg-gradient-end: #161a38;
+            --card-bg: rgba(22, 30, 49, 0.75);
+            --accent-cyan: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.4);
+            --gold-gradient: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+            --wheel-size: clamp(210px, 33vh, 260px);
+        }
+
+        /* Theme Variations */
+        .theme-cosmic {
+            --bg-gradient-start: #090d16;
+            --bg-gradient-end: #1a1638;
+            --accent-cyan: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.4);
+        }
+        .theme-emerald {
+            --bg-gradient-start: #061714;
+            --bg-gradient-end: #0e2e28;
+            --accent-cyan: #34d399;
+            --accent-glow: rgba(52, 211, 153, 0.4);
+        }
+        .theme-amethyst {
+            --bg-gradient-start: #140920;
+            --bg-gradient-end: #28143f;
+            --accent-cyan: #c084fc;
+            --accent-glow: rgba(192, 132, 252, 0.4);
+        }
+        .theme-amber {
+            --bg-gradient-start: #1c0e08;
+            --bg-gradient-end: #331d10;
+            --accent-cyan: #fbbf24;
+            --accent-glow: rgba(251, 191, 36, 0.4);
+        }
+        .theme-ocean {
+            --bg-gradient-start: #05141e;
+            --bg-gradient-end: #0c2d3e;
+            --accent-cyan: #22d3ee;
+            --accent-glow: rgba(34, 211, 238, 0.4);
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             user-select: none;
             -webkit-user-select: none;
-            touch-action: none;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background-color: #090d16;
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #050811;
             color: #f8fafc;
-            min-height: 100dvh;
+            height: 100dvh;
+            width: 100vw;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 4px;
+            overflow: hidden;
         }
 
         #game-container {
             width: 100%;
-            max-width: 480px;
-            height: 98dvh;
-            max-height: 860px;
-            background: linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%);
-            border: 2px solid #334155;
-            border-radius: 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            max-width: 460px;
+            height: 100dvh;
+            max-height: 940px;
+            background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 10px;
+            padding: 8px 12px;
             padding-top: max(8px, env(safe-area-inset-top));
-            padding-bottom: max(8px, env(safe-area-inset-bottom));
+            padding-bottom: max(10px, env(safe-area-inset-bottom));
             position: relative;
             overflow: hidden;
+            transition: background 0.6s ease;
         }
 
+        @media (min-width: 500px) {
+            #game-container {
+                height: 96dvh;
+                border-radius: 28px;
+                border: 2px solid rgba(255, 255, 255, 0.12);
+                box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.1);
+            }
+        }
+
+        /* ================= TOP BAR ================= */
         .top-bar {
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 4px;
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(8px);
+            gap: 5px;
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             padding: 6px 10px;
-            border-radius: 16px;
-            border: 1px solid #334155;
-            z-index: 10;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 20;
             flex-shrink: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .top-bar-row {
@@ -71,86 +130,120 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 2px;
+            gap: 4px;
         }
 
         .badge {
             font-size: 11px;
-            font-weight: 700;
-            color: #38bdf8;
-            background: rgba(14, 165, 233, 0.15);
-            padding: 4px 8px;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            background: rgba(56, 189, 248, 0.12);
+            padding: 4px 9px;
             border-radius: 20px;
             border: 1px solid rgba(56, 189, 248, 0.3);
             white-space: nowrap;
+            letter-spacing: 0.5px;
         }
 
         .difficulty-badge {
             font-size: 11px;
             font-weight: 800;
-            padding: 4px 8px;
+            padding: 4px 9px;
             border-radius: 20px;
             text-transform: uppercase;
             white-space: nowrap;
+            letter-spacing: 0.5px;
         }
 
-        .diff-easy { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981; }
-        .diff-medium { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid #f59e0b; }
-        .diff-hard { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid #ef4444; }
-        .diff-hardest { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid #a855f7; }
+        .diff-easy { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
+        .diff-medium { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
+        .diff-hard { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+        .diff-hardest { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4); }
 
         .score-badge {
-            font-size: 11px;
-            font-weight: 700;
-            color: #f59e0b;
+            font-size: 12px;
+            font-weight: 800;
+            color: #fbbf24;
             background: rgba(245, 158, 11, 0.15);
-            padding: 4px 8px;
+            padding: 4px 10px;
             border-radius: 20px;
-            border: 1px solid rgba(245, 158, 11, 0.3);
+            border: 1px solid rgba(245, 158, 11, 0.35);
             white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
         .title-badge {
             font-size: 11px;
             font-weight: 800;
-            color: #c084fc;
-            background: rgba(168, 85, 247, 0.15);
+            color: #e2e8f0;
+            background: rgba(255, 255, 255, 0.08);
             padding: 4px 10px;
             border-radius: 20px;
-            border: 1px solid rgba(168, 85, 247, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             text-align: center;
-            width: 100%;
-            box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .btn-icon {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #e2e8f0;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 600;
-            cursor: pointer;
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
             white-space: nowrap;
         }
 
-        .btn-skip-top {
-            background: rgba(239, 68, 68, 0.2);
-            border: 1px solid #ef4444;
-            color: #f87171;
+        .btn-icon {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #e2e8f0;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            transition: transform 0.15s ease, background 0.15s ease;
+        }
+        .btn-icon:active { transform: scale(0.92); }
+
+        .btn-sound {
+            padding: 4px 8px;
+            font-size: 13px;
+        }
+
+        .btn-bonus-jar {
+            background: rgba(234, 179, 8, 0.15);
+            border: 1px solid rgba(234, 179, 8, 0.4);
+            color: #fde047;
+            font-weight: 800;
+        }
+        .btn-bonus-jar.bounce {
+            animation: jarBounce 0.4s ease;
+        }
+
+        @keyframes jarBounce {
+            0% { transform: scale(1); }
+            40% { transform: scale(1.25) rotate(-6deg); }
+            70% { transform: scale(1.15) rotate(4deg); }
+            100% { transform: scale(1); }
         }
 
         .btn-hint-top {
             background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
             border: 1px solid #818cf8;
             color: #ffffff;
-            font-weight: 700;
+            font-weight: 800;
         }
 
+        .btn-skip-top {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #fca5a5;
+        }
+
+        /* ================= CROSSWORD CONTAINER ================= */
         #crossword-container {
             width: 100%;
             flex: 1 1 auto;
@@ -159,7 +252,7 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            margin: 2px 0;
+            margin: 4px 0;
             overflow: hidden;
         }
 
@@ -167,92 +260,95 @@
             display: grid;
             position: relative;
             gap: 2px;
-            transition: transform 0.3s ease;
+            transition: transform 0.25s ease;
+            max-width: 100%;
+            max-height: 100%;
         }
 
         .tile {
-            width: 28px;
-            height: 28px;
-            border-radius: 6px;
+            border-radius: 8px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 15px;
-            font-weight: 800;
+            font-weight: 900;
             text-transform: uppercase;
-            box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1), 0 4px 6px rgba(0,0,0,0.3);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.35);
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
+            cursor: pointer;
         }
 
         .tile.empty {
             visibility: hidden;
             box-shadow: none;
+            pointer-events: none;
         }
 
         .tile.unsolved {
-            background: #1e293b;
-            border: 1px solid #334155;
+            background: rgba(30, 41, 59, 0.85);
+            border: 1.5px solid rgba(71, 85, 105, 0.5);
             color: transparent;
         }
 
         .tile.solved {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            border: 1px solid #fbbf24;
+            background: var(--gold-gradient);
+            border: 1.5px solid #fde047;
             color: #ffffff;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            box-shadow: 0 0 12px rgba(251, 191, 36, 0.45);
         }
 
         .tile.solved-pop {
-            animation: popIn 0.4s ease-out;
+            animation: popIn 0.35s ease-out;
         }
 
         .tile.already-highlight {
             animation: alreadyPulse 0.6s ease-in-out;
             background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%) !important;
             border-color: #7dd3fc !important;
-            box-shadow: 0 0 18px rgba(56, 189, 248, 0.9) !important;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.9) !important;
             z-index: 50;
         }
 
         @keyframes alreadyPulse {
             0% { transform: scale(1); }
-            25% { transform: scale(1.2) rotate(-3deg); }
-            50% { transform: scale(1.2) rotate(3deg); }
+            25% { transform: scale(1.2) rotate(-4deg); }
+            50% { transform: scale(1.2) rotate(4deg); }
             75% { transform: scale(1.1) rotate(-1deg); }
             100% { transform: scale(1) rotate(0deg); }
         }
 
         @keyframes popIn {
-            0% { transform: scale(0.6); opacity: 0; }
-            70% { transform: scale(1.15); }
+            0% { transform: scale(0.5); opacity: 0; }
+            70% { transform: scale(1.18); }
             100% { transform: scale(1); opacity: 1; }
         }
 
+        /* ================= PREVIEW & TOAST ================= */
         #preview-container {
-            height: 26px;
+            height: 28px;
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 0;
-            z-index: 5;
+            z-index: 10;
             flex-shrink: 0;
         }
 
         #word-preview {
-            background: rgba(30, 41, 59, 0.9);
-            border: 2px solid #38bdf8;
-            padding: 2px 14px;
-            border-radius: 14px;
-            font-size: 15px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 2px solid var(--accent-cyan);
+            padding: 2px 16px;
+            border-radius: 16px;
+            font-size: 16px;
             font-weight: 800;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             color: #f8fafc;
             min-width: 90px;
             text-align: center;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+            box-shadow: 0 0 20px var(--accent-glow);
             opacity: 0;
-            transform: translateY(3px);
+            transform: translateY(4px);
             transition: opacity 0.2s, transform 0.2s;
         }
 
@@ -267,36 +363,41 @@
             justify-content: center;
             align-items: center;
             margin: 0;
-            z-index: 5;
+            z-index: 10;
             flex-shrink: 0;
         }
 
         .toast {
             font-size: 11px;
             font-weight: 800;
-            letter-spacing: 1px;
-            padding: 2px 8px;
-            border-radius: 8px;
+            letter-spacing: 0.8px;
+            padding: 3px 10px;
+            border-radius: 10px;
             text-transform: uppercase;
             opacity: 0;
-            transition: all 0.3s ease;
+            transform: scale(0.9);
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
         }
 
-        .toast.show { opacity: 1; }
+        .toast.show { opacity: 1; transform: scale(1); }
         .toast.correct { background: #10b981; color: #ffffff; }
         .toast.already { background: #f59e0b; color: #ffffff; }
+        .toast.bonus { background: linear-gradient(135deg, #a855f7, #6366f1); color: #ffffff; }
         .toast.wrong { background: #ef4444; color: #ffffff; }
-        .toast.info { background: #6366f1; color: #ffffff; }
+        .toast.info { background: #3b82f6; color: #ffffff; }
 
+        /* ================= WHEEL & CONTROLS ================= */
         #wheel-wrapper {
             position: relative;
-            width: 260px;
-            height: 260px;
-            margin-bottom: max(2px, env(safe-area-inset-bottom));
+            width: var(--wheel-size);
+            height: var(--wheel-size);
             display: flex;
             justify-content: center;
             align-items: center;
             flex-shrink: 0;
+            touch-action: none;
+            margin-bottom: max(4px, env(safe-area-inset-bottom));
         }
 
         #svg-canvas {
@@ -310,20 +411,22 @@
         }
 
         #svg-canvas line {
-            stroke: #38bdf8;
+            stroke: var(--accent-cyan);
             stroke-width: 6;
             stroke-linecap: round;
-            filter: drop-shadow(0 0 6px #0284c7);
+            filter: drop-shadow(0 0 8px var(--accent-cyan));
         }
 
         .wheel-background {
             position: absolute;
-            width: 260px;
-            height: 260px;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
-            background: rgba(30, 41, 59, 0.55);
-            border: 2px solid #334155;
-            box-shadow: inset 0 0 25px rgba(0,0,0,0.5);
+            background: rgba(30, 41, 59, 0.45);
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.6), 0 10px 30px rgba(0,0,0,0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
         .wheel-node {
@@ -332,16 +435,18 @@
             height: 44px;
             border-radius: 50%;
             background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+            border: 2px solid rgba(255, 255, 255, 0.12);
             color: #f8fafc;
-            font-size: 22px;
+            font-size: 21px;
             font-weight: 800;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            z-index: 3;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-            transition: transform 0.15s, border-color 0.15s;
+            z-index: 4;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            transition: transform 0.15s, border-color 0.15s, background 0.15s;
+            pointer-events: none;
         }
 
         .wheel-node.selected {
@@ -349,33 +454,90 @@
             border-color: #38bdf8;
             color: #ffffff;
             transform: scale(1.22);
-            box-shadow: 0 0 18px rgba(56, 189, 248, 0.7);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.85);
         }
 
+        /* Shuffle button in center of wheel */
+        .btn-shuffle {
+            position: absolute;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1.5px solid rgba(255, 255, 255, 0.18);
+            color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 5;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s;
+        }
+        .btn-shuffle:active {
+            transform: scale(0.88);
+            background: rgba(56, 189, 248, 0.2);
+            border-color: var(--accent-cyan);
+        }
+        .btn-shuffle.spin {
+            transform: rotate(360deg) scale(1.1);
+        }
+        .btn-shuffle svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Flying animation tile */
         .flying-tile {
             position: absolute;
-            width: 28px;
-            height: 28px;
-            border-radius: 6px;
+            border-radius: 8px;
             background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
             border: 1.5px solid #7dd3fc;
             color: #ffffff;
-            font-size: 16px;
             font-weight: 800;
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 100;
-            box-shadow: 0 0 18px rgba(56, 189, 248, 0.8);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.9);
             pointer-events: none;
-            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: all 0.48s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
+        /* Floating Score Text */
+        .floating-score {
+            position: absolute;
+            font-size: 15px;
+            font-weight: 900;
+            color: #fbbf24;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+            pointer-events: none;
+            z-index: 150;
+            animation: floatUp 0.85s ease-out forwards;
+        }
+        .floating-score.bonus-float {
+            color: #c084fc;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(0.8); opacity: 0; }
+            20% { transform: translateY(-8px) scale(1.2); opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateY(-38px) scale(0.9); opacity: 0; }
+        }
+
+        /* ================= MODALS ================= */
         .modal-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(9, 13, 22, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -384,7 +546,7 @@
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.3s ease;
-            padding: 24px;
+            padding: 20px;
             text-align: center;
         }
 
@@ -394,16 +556,18 @@
         }
 
         .modal-card {
-            background: #1e293b;
-            border: 2px solid #334155;
+            background: #131b2e;
+            border: 2px solid rgba(255, 255, 255, 0.12);
             border-radius: 24px;
-            padding: 28px 20px;
+            padding: 26px 20px;
             width: 100%;
-            max-width: 340px;
+            max-width: 330px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+            position: relative;
         }
 
-        .modal-title { font-size: 24px; font-weight: 800; color: #f8fafc; margin-bottom: 8px; }
-        .modal-subtitle { font-size: 14px; color: #94a3b8; margin-bottom: 20px; line-height: 1.4; }
+        .modal-title { font-size: 24px; font-weight: 900; color: #f8fafc; margin-bottom: 8px; }
+        .modal-subtitle { font-size: 14px; color: #94a3b8; margin-bottom: 18px; line-height: 1.45; }
 
         .modal-btn-group {
             display: flex;
@@ -421,20 +585,56 @@
             font-size: 14px;
             font-weight: 800;
             cursor: pointer;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            transition: transform 0.15s ease;
+        }
+        .modal-btn:active { transform: scale(0.96); }
+
+        .modal-btn-danger { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3); }
+        .modal-btn-cancel { background: linear-gradient(135deg, #475569 0%, #334155 100%); box-shadow: none; }
+
+        /* Confetti Canvas for Win */
+        #confetti-canvas {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 199;
         }
 
-        .modal-btn-danger { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); }
-        .modal-btn-cancel { background: linear-gradient(135deg, #475569 0%, #334155 100%); }
+        /* Bonus Words Jar List */
+        .bonus-words-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            max-height: 160px;
+            overflow-y: auto;
+            justify-content: center;
+            margin: 12px 0;
+            padding: 8px;
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .bonus-word-chip {
+            background: rgba(168, 85, 247, 0.2);
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            color: #d8b4fe;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
 
         .rank-up-card {
             border-color: #c084fc !important;
-            box-shadow: 0 0 30px rgba(192, 132, 252, 0.4);
-            animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 35px rgba(192, 132, 252, 0.4);
+            animation: bounceIn 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .rank-up-icon {
-            font-size: 48px;
-            margin-bottom: 10px;
+            font-size: 46px;
+            margin-bottom: 8px;
             animation: pulseGlow 1.5s infinite alternate;
         }
 
@@ -446,14 +646,15 @@
 
         @keyframes pulseGlow {
             0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(192, 132, 252, 0.5)); }
-            100% { transform: scale(1.15); filter: drop-shadow(0 0 20px rgba(192, 132, 252, 0.9)); }
+            100% { transform: scale(1.14); filter: drop-shadow(0 0 20px rgba(192, 132, 252, 0.9)); }
         }
 
         #level-start-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(6px);
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -469,29 +670,33 @@
         }
 
         .start-card {
-            background: #1e293b;
-            border: 2px solid #38bdf8;
+            background: #131b2e;
+            border: 2px solid var(--accent-cyan);
             border-radius: 20px;
             padding: 24px;
             text-align: center;
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+            box-shadow: 0 0 30px var(--accent-glow);
             animation: popIn 0.3s ease-out;
         }
     </style>
 </head>
 <body>
 
-    <div id="game-container">
+    <div id="game-container" class="theme-cosmic">
+        <canvas id="confetti-canvas"></canvas>
+
         <div class="top-bar">
             <div class="top-bar-row">
-                <button class="btn-icon btn-hint-top" id="btn-hint">💡 Hint (-500)</button>
-                <div class="difficulty-badge diff-easy" id="diff-badge">EASY</div>
-                <div class="score-badge" id="score-badge">SCORE: 0</div>
-                <button class="btn-icon btn-skip-top" id="btn-skip">Reveal All</button>
+                <button class="btn-icon btn-sound" id="btn-sound" title="Toggle Sound">🔊</button>
+                <button class="btn-icon btn-bonus-jar" id="btn-bonus-jar" title="Bonus Words Jar">⭐ 0</button>
+                <div class="score-badge" id="score-badge">🏆 0</div>
+                <button class="btn-icon btn-hint-top" id="btn-hint">💡 -500</button>
+                <button class="btn-icon btn-skip-top" id="btn-skip">Skip</button>
             </div>
             <div class="top-bar-row">
                 <div class="badge" id="level-badge">LVL 1</div>
-                <div class="title-badge" id="player-title-badge">RANK: 🐣 WORD NOVICE</div>
+                <div class="difficulty-badge diff-easy" id="diff-badge">EASY</div>
+                <div class="title-badge" id="player-title-badge">🐣 WORD NOVICE</div>
             </div>
         </div>
 
@@ -510,76 +715,85 @@
         <div id="wheel-wrapper">
             <div class="wheel-background"></div>
             <svg id="svg-canvas"></svg>
+            <button class="btn-shuffle" id="btn-shuffle" title="Shuffle Letters">
+                <svg viewBox="0 0 24 24">
+                    <polyline points="16 3 21 3 21 8"></polyline>
+                    <line x1="4" y1="20" x2="21" y2="3"></line>
+                    <polyline points="21 16 21 21 16 21"></polyline>
+                    <line x1="15" y1="15" x2="21" y2="21"></line>
+                    <line x1="4" y1="4" x2="9" y2="9"></line>
+                </svg>
+            </button>
         </div>
 
+        <!-- Level Start Overlay -->
         <div id="level-start-overlay">
             <div class="start-card">
-                <div style="font-size: 13px; color: #94a3b8; font-weight: 700;">STARTING LEVEL</div>
-                <div id="start-level-title" style="font-size: 28px; font-weight: 800; color: #f8fafc; margin: 4px 0 12px 0;">LEVEL 1</div>
-                <div id="start-diff-tag" class="difficulty-badge diff-easy" style="font-size: 14px; display: inline-block; padding: 8px 16px;">DIFFICULTY: EASY</div>
+                <div style="font-size: 13px; color: #94a3b8; font-weight: 700; letter-spacing: 1px;">STARTING LEVEL</div>
+                <div id="start-level-title" style="font-size: 28px; font-weight: 900; color: #f8fafc; margin: 4px 0 10px 0;">LEVEL 1</div>
+                <div id="start-diff-tag" class="difficulty-badge diff-easy" style="font-size: 13px; display: inline-block; padding: 6px 14px;">DIFFICULTY: EASY</div>
             </div>
         </div>
 
-        <div class="modal-overlay" id="rank-up-modal">
-            <div class="modal-card rank-up-card">
-                <div class="rank-up-icon">🌟</div>
-                <div class="modal-title" style="color: #c084fc;">RANK UP!</div>
-                <div class="modal-subtitle" id="rank-up-subtitle" style="font-size: 16px; font-weight: 700; color: #f8fafc;">You are now an Anagram Ace!</div>
-                <button class="modal-btn" id="btn-close-rank-up" style="background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);">AWESOME!</button>
-            </div>
-        </div>
-
+        <!-- Win Level Modal -->
         <div class="modal-overlay" id="win-modal">
             <div class="modal-card">
-                <div class="modal-title">🎉 EXCELLENT!</div>
+                <div style="font-size: 40px; margin-bottom: 6px;">🎉</div>
+                <div class="modal-title">EXCELLENT!</div>
                 <div class="modal-subtitle" id="win-subtitle">Level Completed</div>
                 <button class="modal-btn" id="btn-next-level">NEXT LEVEL</button>
             </div>
         </div>
 
+        <!-- Bonus Words Jar Modal -->
+        <div class="modal-overlay" id="bonus-modal">
+            <div class="modal-card">
+                <div style="font-size: 36px; margin-bottom: 6px;">🏺⭐</div>
+                <div class="modal-title" style="color: #fde047;">BONUS WORDS</div>
+                <div class="modal-subtitle" id="bonus-modal-subtitle">Found extra valid words that are not on the crossword puzzle. +15 pts each!</div>
+                <div class="bonus-words-list" id="bonus-words-list"></div>
+                <button class="modal-btn" id="btn-close-bonus" style="background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);">COLLECTED!</button>
+            </div>
+        </div>
+
+        <!-- Word Meaning / Clue Modal -->
+        <div class="modal-overlay" id="word-info-modal">
+            <div class="modal-card">
+                <div style="font-size: 32px; margin-bottom: 6px;">📖</div>
+                <div class="modal-title" id="word-info-title" style="color: #38bdf8;">WORD</div>
+                <div class="modal-subtitle" id="word-info-desc">Discovered on the crossword puzzle.</div>
+                <button class="modal-btn modal-btn-cancel" id="btn-close-word-info">CLOSE</button>
+            </div>
+        </div>
+
+        <!-- Skip Confirm Modal -->
         <div class="modal-overlay" id="skip-confirm-modal">
             <div class="modal-card">
                 <div class="modal-title">REVEAL ALL?</div>
-                <div class="modal-subtitle">Are you sure you want to reveal all words and skip this level?<br><br><strong style="color: #f87171;">Score Penalty: -5000 points</strong></div>
+                <div class="modal-subtitle">Reveal all words and skip to the next level?<br><br><strong style="color: #f87171;">Score Penalty: -5000 points</strong></div>
                 <div class="modal-btn-group">
                     <button class="modal-btn modal-btn-cancel" id="btn-cancel-skip">Cancel</button>
                     <button class="modal-btn modal-btn-danger" id="btn-confirm-skip">Reveal All</button>
                 </div>
             </div>
         </div>
+
+        <!-- Rank Up / Down Modal -->
+        <div class="modal-overlay" id="rank-up-modal">
+            <div class="modal-card rank-up-card">
+                <div class="rank-up-icon">🌟</div>
+                <div class="modal-title" style="color: #c084fc;">RANK UP!</div>
+                <div class="modal-subtitle" id="rank-up-subtitle" style="font-size: 15px; font-weight: 700; color: #f8fafc;">You have reached a new rank!</div>
+                <button class="modal-btn" id="btn-close-rank-up" style="background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);">AWESOME!</button>
+            </div>
+        </div>
     </div>
 
     <script>
-        /* ==================== EXPANDED SEEDS DATABASE (ALL SEEDS HAVE AT LEAST 20 VALID WORDS) ==================== */
-        const ANAGRAM_SEEDS = [
-            { wheel: ["P", "L", "A", "N", "E", "T"], words: ["PLANET", "PLANE", "PLANT", "PLATE", "PANEL", "LANE", "LEAN", "TALE", "NEAT", "PEAT", "PLEA", "PALE", "LATE", "PAN", "PET", "NET", "PAT", "TAP", "ALE", "APE", "PEN", "ANT", "TEN", "TEA", "EAT", "TAN"] },
-            { wheel: ["S", "I", "L", "E", "N", "T"], words: ["SILENT", "LISTEN", "INLET", "TINSEL", "ENLIST", "LENT", "LINE", "LIST", "NEST", "SENT", "TILE", "LIES", "SILT", "SLIT", "TIES", "NET", "SET", "TIN", "LIT", "NIL", "SIT", "TEN", "LIE", "LET"] },
-            { wheel: ["C", "A", "S", "T", "L", "E"], words: ["CASTLE", "SCALE", "LACE", "CAST", "TALE", "SEAT", "EAST", "LAST", "CASE", "SEAL", "SALE", "TALES", "LEAST", "CAT", "ACT", "LET", "TEA", "SET", "ACE", "SAT", "SIT", "ALE", "ALT"] },
-            { wheel: ["S", "T", "R", "E", "A", "M"], words: ["STREAM", "SMART", "STEAM", "TEAM", "TEAR", "MEAT", "RATE", "REST", "SEAT", "TERM", "SAME", "MATE", "MAT", "TEA", "SEA", "MET", "RAM", "ART", "SET", "RAT", "ARM", "EAT"] },
-            { wheel: ["A", "C", "T", "O", "R", "S"], words: ["ACTORS", "ACTOR", "STARS", "COAST", "TACOS", "COAT", "STAR", "CATS", "ACT", "OAR", "RAT", "ART", "COT", "ROT", "SAT", "SOT", "CAR", "SAC", "OATS", "ROST", "ARTS", "TSAR", "SORT", "SCAR"] },
-            { wheel: ["B", "A", "N", "K", "E", "R"], words: ["BANKER", "BANK", "BAKE", "BARK", "BARN", "BEAK", "BEAR", "EARN", "NEAR", "RANK", "RAKE", "BAR", "ARK", "RAN", "ARE", "EAR", "KEN", "BARE", "BEAN", "BANE", "BRAE", "KEAN"] },
-            { wheel: ["C", "A", "R", "P", "E", "T"], words: ["CARPET", "TRACE", "CRAPE", "PACER", "CAPE", "CART", "PATE", "PEAT", "PEAR", "PART", "PACE", "RACE", "CAT", "ACT", "PET", "PAT", "TAP", "TEA", "EAT", "ACE", "CAR", "ARC", "PAR", "RAP", "PER", "TAR", "RAT"] },
-            { wheel: ["C", "R", "A", "F", "T", "S"], words: ["CRAFTS", "CRAFT", "FACTS", "ACTS", "ARTS", "CARS", "CART", "CAST", "CATS", "FACT", "RAFT", "STAR", "ACT", "CAT", "RAT", "ART", "SAT", "FAR", "FAT", "CAR", "ARC", "FAST", "TSAR", "SCAR"] },
-            { wheel: ["C", "R", "A", "T", "E", "S"], words: ["CRATES", "CASTER", "CRATE", "REACT", "TRACE", "CARE", "CART", "CASE", "CAST", "CATS", "RACE", "RATE", "SEAT", "STAR", "TARE", "TEAR", "ACT", "CAT", "RAT", "ART", "TEA", "EAT", "SET", "SAT", "ACE", "CAR", "ARC"] },
-            { wheel: ["C", "R", "E", "A", "T", "E"], words: ["CREATE", "CRATE", "REACT", "TRACE", "CARET", "CART", "RATE", "TARE", "TEAR", "TREE", "CAT", "ACT", "RAT", "ART", "TEA", "EAT", "ACE", "TEE", "CAR", "ARC", "CATE", "EATER", "RETE"] },
-            { wheel: ["D", "A", "N", "C", "E", "R"], words: ["DANCER", "CRANE", "ACNE", "DARE", "DEAR", "EARN", "NEAR", "RACE", "READ", "REND", "CAN", "DEN", "END", "RED", "EAR", "ARE", "RAN", "ACE", "CAR", "ARC", "CANE", "CARD", "CARE", "BREAD"] },
-            { wheel: ["D", "E", "A", "L", "E", "R"], words: ["DEALER", "LEADER", "ELDER", "DEAL", "DEAR", "DARE", "DALE", "LEAD", "READ", "REAL", "REEL", "RED", "EAR", "ARE", "LED", "ALE", "LAD", "EEL", "LEE", "LADE", "ERASE", "LARD"] },
-            { wheel: ["D", "R", "E", "A", "M", "S"], words: ["DREAMS", "DREAM", "DARES", "DEARS", "DAMES", "READS", "DARE", "DEAR", "DAME", "MADE", "MARS", "READ", "SAME", "SEAM", "RED", "RAM", "ARM", "EAR", "ARE", "SEA", "SAD", "MAD", "DEN", "MADS", "SEAR"] },
-            { wheel: ["E", "A", "R", "T", "H", "S"], words: ["EARTHS", "EARTH", "HEART", "HASTE", "SHARE", "ARTS", "EARS", "EAST", "HATE", "HEAR", "HEAT", "RATS", "REST", "SEAT", "STAR", "TEAR", "ART", "RAT", "TEA", "EAT", "SAT", "SET", "ASH", "HAS", "HAT", "EAR", "ARE"] },
-            { wheel: ["F", "I", "L", "T", "E", "R"], words: ["FILTER", "LIFTER", "RIFLE", "LITRE", "TILER", "FILE", "FIRE", "LIFE", "LIFT", "LITE", "RIFT", "TIER", "TILE", "TIRE", "FIT", "LIT", "LET", "TIE", "REF", "RIFE", "TIRE", "LIR"] },
-            { wheel: ["G", "R", "A", "N", "I", "T"], words: ["GRANITE", "RATING", "GIANT", "GRAIN", "TRAIN", "ANTI", "GAIN", "GRIN", "PAIN", "PART", "RAIN", "RING", "RANT", "TANG", "RAT", "ART", "TAN", "TIN", "GIN", "RIG", "RAN", "AIR", "NIT"] },
-            { wheel: ["G", "R", "A", "P", "E", "S"], words: ["GRAPES", "GEARS", "GRAPE", "PAGES", "PARES", "PARSE", "PEARS", "REAPS", "APE", "AGES", "APES", "GEAR", "GASP", "PAGE", "PARE", "PEAR", "PEAS", "RAGE", "RAPS", "REAP", "AGE", "PEG", "PER", "RAP", "PAR", "EAR", "ARE", "SEA", "GAS", "RAG", "PAS", "SAP"] },
-            { wheel: ["H", "A", "R", "V", "E", "S"], words: ["HARVEST", "STARVE", "SHARE", "SHAVE", "HEART", "EARTH", "HATE", "HAVE", "HEAR", "HEAT", "RAVE", "SAVE", "SEAT", "STAR", "TEAR", "VASE", "VEST", "ART", "RAT", "TEA", "EAT", "SAT", "SET", "ASH", "HAS", "HAT", "VAN", "EAR", "ARE", "SEA"] },
-            { wheel: ["H", "E", "A", "R", "T", "S"], words: ["HEARTS", "EARTHS", "EARTH", "HEART", "HASTE", "SHARE", "ARTS", "EARS", "EAST", "HATE", "HEAR", "HEAT", "RATS", "REST", "SEAT", "STAR", "TEAR", "ART", "RAT", "TEA", "EAT", "SAT", "SET", "ASH", "HAS", "HAT", "EAR", "ARE", "SEA"] },
-            { wheel: ["H", "O", "N", "E", "S", "T"], words: ["HONEST", "ONSET", "STONE", "HENS", "NEST", "NOSE", "NOTE", "SENT", "SHOE", "SHOT", "TOES", "TONE", "TENS", "HEN", "NET", "TEN", "TOE", "NOT", "HOT", "SON", "SOT", "SET"] },
-            { wheel: ["M", "A", "R", "K", "E", "T"], words: ["MARKET", "MAKER", "MAKE", "MARE", "MARK", "MATE", "MEAT", "RAKE", "RATE", "TARE", "TEAR", "TERM", "MAT", "MET", "TEA", "EAT", "RAM", "ARM", "ART", "RAT", "ARK", "KEN"] },
-            { wheel: ["M", "A", "S", "T", "E", "R"], words: ["MASTER", "SMART", "STREAM", "TEARS", "MATS", "RATE", "REST", "SEAT", "STAR", "STEAM", "TEAM", "TEAR", "TERM", "MAT", "MET", "TEA", "EAT", "SET", "SAT", "RAM", "ARM", "ART", "RAT"] },
-            { wheel: ["M", "E", "T", "A", "L", "S"], words: ["METALS", "METAL", "LAMES", "MALES", "STEAM", "TEAMS", "LAME", "LATE", "MALE", "MATE", "MEAL", "MEAT", "SALT", "SEAL", "SEAT", "TALE", "TEAM", "MAT", "MET", "TEA", "EAT", "LET", "SET", "SAT", "ALE", "ALT", "SEA"] },
-            { wheel: ["N", "A", "T", "U", "R", "E"], words: ["NATURE", "ANTE", "AUNT", "EARN", "NEAR", "NEAT", "RENT", "RUNE", "RATE", "TARE", "TEAR", "TUNE", "TURN", "NET", "TEN", "TEA", "EAT", "RAT", "ART", "RAN", "NUT", "ANT", "RUN", "EAR", "ARE"] },
-            { wheel: ["O", "R", "A", "N", "G", "E"], words: ["ORANGE", "GROAN", "ORGAN", "RANGE", "ANGER", "GEAR", "GONE", "NEAR", "RAGE", "ROAN", "AGE", "EAR", "ARE", "RAN", "RAG", "ONE", "EON", "NOR", "OAR", "ROAN", "GENRE", "ARENA"] }
-        ];
+        /* ==================== EXPANDED SEEDS DATABASE (68 HIGH-YIELD ANAGRAM BASES) ==================== */
+        const ANAGRAM_SEEDS = [{"wheel":["P","L","A","N","E","T"],"words":["PLANET","PLANE","PLANT","PLATE","PANEL","LEANT","PLEAT","LANE","LEAN","TALE","NEAT","PEAT","PLEA","PALE","LATE","PATE","TAPE","LEAP","PEAL","LENT","PAN","PET","NET","PAT","TAP","ALE","APE","PEN","ANT","TEN","TEA","EAT","TAN","PAL","LAP","LET","ATE"]},{"wheel":["S","I","L","E","N","T"],"words":["SILENT","LISTEN","INLET","TINSEL","ENLIST","LENT","LINE","LIST","NEST","SENT","TILE","LIES","SILT","SLIT","TIES","SITE","LINT","LITE","NET","SET","TIN","LIT","NIL","SIT","TEN","LIE","LET","TIE","SIN","ITS"]},{"wheel":["C","A","S","T","L","E"],"words":["CASTLE","SCALE","LEAST","STALE","SLATE","TALES","CLEAT","LACE","CAST","TALE","SEAT","EAST","LAST","CASE","SEAL","SALE","LATE","CATS","ACTS","SECT","CAT","ACT","LET","TEA","SET","ACE","SAT","ALE","ALT","EAT","ATE","SEA"]},{"wheel":["S","T","R","E","A","M"],"words":["STREAM","MASTER","SMART","STEAM","TAMER","TEAM","TEAR","MEAT","RATE","REST","SEAT","TERM","SAME","MATE","MARE","TAME","STEM","STAR","SEAM","SEAR","TRAM","MARS","ARMS","RAMS","MAT","MET","TEA","SEA","RAM","ART","SET","RAT","ARM","EAT","ATE","TAR","EAR","ARE"]},{"wheel":["A","C","T","O","R","S"],"words":["ACTORS","ACTOR","COAST","ROAST","TACOS","COATS","COAT","STAR","CATS","ACTS","CARS","CART","COST","OATS","ARTS","TSAR","SORT","SCAR","SOAR","ACT","CAT","OAR","RAT","ART","COT","ROT","SAT","SOT","CAR","ARC","TAR","OAT"]},{"wheel":["B","A","N","K","E","R"],"words":["BANKER","BARK","BARN","BEAK","BEAR","BAKE","BANK","BRAE","BARE","BEAN","BANE","EARN","NEAR","RANK","RAKE","BAR","ARK","RAN","ARE","EAR","KEN","BAN","NAB","BRA"]},{"wheel":["C","A","R","P","E","T"],"words":["CARPET","TRACE","CRAPE","PACER","CRATE","REACT","CATER","CAPE","CART","PATE","PEAT","PEAR","PART","PACE","RACE","RATE","TARE","TEAR","TRAP","RAPT","TAPE","REAP","CARE","CAT","ACT","PET","PAT","TAP","TEA","EAT","ACE","CAR","ARC","PAR","RAP","PER","TAR","RAT","ATE","APE","CAP"]},{"wheel":["C","R","A","F","T","S"],"words":["CRAFTS","CRAFT","FACTS","ACTS","ARTS","CARS","CART","CAST","CATS","FACT","RAFT","STAR","FAST","TSAR","SCAR","SCAT","ACT","CAT","RAT","ART","SAT","FAR","FAT","CAR","ARC","TAR"]},{"wheel":["C","R","A","T","E","S"],"words":["CRATES","CASTER","CRATE","REACT","TRACE","CATER","STARE","TEARS","RATES","ACRES","CARE","CART","CASE","CAST","CATS","RACE","RATE","SEAT","STAR","TARE","TEAR","CARS","ACTS","REST","EAST","SEAR","ACRE","ACT","CAT","RAT","ART","TEA","EAT","SET","SAT","ACE","CAR","ARC","EAR","ARE","TAR","ATE","SEA"]},{"wheel":["C","R","E","A","T","E"],"words":["CREATE","CRATE","REACT","TRACE","CATER","CARET","EATER","CART","RATE","TARE","TEAR","TREE","CARE","RACE","ACRE","CATE","RETE","CAT","ACT","RAT","ART","TEA","EAT","ACE","TEE","CAR","ARC","EAR","ARE","TAR","ATE","ERA"]},{"wheel":["D","A","N","C","E","R"],"words":["DANCER","CRANE","CANER","NACRE","CADRE","CEDAR","ACNE","DARE","DEAR","EARN","NEAR","RACE","READ","REND","CANE","CARD","CARE","DEAN","NARD","ACRE","CAN","DEN","END","RED","EAR","ARE","RAN","ACE","CAR","ARC","AND","ERA"]},{"wheel":["D","E","A","L","E","R"],"words":["DEALER","LEADER","ELDER","DEAL","DEAR","DARE","DALE","LEAD","READ","REAL","REEL","LADE","LARD","EARL","DEER","REED","RED","EAR","ARE","LED","ALE","LAD","EEL","LEE","ERA"]},{"wheel":["D","R","E","A","M","S"],"words":["DREAMS","DREAM","DARES","DEARS","DAMES","READS","ARMED","DARE","DEAR","DAME","MADE","MARS","READ","SAME","SEAM","SEAR","ARMS","RAMS","MARE","RED","RAM","ARM","EAR","ARE","SEA","SAD","MAD","DAM","ERA"]},{"wheel":["E","A","R","T","H","S"],"words":["EARTHS","EARTH","HEART","HASTE","SHARE","HATER","ARTS","EARS","EAST","HATE","HEAR","HEAT","RATS","REST","SEAT","STAR","TEAR","HARE","RASH","ART","RAT","TEA","EAT","SAT","SET","ASH","HAS","HAT","EAR","ARE","TAR","ERA","THE"]},{"wheel":["F","I","L","T","E","R"],"words":["FILTER","LIFTER","RIFLE","LITRE","TILER","FLIRT","FILE","FIRE","LIFE","LIFT","LITE","RIFT","TIER","TILE","TIRE","RIFE","RITE","FLIT","FIT","LIT","LET","TIE","REF","LIE","FIR"]},{"wheel":["G","R","A","N","I","T"],"words":["RATING","GIANT","GRAIN","TRAIN","ANTI","GAIN","GRIN","RAIN","RING","RANT","TANG","TARN","TRIG","GNAT","GRIT","RAT","ART","TAN","TIN","GIN","RIG","RAN","AIR","NIT","TAG","RAG","NAG"]},{"wheel":["G","R","A","P","E","S"],"words":["GRAPES","GEARS","GRAPE","PAGES","PARES","PARSE","PEARS","REAPS","SPARE","SPEAR","PAGER","AGES","APES","GEAR","GASP","PAGE","PARE","PEAR","PEAS","RAGE","RAPS","REAP","SAGE","SEAR","SPAR","AGE","PEG","PER","RAP","PAR","EAR","ARE","SEA","GAS","RAG","PAS","SAP","APE"]},{"wheel":["H","A","R","V","E","S"],"words":["SHARE","SHAVE","HAVE","HEAR","RAVE","SAVE","VASE","HARE","EARS","ASH","HAS","EAR","ARE","SEA"]},{"wheel":["H","E","A","R","T","S"],"words":["HEARTS","EARTHS","EARTH","HEART","HASTE","SHARE","HATER","ARTS","EARS","EAST","HATE","HEAR","HEAT","RATS","REST","SEAT","STAR","TEAR","HARE","RASH","SEAR","ART","RAT","TEA","EAT","SAT","SET","ASH","HAS","HAT","EAR","ARE","SEA","THE","TAR"]},{"wheel":["H","O","N","E","S","T"],"words":["HONEST","ONSET","STONE","SHONE","NOTES","TONES","HENS","NEST","NOSE","NOTE","SENT","SHOE","SHOT","TOES","TONE","TENS","HOSE","HOST","HEN","NET","TEN","TOE","NOT","HOT","SON","SOT","SET","ONE","EON","THE"]},{"wheel":["M","A","R","K","E","T"],"words":["MARKET","MAKER","TAMER","MATE","MEAT","RAKE","RATE","TARE","TEAR","TERM","MAKE","MARE","MARK","TEAM","TAME","MAT","MET","TEA","EAT","RAM","ARM","ART","RAT","ARK","TAR","ATE","EAR","ARE"]},{"wheel":["M","A","S","T","E","R"],"words":["MASTER","SMART","STREAM","TAMER","TEARS","RATES","STARE","MATS","RATE","REST","SEAT","STAR","STEAM","TEAM","TEAR","TERM","MARE","SAME","SEAM","SEAR","TAME","TRAM","MARS","ARMS","MAT","MET","TEA","EAT","SET","SAT","RAM","ARM","ART","RAT","EAR","ARE","SEA","TAR"]},{"wheel":["M","E","T","A","L","S"],"words":["METALS","METAL","LAMES","MALES","STEAM","TEAMS","TALES","STALE","SLATE","LEAST","LAME","LATE","MALE","MATE","MEAL","MEAT","SALT","SEAL","SEAT","TALE","TEAM","TAME","STEM","SLAM","MELT","MAT","MET","TEA","EAT","LET","SET","SAT","ALE","ALT","SEA"]},{"wheel":["N","A","T","U","R","E"],"words":["NATURE","TUNER","URATE","ANTE","AUNT","EARN","NEAR","NEAT","RENT","RUNE","RATE","TARE","TEAR","TUNE","TURN","TRUE","RUNT","NET","TEN","TEA","EAT","RAT","ART","RAN","NUT","ANT","RUN","EAR","ARE","RUE","TAR","ERA"]},{"wheel":["O","R","A","N","G","E"],"words":["ORANGE","GROAN","ORGAN","RANGE","ANGER","GEAR","GONE","NEAR","RAGE","ROAN","OGRE","EARN","GORE","AGE","EAR","ARE","RAN","RAG","ONE","EON","NOR","OAR","EGO","NAG"]},{"wheel":["G","A","R","D","E","N"],"words":["GARDEN","DANGER","GANDER","RANGED","GRADE","RAGED","DARE","DEAR","EARN","NEAR","READ","REND","GEAR","RAGE","AGED","DEAN","DRAG","RED","DEN","END","EAR","ARE","RAN","AGE","RAG","AND","NAG"]},{"wheel":["S","P","R","I","N","G"],"words":["SPRING","RINGS","GRIPS","PRIGS","PINGS","SIGN","SING","RING","GRIP","PING","SPIN","SNIP","PIGS","RIPS","PINS","RIGS","GINS","RIG","PIG","PIN","NIP","RIP","SIN","SIP","SIR"]},{"wheel":["W","I","N","T","E","R"],"words":["WINTER","INTER","TWINE","WRITE","INERT","WINE","WIRE","WENT","WREN","RENT","TIER","TIRE","RITE","TWIN","NEW","WIN","WET","NET","TEN","TIN","TIE","NIT"]},{"wheel":["B","R","I","D","G","E"],"words":["BRIDGE","DIRGE","RIDGE","BRIDE","BRED","BIRD","GRID","RIDE","DIRE","BIDE","RED","BED","BIG","BEG","RIB","BID","DIE","DIG","RIG"]},{"wheel":["C","A","N","D","L","E"],"words":["CANDLE","LANCED","CLEAN","LANCE","CANE","CLAN","DALE","DEAL","DEAN","LACE","LADE","LAND","LEAD","LEAN","LANE","ACNE","CAN","DEN","END","LAD","LED","ALE","ACE","AND"]},{"wheel":["S","I","L","V","E","R"],"words":["SILVER","SLIVER","LIVER","LIVE","VILE","VEIL","EVIL","SIRE","RISE","LIES","RILE","RIVE","SIR","LIE","REV","RES","VIE"]},{"wheel":["T","R","A","V","E","L"],"words":["TRAVEL","VALET","LATER","ALTER","ALERT","LAVE","LATE","TALE","TEAL","REAL","RATE","TARE","TEAR","RAVE","VEAL","VALE","ALE","ALT","ART","RAT","TAR","TEA","EAT","VET","LET","EAR","ARE"]},{"wheel":["W","O","N","D","E","R"],"words":["WONDER","ROWED","DROWN","OWNED","ENDOW","DOWN","DREW","WORD","WORN","NODE","WORE","RODE","RED","ROD","ROW","WON","NOW","ONE","EON","DEN","END","NOR","OWE"]},{"wheel":["F","O","R","E","S","T"],"words":["FOREST","FORTE","FROST","STORE","TORSE","ROTE","ROSE","SOFT","SORT","FORT","REST","TORE","FRET","FRO","FOR","ROT","SET","SOT","TOE","REF","ORE","OFT"]},{"wheel":["P","A","L","A","C","E"],"words":["PALACE","PLACE","PLEA","PALE","PACE","LACE","LEAP","PEAL","CAPE","ACE","ALE","APE","CAP","LAP","PAL"]},{"wheel":["F","A","R","M","E","R"],"words":["FARMER","FRAME","ARMER","FARM","FARE","FEAR","MARE","REAR","RARE","FAR","REF","RAM","ARM","EAR","ARE","ERA","MAR"]},{"wheel":["D","R","A","G","O","N"],"words":["DRAGON","GROAN","RADON","ADORN","ROAD","ROAN","DOG","RAG","RAN","ROD","OAR","AND","NAG","GOD","NOR"]},{"wheel":["C","A","S","T","O","R"],"words":["CASTOR","ACTOR","COAST","ROAST","TACO","CART","COAT","STAR","SCAR","SORT","OATS","ACT","CAT","CAR","ARC","ROT","COT","OAR","RAT","ART","SAT","SOT","TAR"]},{"wheel":["F","R","I","E","N","D"],"words":["FRIEND","FINDER","FIEND","FINED","DINER","FERN","FIND","FINE","FIRE","RIDE","RIFE","DINE","RED","REF","DEN","END","FIR","DIE"]},{"wheel":["P","I","R","A","T","E"],"words":["PIRATE","TRIPE","TAPIR","PART","PATE","PEAR","PEAT","PIER","RAPT","RATE","REAP","RIPE","RITE","TAPE","TARE","TEAR","TIRE","TRAP","TRIP","PET","PAT","TAP","TIE","TEA","EAT","PIE","PIT","TIP","RAT","ART","RIP","APE","EAR","ARE","TAR","ATE","AIR"]},{"wheel":["I","S","L","A","N","D"],"words":["ISLAND","SNAIL","SLAIN","LANDS","DIALS","LAID","LAND","LADS","NAIL","SAIL","SAND","SLID","LAD","SAD","AND","SIN","NIL","AID"]},{"wheel":["C","A","R","T","O","N"],"words":["CARTON","ACTOR","ACORN","COAT","CART","CORN","RANT","ROAN","TORN","ACT","CAT","OAR","OAT","RAN","RAT","ART","ROT","COT","CAN","NOT","TON","TAR"]},{"wheel":["P","A","S","T","E","L"],"words":["PASTEL","PLEAT","PLATE","PETAL","LEAST","STALE","SLATE","TALES","PASTE","TAPE","PEAT","PATE","PLEA","PALE","LEAP","PEAL","TALE","LATE","SEAT","EAST","LAST","SALE","SEAL","STEP","PET","PAT","TAP","LET","SET","SAT","TEA","EAT","ALE","APE","PAL","LAP"]},{"wheel":["S","T","A","B","L","E"],"words":["STABLE","TABLES","BLEAT","BLAST","TABLE","BALE","BEAT","BETA","BELT","LATE","TALE","TEAL","EAST","LAST","SEAT","SALE","SEAL","BATS","BETS","LABS","TAB","BAT","BET","LET","SET","SAT","TEA","EAT","ALE","ALT","SEA"]},{"wheel":["F","R","O","Z","E","N"],"words":["FROZEN","ZONE","FORE","ZERO","FERN","ONE","EON","FOR","FOE","NOR","REF","ZEN"]},{"wheel":["T","H","R","O","N","E"],"words":["THRONE","HORNET","NORTH","HERON","OTHER","TENOR","TONER","HORN","RENT","HERO","NOTE","TONE","TORN","THEN","HEN","HER","HOT","NOT","ONE","EON","NET","TEN","TOE","ROT","THE"]},{"wheel":["S","E","N","I","O","R"],"words":["SENIOR","NOISER","ROSIN","SIREN","IRONE","REINS","RESIN","NOSE","ROSE","IRON","REIN","SORE","SINE","ONES","EONS","ONE","EON","SON","SIN","SIR","NOR","ION","ROE"]},{"wheel":["C","R","E","D","I","T"],"words":["CREDIT","DIRECT","CITED","TRIED","TIRED","CIDER","RICE","RIDE","DIRE","DIRT","TIED","TIRE","RITE","TIER","CITE","RED","RID","DIE","TIE","ICE"]},{"wheel":["D","E","T","A","I","L"],"words":["DETAIL","DILATE","TAILED","TIDAL","IDEAL","LATE","TALE","TEAL","DATE","TIDE","TIED","DIAL","LAID","LEAD","DEAL","DALE","LIT","LET","LAD","LED","TEA","EAT","TIE","DIE","ALE","ALT","AID"]},{"wheel":["S","A","L","U","T","E"],"words":["SALUTE","LUTES","TULES","SAUTE","LATE","TALE","TEAL","LUTE","LAST","SALT","SEAT","EAST","SEAL","SALE","SUET","LET","SET","SAT","TEA","EAT","ALE","ALT","SUE","USE"]},{"wheel":["S","T","R","I","D","E"],"words":["STRIDE","DIREST","DRIEST","TIRED","TRIED","RIDES","TIRES","RITES","DIRE","DIRT","RIDE","RITE","TIRE","TIED","TIDE","REST","SIDE","SITE","STIR","RED","RID","DIE","SET","SIT","TIE","SIR"]},{"wheel":["P","O","E","T","R","Y"],"words":["POETRY","ROPETY","TROPE","POETY","ROTE","TORE","TYRE","POET","ROPE","PORT","TYPE","TOPE","TREY","PREY","PET","POT","TOP","ROT","TOE","RYE","TOY","TRY","PER"]},{"wheel":["F","A","T","H","E","R"],"words":["FATHER","HATER","AFTER","HEART","EARTH","HATE","HEAR","HEAT","HARE","FARE","FEAR","FATE","FEAT","FRAT","RATE","TARE","TEAR","FAR","FAT","HAT","HER","RAT","ART","TAR","TEA","EAT","THE","REF","EAR","ARE"]},{"wheel":["W","A","T","E","R","S"],"words":["WATERS","WASTER","STREW","SWEAR","TARES","TEARS","STARE","RATES","WARES","WASTE","WATER","WEAR","WEST","STAR","RATE","TEAR","TARE","REST","SEAT","EAST","SAW","WAR","WET","SET","SAT","TEA","EAT","RAW","TAR","ART","RAT","SEA","EAR","ARE"]},{"wheel":["G","O","L","D","E","N"],"words":["GOLDEN","LONGED","LODGE","GLEN","GOLD","GONE","LONE","NODE","NOEL","DOG","DEN","END","GOD","LED","LOG","OLD","ONE","EON"]},{"wheel":["S","I","M","P","L","E"],"words":["SIMPLE","IMPEL","SLIME","SMILE","LIME","LIMP","MILE","SLIP","SLIM","PILE","PIES","LIPS","ELMS","PIE","LIP","SIP","LIE","IMP"]},{"wheel":["P","R","I","N","C","E"],"words":["PRINCE","RIPEN","PINER","PRICE","RIPE","PINE","NICE","REIN","RICE","PIER","PEN","PIN","NIP","RIP","PIE","ICE","PER"]},{"wheel":["S","U","N","S","E","T"],"words":["SUNSET","SUETS","STUNS","NESTS","SENTS","NEST","NETS","SENT","SETS","SUET","STUN","TENS","TUNE","NET","SET","SUN","TEN","NUT","SUE","USE"]},{"wheel":["R","E","S","C","U","E"],"words":["RESCUE","CURSE","SECURE","CERUS","CURE","USER","RUSE","CRUE","SURE","CUE","SUE","RUE","USE","SEC"]},{"wheel":["S","H","A","D","O","W"],"words":["SHADOW","SHOWD","DASH","SHOW","SODA","WASH","WHOA","ASH","HAD","HAS","HOW","SAD","SAW","WHO","SOW"]},{"wheel":["H","E","R","O","E","S"],"words":["HEROES","HORSE","SHORE","HERE","HERO","HOSE","ROSE","SEER","SHOE","SORE","SEE","SHE","HER","ROE"]},{"wheel":["L","E","M","O","N","S"],"words":["LEMONS","LEMON","MELON","MOLES","LONE","MOLE","NOSE","OMEN","SOLE","SOME","MEN","ONE","EON","SON","ELM"]},{"wheel":["B","L","A","N","K","E"],"words":["BLANK","BLEAK","LEAK","LANE","LEAN","BALE","BAKE","BEAK","BEAN","BANE","ALE","BAN","NAB","KEN","LAB"]},{"wheel":["B","A","S","K","E","T"],"words":["BASKET","BEAKS","BAKES","STEAK","SKATE","BAKE","BEAK","BASE","BASK","BEAT","BETA","EAST","SEAT","TAKE","TEAK","BATS","BETS","BAT","BET","TAB","SET","SAT","TEA","EAT","ASK"]},{"wheel":["F","L","I","G","H","T"],"words":["FLIGHT","LIGHT","FILTH","GILT","LIFT","FLIT","GIFT","HILT","FIT","FIG","HIT","LIT"]},{"wheel":["C","A","N","D","O","R"],"words":["CANDOR","ACORN","RADON","ADORN","ROAN","ROAD","CARD","CORN","DARN","CAN","AND","CAR","ARC","RAN","ROD","OAR","NOR","COD"]},{"wheel":["B","R","I","G","H","T"],"words":["BRIGHT","GIRTH","BIRTH","RIGHT","GRIT","BRIG","GIRT","BIG","BIT","HIT","RIB","RIG"]},{"wheel":["F","O","R","T","U","N"],"words":["FOUNT","FRONT","FORT","FONT","FOUR","FRO","FOR","NOT","NOR","NUT","OUT","ROT","RUN","TON"]}];
 
-        /* Helper function: Checks if a word can be formed strictly from wheel letters (with letter frequency enforcement) */
+        /* Helper function: Checks if word can be formed strictly from wheel letters */
         function canFormWordFromWheel(word, wheelLetters) {
             const letterCounts = {};
             for (let char of wheelLetters) {
@@ -594,10 +808,186 @@
             return true;
         }
 
-        /* Enforce valid words for seed database */
+        /* Clean seed database ensuring 100% strict letter validity */
         ANAGRAM_SEEDS.forEach(seed => {
             seed.words = seed.words.filter(word => canFormWordFromWheel(word, seed.wheel));
         });
+
+        /* ==================== WEB AUDIO SYNTHESIZER ==================== */
+        class SoundManager {
+            constructor() {
+                this.ctx = null;
+                this.enabled = true;
+                // Pentatonic Scale frequencies: C4, D4, E4, G4, A4, C5, D5, E5, G5
+                this.scale = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25, 783.99];
+            }
+
+            init() {
+                if (!this.ctx) {
+                    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                    if (AudioContextClass) {
+                        this.ctx = new AudioContextClass();
+                    }
+                }
+                if (this.ctx && this.ctx.state === 'suspended') {
+                    this.ctx.resume();
+                }
+            }
+
+            playLetterTone(index) {
+                if (!this.enabled) return;
+                this.init();
+                if (!this.ctx) return;
+
+                const freq = this.scale[Math.min(index, this.scale.length - 1)];
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+
+                gain.gain.setValueAtTime(0.01, this.ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.18, this.ctx.currentTime + 0.02);
+                gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.22);
+
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+
+                osc.start();
+                osc.stop(this.ctx.currentTime + 0.23);
+            }
+
+            playWordSuccess() {
+                if (!this.enabled) return;
+                this.init();
+                if (!this.ctx) return;
+
+                const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+                notes.forEach((freq, idx) => {
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(freq, this.ctx.currentTime + idx * 0.06);
+
+                    gain.gain.setValueAtTime(0.001, this.ctx.currentTime + idx * 0.06);
+                    gain.gain.exponentialRampToValueAtTime(0.2, this.ctx.currentTime + idx * 0.06 + 0.03);
+                    gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + idx * 0.06 + 0.38);
+
+                    osc.connect(gain);
+                    gain.connect(this.ctx.destination);
+
+                    osc.start(this.ctx.currentTime + idx * 0.06);
+                    osc.stop(this.ctx.currentTime + idx * 0.06 + 0.4);
+                });
+            }
+
+            playBonusWordTone() {
+                if (!this.enabled) return;
+                this.init();
+                if (!this.ctx) return;
+
+                const notes = [739.99, 880.00, 1108.73, 1318.51]; // F#5, A5, C#6, E6
+                notes.forEach((freq, idx) => {
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(freq, this.ctx.currentTime + idx * 0.05);
+
+                    gain.gain.setValueAtTime(0.001, this.ctx.currentTime + idx * 0.05);
+                    gain.gain.exponentialRampToValueAtTime(0.16, this.ctx.currentTime + idx * 0.05 + 0.02);
+                    gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + idx * 0.05 + 0.3);
+
+                    osc.connect(gain);
+                    gain.connect(this.ctx.destination);
+
+                    osc.start(this.ctx.currentTime + idx * 0.05);
+                    osc.stop(this.ctx.currentTime + idx * 0.05 + 0.32);
+                });
+            }
+
+            playShuffleTone() {
+                if (!this.enabled) return;
+                this.init();
+                if (!this.ctx) return;
+
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(300, this.ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(700, this.ctx.currentTime + 0.12);
+                osc.frequency.exponentialRampToValueAtTime(400, this.ctx.currentTime + 0.22);
+
+                gain.gain.setValueAtTime(0.01, this.ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.12, this.ctx.currentTime + 0.06);
+                gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.24);
+
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+
+                osc.start();
+                osc.stop(this.ctx.currentTime + 0.25);
+            }
+
+            playErrorTone() {
+                if (!this.enabled) return;
+                this.init();
+                if (!this.ctx) return;
+
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(140, this.ctx.currentTime);
+                osc.frequency.setValueAtTime(110, this.ctx.currentTime + 0.09);
+
+                gain.gain.setValueAtTime(0.01, this.ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.1, this.ctx.currentTime + 0.03);
+                gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.22);
+
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+
+                osc.start();
+                osc.stop(this.ctx.currentTime + 0.23);
+            }
+
+            playLevelWinFanfare() {
+                if (!this.enabled) return;
+                this.init();
+                if (!this.ctx) return;
+
+                const chordNotes = [
+                    { f: 523.25, t: 0.0 },
+                    { f: 659.25, t: 0.12 },
+                    { f: 783.99, t: 0.24 },
+                    { f: 1046.50, t: 0.38 },
+                    { f: 1318.51, t: 0.52 }
+                ];
+
+                chordNotes.forEach(item => {
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(item.f, this.ctx.currentTime + item.t);
+
+                    gain.gain.setValueAtTime(0.001, this.ctx.currentTime + item.t);
+                    gain.gain.exponentialRampToValueAtTime(0.24, this.ctx.currentTime + item.t + 0.04);
+                    gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + item.t + 0.55);
+
+                    osc.connect(gain);
+                    gain.connect(this.ctx.destination);
+
+                    osc.start(this.ctx.currentTime + item.t);
+                    osc.stop(this.ctx.currentTime + item.t + 0.58);
+                });
+            }
+        }
+
+        const soundManager = new SoundManager();
 
         /* ==================== GAME STATE ==================== */
         let currentLevelIdx = 0;
@@ -606,11 +996,15 @@
         let currentRankTitle = "";
         let lastUsedSeedIndex = -1;
         let solvedWords = new Set();
+        let bonusWords = new Set();
         let currentLevelData = null;
         let wheelLetters = [];
         let selectedNodeIndices = [];
         let isDragging = false;
         let toastTimeout = null;
+
+        /* Themes */
+        const THEMES = ['theme-cosmic', 'theme-emerald', 'theme-amethyst', 'theme-amber', 'theme-ocean'];
 
         /* ==================== DOM ELEMENTS ==================== */
         const gameContainer = document.getElementById('game-container');
@@ -618,11 +1012,21 @@
         const diffBadge = document.getElementById('diff-badge');
         const scoreBadge = document.getElementById('score-badge');
         const playerTitleBadge = document.getElementById('player-title-badge');
+        const crosswordContainer = document.getElementById('crossword-container');
         const crosswordGrid = document.getElementById('crossword-grid');
         const previewEl = document.getElementById('word-preview');
         const toastEl = document.getElementById('toast');
         const wheelWrapper = document.getElementById('wheel-wrapper');
         const svgCanvas = document.getElementById('svg-canvas');
+        const btnShuffle = document.getElementById('btn-shuffle');
+        const btnSound = document.getElementById('btn-sound');
+        const btnBonusJar = document.getElementById('btn-bonus-jar');
+        const bonusModal = document.getElementById('bonus-modal');
+        const bonusWordsList = document.getElementById('bonus-words-list');
+        const btnCloseBonus = document.getElementById('btn-close-bonus');
+        const wordInfoModal = document.getElementById('word-info-modal');
+        const wordInfoTitle = document.getElementById('word-info-title');
+        const btnCloseWordInfo = document.getElementById('btn-close-word-info');
         const winModal = document.getElementById('win-modal');
         const skipConfirmModal = document.getElementById('skip-confirm-modal');
         const rankUpModal = document.getElementById('rank-up-modal');
@@ -636,111 +1040,84 @@
         const btnCancelSkip = document.getElementById('btn-cancel-skip');
         const btnNextLevel = document.getElementById('btn-next-level');
         const btnCloseRankUp = document.getElementById('btn-close-rank-up');
+        const confettiCanvas = document.getElementById('confetti-canvas');
 
         /* ==================== INITIALIZATION ==================== */
         function init() {
             loadProgress();
             setupEventListeners();
             loadLevel(currentLevelIdx);
+            window.addEventListener('resize', () => {
+                if (currentLevelData) renderCrosswordGrid();
+            });
         }
 
         /* ==================== RANK SYSTEM ==================== */
-// Ranks ordered from lowest (0) to highest (6)
-const RANK_THRESHOLDS = [
-    { minScore: 20000, title: "🔮 OMNISCIENT ORACLE" },
-    { minScore: 10000, title: "👑 GRAND VIRTUOSO" },
-    { minScore: 5000,  title: "⚔️ LINGUISTIC SCHOLAR" },
-    { minScore: 2500,  title: "🧠 MASTER WORDSMITH" },
-    { minScore: 1000,  title: "💡 ANAGRAM ACE" },
-    { minScore: 0,     title: "📚 LEXICON SCOUT" },
-    { minScore: -Infinity, title: "🐣 WORD NOVICE" }
-];
+        const RANK_THRESHOLDS = [
+            { minScore: 25000, title: "🔮 OMNISCIENT ORACLE" },
+            { minScore: 12000, title: "👑 GRAND VIRTUOSO" },
+            { minScore: 6000,  title: "⚔️ LINGUISTIC SCHOLAR" },
+            { minScore: 3000,  title: "🧠 MASTER WORDSMITH" },
+            { minScore: 1200,  title: "💡 ANAGRAM ACE" },
+            { minScore: 0,     title: "📚 LEXICON SCOUT" },
+            { minScore: -Infinity, title: "🐣 WORD NOVICE" }
+        ];
 
-function getRankIndex(currentScore) {
-    for (let i = 0; i < RANK_THRESHOLDS.length; i++) {
-        if (currentScore >= RANK_THRESHOLDS[i].minScore) {
-            // Return inverted index so higher index = higher rank
-            return RANK_THRESHOLDS.length - 1 - i;
-        }
-    }
-    return 0;
-}
-
-function getTitleForScore(currentScore) {
-    for (let item of RANK_THRESHOLDS) {
-        if (currentScore >= item.minScore) {
-            return item.title;
-        }
-    }
-    return "🐣 WORD NOVICE";
-}
-
-function checkRankPromotion(newScore) {
-    const newTitle = getTitleForScore(newScore);
-    
-    if (currentRankTitle && newTitle !== currentRankTitle) {
-        const oldRankIdx = getRankIndex(previousScore);
-        const newRankIdx = getRankIndex(newScore);
-
-        const modalTitle = rankUpModal.querySelector('.modal-title');
-        const modalIcon = rankUpModal.querySelector('.rank-up-icon');
-        const rankCard = rankUpModal.querySelector('.rank-up-card');
-
-        if (newRankIdx > oldRankIdx) {
-            // PROMOTION
-            modalIcon.textContent = "🌟";
-            modalTitle.textContent = "RANK UP!";
-            modalTitle.style.color = "#c084fc";
-            rankUpSubtitle.textContent = `Congratulations! You have been promoted to:\n${newTitle}`;
-            rankUpSubtitle.style.color = "#f8fafc";
-            
-            btnCloseRankUp.textContent = "AWESOME!";
-            btnCloseRankUp.style.background = "linear-gradient(135deg, #a855f7 0%, #7e22ce 100%)";
-            rankCard.style.borderColor = "#c084fc";
-            rankCard.style.boxShadow = "0 0 30px rgba(192, 132, 252, 0.4)";
-        } else {
-            // DEMOTION
-            modalIcon.textContent = "📉";
-            modalTitle.textContent = "RANK DEMOTION";
-            modalTitle.style.color = "#f87171";
-            rankUpSubtitle.textContent = `Your score dropped. You have been demoted to:\n${newTitle}`;
-            rankUpSubtitle.style.color = "#cbd5e1";
-            
-            btnCloseRankUp.textContent = "I'LL RECOVER!";
-            btnCloseRankUp.style.background = "linear-gradient(135deg, #ef4444 0%, #dc2626 100%)";
-            rankCard.style.borderColor = "#ef4444";
-            rankCard.style.boxShadow = "0 0 30px rgba(239, 68, 68, 0.4)";
+        function getRankIndex(currentScore) {
+            for (let i = 0; i < RANK_THRESHOLDS.length; i++) {
+                if (currentScore >= RANK_THRESHOLDS[i].minScore) {
+                    return RANK_THRESHOLDS.length - 1 - i;
+                }
+            }
+            return 0;
         }
 
-        rankUpModal.classList.add('active');
-    }
+        function getTitleForScore(currentScore) {
+            for (let item of RANK_THRESHOLDS) {
+                if (currentScore >= item.minScore) return item.title;
+            }
+            return "🐣 WORD NOVICE";
+        }
 
-    currentRankTitle = newTitle;
-    playerTitleBadge.textContent = `RANK: ${currentRankTitle}`;
-}
+        function checkRankPromotion(newScore) {
+            const newTitle = getTitleForScore(newScore);
 
-        /*old code below*/
+            if (currentRankTitle && newTitle !== currentRankTitle) {
+                const oldRankIdx = getRankIndex(previousScore);
+                const newRankIdx = getRankIndex(newScore);
 
-        /* ==================== RANK SYSTEM ==================== */
-        // function getTitleForScore(currentScore) {
-        //     if (currentScore >= 20000) return "🔮 OMNISCIENT ORACLE";
-        //     if (currentScore >= 10000) return "👑 GRAND VIRTUOSO";
-        //     if (currentScore >= 5000)  return "⚔️ LINGUISTIC SCHOLAR";
-        //     if (currentScore >= 2500)  return "🧠 MASTER WORDSMITH";
-        //     if (currentScore >= 1000)  return "💡 ANAGRAM ACE";
-        //     if (currentScore >= 0)     return "📚 LEXICON SCOUT";
-        //     return "🐣 WORD NOVICE";
-        // }
+                const modalTitle = rankUpModal.querySelector('.modal-title');
+                const modalIcon = rankUpModal.querySelector('.rank-up-icon');
+                const rankCard = rankUpModal.querySelector('.rank-up-card');
 
-        // function checkRankPromotion(newScore) {
-        //     const newTitle = getTitleForScore(newScore);
-        //     if (currentRankTitle && newTitle !== currentRankTitle) {
-        //         rankUpSubtitle.textContent = `You have been promoted to:\n${newTitle}`;
-        //         rankUpModal.classList.add('active');
-        //     }
-        //     currentRankTitle = newTitle;
-        //     playerTitleBadge.textContent = `RANK: ${currentRankTitle}`;
-        // }
+                if (newRankIdx > oldRankIdx) {
+                    modalIcon.textContent = "🌟";
+                    modalTitle.textContent = "RANK UP!";
+                    modalTitle.style.color = "#c084fc";
+                    rankUpSubtitle.textContent = "Congratulations! You have been promoted to:\n" + newTitle;
+                    rankUpSubtitle.style.color = "#f8fafc";
+                    btnCloseRankUp.textContent = "AWESOME!";
+                    btnCloseRankUp.style.background = "linear-gradient(135deg, #a855f7 0%, #7e22ce 100%)";
+                    rankCard.style.borderColor = "#c084fc";
+                    rankCard.style.boxShadow = "0 0 35px rgba(192, 132, 252, 0.45)";
+                } else {
+                    modalIcon.textContent = "📉";
+                    modalTitle.textContent = "RANK DEMOTION";
+                    modalTitle.style.color = "#f87171";
+                    rankUpSubtitle.textContent = "Your score dropped. You are now:\n" + newTitle;
+                    rankUpSubtitle.style.color = "#cbd5e1";
+                    btnCloseRankUp.textContent = "I'LL RECOVER!";
+                    btnCloseRankUp.style.background = "linear-gradient(135deg, #ef4444 0%, #dc2626 100%)";
+                    rankCard.style.borderColor = "#ef4444";
+                    rankCard.style.boxShadow = "0 0 35px rgba(239, 68, 68, 0.45)";
+                }
+
+                rankUpModal.classList.add('active');
+            }
+
+            currentRankTitle = newTitle;
+            playerTitleBadge.textContent = currentRankTitle;
+        }
 
         /* ==================== GENERATOR ENGINE ==================== */
         function getRandomDifficulty() {
@@ -754,44 +1131,10 @@ function checkRankPromotion(newScore) {
             return "Easy";
         }
 
-        function getTargetCountsForDifficulty(difficulty) {
-            switch(difficulty) {
-                case "Easy": return { l3: 6, l4: 4, l5: 3, l6: 2 };
-                case "Medium": return { l3: 4, l4: 5, l5: 4, l6: 3 };
-                case "Hard": return { l3: 3, l4: 6, l5: 5, l6: 4 };
-                case "Hardest": return { l3: 2, l4: 6, l5: 5, l6: 6 };
-                default: return { l3: 6, l4: 4, l5: 3, l6: 2 };
-            }
-        }
-
-        function filterWordsForDifficulty(allWords, difficulty, wheelLetters) {
-            const targets = getTargetCountsForDifficulty(difficulty);
-            const wordsByLength = { 3: [], 4: [], 5: [], 6: [] };
-
-            /* Guarantee words only made of wheel letters */
-            const validWords = allWords.filter(w => canFormWordFromWheel(w, wheelLetters));
-
-            validWords.forEach(w => {
-                const len = Math.min(6, w.length);
-                if (len >= 3 && wordsByLength[len]) {
-                    wordsByLength[len].push(w);
-                }
-            });
-
-            const selectedWords = [];
-            const lengths = [3, 4, 5, 6];
-            
-            lengths.forEach(l => {
-                const reqCount = targets[`l${l}`];
-                const available = shuffleArray([...wordsByLength[l]]);
-                selectedWords.push(...available.slice(0, reqCount));
-            });
-
-            return selectedWords;
-        }
-
         function generateLevelForDifficulty(difficulty) {
-            const maxGridSize = 12;
+            const maxGridSize = 11;
+            const minRequiredCounts = { "Easy": 5, "Medium": 6, "Hard": 7, "Hardest": 8 };
+            const targetMin = minRequiredCounts[difficulty] || 6;
 
             let availableIndices = [];
             for (let i = 0; i < ANAGRAM_SEEDS.length; i++) {
@@ -800,55 +1143,68 @@ function checkRankPromotion(newScore) {
             const chosenIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
             lastUsedSeedIndex = chosenIndex;
 
-            let seed = ANAGRAM_SEEDS[chosenIndex];
+            const seed = ANAGRAM_SEEDS[chosenIndex];
             const wheelLetters = [...seed.wheel];
 
+            let pool = seed.words.filter(w => canFormWordFromWheel(w, wheelLetters));
+            pool.sort((a, b) => b.length - a.length);
+
             let attempts = 0;
-            while (attempts < 500) {
+            while (attempts < 200) {
                 attempts++;
-                const gridWidth = maxGridSize;
-                const gridHeight = maxGridSize;
-                const grid = Array(gridHeight).fill(null).map(() => Array(gridWidth).fill(null));
+                const grid = Array(maxGridSize).fill(null).map(() => Array(maxGridSize).fill(null));
                 const placedWords = [];
 
-                let pool = filterWordsForDifficulty(seed.words, difficulty, wheelLetters);
-                if (pool.length < 10) {
-                    pool = seed.words.filter(w => canFormWordFromWheel(w, wheelLetters));
-                }
-                pool.sort((a, b) => b.length - a.length);
+                // Group by length and shuffle slightly
+                const byLen = {};
+                pool.forEach(w => {
+                    byLen[w.length] = byLen[w.length] || [];
+                    byLen[w.length].push(w);
+                });
+                const wordsShuffled = [];
+                Object.keys(byLen).sort((a,b) => b - a).forEach(len => {
+                    wordsShuffled.push(...shuffleArray(byLen[len]));
+                });
 
-                if (pool.length === 0) continue;
+                if (wordsShuffled.length === 0) continue;
 
-                const firstWord = pool[0];
-                const startRow = Math.floor(gridHeight / 2);
-                const startCol = Math.max(0, Math.floor((gridWidth - firstWord.length) / 2));
+                const firstWord = wordsShuffled[0];
+                const startRow = Math.floor(maxGridSize / 2);
+                const startCol = Math.max(0, Math.floor((maxGridSize - firstWord.length) / 2));
 
                 for (let i = 0; i < firstWord.length; i++) {
                     grid[startRow][startCol + i] = firstWord[i];
                 }
                 placedWords.push({ word: firstWord, row: startRow, col: startCol, dir: "H" });
 
-                for (let wIdx = 1; wIdx < pool.length; wIdx++) {
-                    const wordToPlace = pool[wIdx];
+                for (let wIdx = 1; wIdx < wordsShuffled.length; wIdx++) {
+                    const wordToPlace = wordsShuffled[wIdx];
                     let placed = false;
 
-                    for (let r = 0; r < gridHeight && !placed; r++) {
-                        for (let c = 0; c < gridWidth && !placed; c++) {
-                            ["H", "V"].forEach(dir => {
-                                if (placed) return;
-                                if (canPlaceWordStrict(grid, wordToPlace, r, c, dir, gridWidth, gridHeight)) {
+                    for (let r = 0; r < maxGridSize && !placed; r++) {
+                        for (let c = 0; c < maxGridSize && !placed; c++) {
+                            for (let dir of ["H", "V"]) {
+                                if (placed) break;
+                                if (canPlaceWordStrict(grid, wordToPlace, r, c, dir, maxGridSize, maxGridSize)) {
                                     placeWordOnGrid(grid, wordToPlace, r, c, dir);
                                     placedWords.push({ word: wordToPlace, row: r, col: c, dir });
                                     placed = true;
                                 }
-                            });
+                            }
                         }
                     }
                 }
 
-                if (placedWords.length >= 10) {
-                    const cropped = cropGridAndAdjustCoordinates(gridWidth, gridHeight, placedWords);
-                    return { difficulty, gridWidth: cropped.width, gridHeight: cropped.height, words: cropped.words, wheelLetters };
+                if (placedWords.length >= targetMin) {
+                    const cropped = cropGridAndAdjustCoordinates(maxGridSize, maxGridSize, placedWords);
+                    return {
+                        difficulty,
+                        gridWidth: cropped.width,
+                        gridHeight: cropped.height,
+                        words: cropped.words,
+                        wheelLetters,
+                        allSeedWords: pool
+                    };
                 }
             }
 
@@ -929,24 +1285,17 @@ function checkRankPromotion(newScore) {
 
         function generateFallbackLevel(difficulty, seed) {
             const wheel = seed ? seed.wheel : ["P", "L", "A", "N", "E", "T"];
-            const validSeedWords = seed ? seed.words.filter(w => canFormWordFromWheel(w, wheel)) : [];
-            
+            const pool = seed ? seed.words : ["PLANET", "PLANE", "PLANT", "PLATE", "PANEL", "LANE", "LEAN", "TALE", "NEAT", "PET", "NET", "TEA"];
             const fallbackWords = [
                 { word: "PLANET", row: 0, col: 0, dir: "H" },
                 { word: "LANE",   row: 0, col: 1, dir: "V" },
                 { word: "NEAT",   row: 0, col: 3, dir: "V" },
                 { word: "TEA",    row: 2, col: 3, dir: "H" },
                 { word: "PET",    row: 0, col: 0, dir: "V" },
-                { word: "PLANT",  row: 4, col: 0, dir: "H" },
-                { word: "ANT",    row: 4, col: 2, dir: "V" },
-                { word: "TAP",    row: 2, col: 0, dir: "H" },
-                { word: "PANEL",  row: 6, col: 0, dir: "H" },
-                { word: "ALE",    row: 0, col: 2, dir: "V" },
-                { word: "NET",    row: 4, col: 4, dir: "V" },
-                { word: "TEN",    row: 6, col: 4, dir: "H" }
+                { word: "PLANT",  row: 4, col: 0, dir: "H" }
             ].filter(wObj => canFormWordFromWheel(wObj.word, wheel));
 
-            return { difficulty, gridWidth: 7, gridHeight: 8, wheelLetters: wheel, words: fallbackWords };
+            return { difficulty, gridWidth: 6, gridHeight: 5, wheelLetters: wheel, words: fallbackWords, allSeedWords: pool };
         }
 
         /* ==================== PERSISTENCE ==================== */
@@ -956,13 +1305,15 @@ function checkRankPromotion(newScore) {
                 score: score,
                 lastUsedSeedIndex: lastUsedSeedIndex,
                 solved: Array.from(solvedWords),
-                levelData: currentLevelData
+                bonus: Array.from(bonusWords),
+                levelData: currentLevelData,
+                soundEnabled: soundManager.enabled
             };
-            localStorage.setItem('wordquest_save_v2', JSON.stringify(data));
+            localStorage.setItem('wordquest_save_v3', JSON.stringify(data));
         }
 
         function loadProgress() {
-            const saved = localStorage.getItem('wordquest_save_v2');
+            const saved = localStorage.getItem('wordquest_save_v3') || localStorage.getItem('wordquest_save_v2');
             if (saved) {
                 try {
                     const data = JSON.parse(saved);
@@ -970,30 +1321,49 @@ function checkRankPromotion(newScore) {
                     if (data.score !== undefined) score = data.score;
                     if (data.lastUsedSeedIndex !== undefined) lastUsedSeedIndex = data.lastUsedSeedIndex;
                     if (data.solved) solvedWords = new Set(data.solved);
+                    if (data.bonus) bonusWords = new Set(data.bonus);
                     if (data.levelData) currentLevelData = data.levelData;
+                    if (data.soundEnabled !== undefined) {
+                        soundManager.enabled = data.soundEnabled;
+                        btnSound.textContent = soundManager.enabled ? '🔊' : '🔇';
+                    }
                 } catch (e) {}
             }
             currentRankTitle = getTitleForScore(score);
             updateScoreDisplay();
+            updateBonusDisplay();
         }
 
         function updateScoreDisplay() {
-    scoreBadge.textContent = `SCORE: ${score}`;
-    checkRankPromotion(score);
-    previousScore = score; // Store score state for the next update
-}
+            scoreBadge.textContent = "🏆 " + score;
+            checkRankPromotion(score);
+            previousScore = score;
+        }
+
+        function updateBonusDisplay() {
+            btnBonusJar.textContent = "⭐ " + bonusWords.size;
+        }
 
         /* ==================== LEVEL RENDER ENGINE ==================== */
+        function applyLevelTheme(lvl) {
+            THEMES.forEach(t => gameContainer.classList.remove(t));
+            const themeIdx = Math.floor((lvl - 1) / 5) % THEMES.length;
+            gameContainer.classList.add(THEMES[themeIdx]);
+        }
+
         function loadLevel(idx) {
             if (idx !== currentLevelIdx || !currentLevelData) {
                 currentLevelIdx = idx;
                 solvedWords.clear();
+                bonusWords.clear();
                 const difficulty = getRandomDifficulty();
                 currentLevelData = generateLevelForDifficulty(difficulty);
             }
 
-            levelBadge.textContent = `LVL ${currentLevelIdx + 1}`;
+            applyLevelTheme(currentLevelIdx + 1);
+            levelBadge.textContent = "LVL " + (currentLevelIdx + 1);
             updateDifficultyBadge(currentLevelData.difficulty);
+            updateBonusDisplay();
             showLevelStartNotification(currentLevelIdx + 1, currentLevelData.difficulty);
             renderCrosswordGrid();
             renderWheel();
@@ -1002,27 +1372,34 @@ function checkRankPromotion(newScore) {
 
         function updateDifficultyBadge(diff) {
             diffBadge.textContent = diff;
-            diffBadge.className = `difficulty-badge diff-${diff.toLowerCase()}`;
+            diffBadge.className = "difficulty-badge diff-" + diff.toLowerCase();
         }
 
         function showLevelStartNotification(lvlNum, diff) {
-            startLevelTitle.textContent = `LEVEL ${lvlNum}`;
-            startDiffTag.textContent = `DIFFICULTY: ${diff.toUpperCase()}`;
-            startDiffTag.className = `difficulty-badge diff-${diff.toLowerCase()}`;
+            startLevelTitle.textContent = "LEVEL " + lvlNum;
+            startDiffTag.textContent = "DIFFICULTY: " + diff.toUpperCase();
+            startDiffTag.className = "difficulty-badge diff-" + diff.toLowerCase();
             levelStartOverlay.classList.add('active');
 
             setTimeout(() => {
                 levelStartOverlay.classList.remove('active');
-            }, 1800);
+            }, 1400);
         }
 
         function renderCrosswordGrid() {
             crosswordGrid.innerHTML = '';
+            if (!currentLevelData) return;
             const { gridWidth, gridHeight, words } = currentLevelData;
 
-            const tileSize = Math.max(22, Math.min(32, Math.floor(320 / Math.max(gridWidth, gridHeight))));
-            crosswordGrid.style.gridTemplateColumns = `repeat(${gridWidth}, ${tileSize}px)`;
-            crosswordGrid.style.gridTemplateRows = `repeat(${gridHeight}, ${tileSize}px)`;
+            // Responsive tile calculation based on current viewport
+            const containerW = crosswordContainer.clientWidth || 340;
+            const containerH = crosswordContainer.clientHeight || 280;
+            const sizeW = Math.floor((containerW - 16) / gridWidth);
+            const sizeH = Math.floor((containerH - 16) / gridHeight);
+            const tileSize = Math.max(22, Math.min(38, Math.min(sizeW, sizeH) - 2));
+
+            crosswordGrid.style.gridTemplateColumns = "repeat(" + gridWidth + ", " + tileSize + "px)";
+            crosswordGrid.style.gridTemplateRows = "repeat(" + gridHeight + ", " + tileSize + "px)";
 
             const matrix = Array(gridHeight).fill(null).map(() => Array(gridWidth).fill(null));
 
@@ -1039,9 +1416,9 @@ function checkRankPromotion(newScore) {
                 for (let c = 0; c < gridWidth; c++) {
                     const tile = document.createElement('div');
                     tile.classList.add('tile');
-                    tile.style.width = `${tileSize}px`;
-                    tile.style.height = `${tileSize}px`;
-                    tile.style.fontSize = `${Math.floor(tileSize * 0.55)}px`;
+                    tile.style.width = tileSize + "px";
+                    tile.style.height = tileSize + "px";
+                    tile.style.fontSize = Math.floor(tileSize * 0.55) + "px";
                     tile.dataset.row = r;
                     tile.dataset.col = c;
 
@@ -1064,6 +1441,10 @@ function checkRankPromotion(newScore) {
                         if (parentWords.some(wObj => solvedWords.has(wObj.word))) {
                             tile.classList.remove('unsolved');
                             tile.classList.add('solved');
+                            tile.addEventListener('click', () => {
+                                const solvedWord = parentWords.find(w => solvedWords.has(w.word));
+                                if (solvedWord) showWordInfo(solvedWord.word);
+                            });
                         }
                     }
                     crosswordGrid.appendChild(tile);
@@ -1071,22 +1452,30 @@ function checkRankPromotion(newScore) {
             }
         }
 
+        function showWordInfo(word) {
+            wordInfoTitle.textContent = word;
+            wordInfoModal.classList.add('active');
+        }
+
         function shuffleArray(arr) {
-            for (let i = arr.length - 1; i > 0; i--) {
+            const a = [...arr];
+            for (let i = a.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
-                [arr[i], arr[j]] = [arr[j], arr[i]];
+                [a[i], a[j]] = [a[j], a[i]];
             }
-            return arr;
+            return a;
         }
 
         function renderWheel() {
             wheelWrapper.querySelectorAll('.wheel-node').forEach(n => n.remove());
-            wheelLetters = shuffleArray([...currentLevelData.wheelLetters]);
+            if (wheelLetters.length === 0 || wheelLetters.length !== currentLevelData.wheelLetters.length) {
+                wheelLetters = shuffleArray([...currentLevelData.wheelLetters]);
+            }
 
             const totalNodes = wheelLetters.length;
-            const radius = 95;
-            const centerX = 130;
-            const centerY = 130;
+            const radius = Math.min(wheelWrapper.clientWidth, wheelWrapper.clientHeight) * 0.38;
+            const centerX = wheelWrapper.clientWidth / 2;
+            const centerY = wheelWrapper.clientHeight / 2;
 
             wheelLetters.forEach((letter, idx) => {
                 const angle = (idx * (360 / totalNodes) - 90) * (Math.PI / 180);
@@ -1097,18 +1486,43 @@ function checkRankPromotion(newScore) {
                 node.classList.add('wheel-node');
                 node.textContent = letter;
                 node.dataset.index = idx;
-                node.style.left = `${x}px`;
-                node.style.top = `${y}px`;
+                node.style.left = x + "px";
+                node.style.top = y + "px";
 
                 wheelWrapper.appendChild(node);
             });
         }
 
+        function shuffleWheelLetters() {
+            soundManager.playShuffleTone();
+            btnShuffle.classList.add('spin');
+            setTimeout(() => btnShuffle.classList.remove('spin'), 400);
+
+            wheelLetters = shuffleArray([...wheelLetters]);
+            renderWheel();
+        }
+
         /* ==================== INTERACTION SYSTEM ==================== */
         function setupEventListeners() {
-            window.addEventListener('pointerdown', handlePointerDown);
+            wheelWrapper.addEventListener('pointerdown', handlePointerDown);
             window.addEventListener('pointermove', handlePointerMove);
             window.addEventListener('pointerup', handlePointerUp);
+            window.addEventListener('pointercancel', handlePointerUp);
+
+            btnShuffle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                shuffleWheelLetters();
+            });
+
+            btnSound.addEventListener('click', () => {
+                soundManager.enabled = !soundManager.enabled;
+                btnSound.textContent = soundManager.enabled ? '🔊' : '🔇';
+                saveProgress();
+            });
+
+            btnBonusJar.addEventListener('click', openBonusJarModal);
+            btnCloseBonus.addEventListener('click', () => bonusModal.classList.remove('active'));
+            btnCloseWordInfo.addEventListener('click', () => wordInfoModal.classList.remove('active'));
 
             btnHint.addEventListener('click', handleHint);
             btnSkip.addEventListener('click', () => skipConfirmModal.classList.add('active'));
@@ -1122,28 +1536,55 @@ function checkRankPromotion(newScore) {
 
             btnNextLevel.addEventListener('click', () => {
                 winModal.classList.remove('active');
+                clearConfetti();
                 currentLevelData = null;
                 loadLevel(currentLevelIdx + 1);
             });
+        }
+
+        function openBonusJarModal() {
+            bonusWordsList.innerHTML = '';
+            if (bonusWords.size === 0) {
+                bonusWordsList.innerHTML = '<div style="color: #94a3b8; font-size: 13px; padding: 12px;">No bonus words collected yet! Find valid words not on the grid to earn bonus stars.</div>';
+            } else {
+                Array.from(bonusWords).forEach(w => {
+                    const chip = document.createElement('div');
+                    chip.className = 'bonus-word-chip';
+                    chip.textContent = w;
+                    bonusWordsList.appendChild(chip);
+                });
+            }
+            bonusModal.classList.add('active');
         }
 
         function getNodeFromPoint(x, y) {
             const nodes = wheelWrapper.querySelectorAll('.wheel-node');
             for (let node of nodes) {
                 const rect = node.getBoundingClientRect();
-                if (x >= rect.left - 12 && x <= rect.right + 12 &&
-                    y >= rect.top - 12 && y <= rect.bottom + 12) {
+                if (x >= rect.left - 10 && x <= rect.right + 10 &&
+                    y >= rect.top - 10 && y <= rect.bottom + 10) {
                     return parseInt(node.dataset.index);
                 }
             }
             return null;
         }
 
+        function triggerHaptic(type) {
+            if (!navigator.vibrate) return;
+            if (type === 'select') navigator.vibrate(12);
+            else if (type === 'solve') navigator.vibrate([25, 35, 45]);
+            else if (type === 'bonus') navigator.vibrate([18, 25, 20]);
+            else if (type === 'error') navigator.vibrate([40, 30]);
+        }
+
         function handlePointerDown(e) {
+            soundManager.init();
             const nodeIdx = getNodeFromPoint(e.clientX, e.clientY);
             if (nodeIdx !== null) {
                 isDragging = true;
                 selectedNodeIndices = [nodeIdx];
+                soundManager.playLetterTone(0);
+                triggerHaptic('select');
                 updateSelectionUI(e.clientX, e.clientY);
             }
         }
@@ -1156,8 +1597,12 @@ function checkRankPromotion(newScore) {
                 const prevIdx = selectedNodeIndices[selectedNodeIndices.length - 2];
                 if (selectedNodeIndices.length > 1 && nodeIdx === prevIdx) {
                     selectedNodeIndices.pop();
+                    soundManager.playLetterTone(selectedNodeIndices.length - 1);
+                    triggerHaptic('select');
                 } else if (!selectedNodeIndices.includes(nodeIdx)) {
                     selectedNodeIndices.push(nodeIdx);
+                    soundManager.playLetterTone(selectedNodeIndices.length - 1);
+                    triggerHaptic('select');
                 }
             }
             updateSelectionUI(e.clientX, e.clientY);
@@ -1199,7 +1644,7 @@ function checkRankPromotion(newScore) {
 
             const wrapperRect = wheelWrapper.getBoundingClientRect();
             const points = selectedNodeIndices.map(idx => {
-                const node = wheelWrapper.querySelector(`.wheel-node[data-index="${idx}"]`);
+                const node = wheelWrapper.querySelector(".wheel-node[data-index=\"" + idx + "\"]");
                 const rect = node.getBoundingClientRect();
                 return {
                     x: rect.left + rect.width / 2 - wrapperRect.left,
@@ -1216,7 +1661,7 @@ function checkRankPromotion(newScore) {
                 svgCanvas.appendChild(line);
             }
 
-            if (isDragging) {
+            if (isDragging && cursorX !== undefined && cursorY !== undefined) {
                 const lastPt = points[points.length - 1];
                 const activeLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
                 activeLine.setAttribute('x1', lastPt.x);
@@ -1229,6 +1674,19 @@ function checkRankPromotion(newScore) {
 
         function clearSvgLines() { svgCanvas.innerHTML = ''; }
 
+        /* ==================== FLOATING SCORE ANIMATION ==================== */
+        function spawnFloatingScore(text, x, y, isBonus) {
+            const containerRect = gameContainer.getBoundingClientRect();
+            const floatEl = document.createElement('div');
+            floatEl.className = 'floating-score' + (isBonus ? ' bonus-float' : '');
+            floatEl.textContent = text;
+            floatEl.style.left = (x - containerRect.left) + "px";
+            floatEl.style.top = (y - containerRect.top) + "px";
+            gameContainer.appendChild(floatEl);
+
+            setTimeout(() => floatEl.remove(), 850);
+        }
+
         /* ==================== ANIMATIONS ENGINE ==================== */
         function highlightAlreadyFoundWord(targetWordObj) {
             const { word, row, col, dir } = targetWordObj;
@@ -1236,15 +1694,13 @@ function checkRankPromotion(newScore) {
             for (let i = 0; i < word.length; i++) {
                 const r = dir === "V" ? row + i : row;
                 const c = dir === "H" ? col + i : col;
-                const targetTile = crosswordGrid.querySelector(`.tile[data-row="${r}"][data-col="${c}"]`);
+                const targetTile = crosswordGrid.querySelector(".tile[data-row=\"" + r + "\"][data-col=\"" + c + "\"]");
 
                 if (targetTile) {
                     setTimeout(() => {
                         targetTile.classList.add('already-highlight');
-                        setTimeout(() => {
-                            targetTile.classList.remove('already-highlight');
-                        }, 700);
-                    }, i * 50);
+                        setTimeout(() => targetTile.classList.remove('already-highlight'), 650);
+                    }, i * 45);
                 }
             }
         }
@@ -1258,7 +1714,7 @@ function checkRankPromotion(newScore) {
                 let startX, startY;
 
                 if (nodeIdx !== undefined) {
-                    const nodeEl = wheelWrapper.querySelector(`.wheel-node[data-index="${nodeIdx}"]`);
+                    const nodeEl = wheelWrapper.querySelector(".wheel-node[data-index=\"" + nodeIdx + "\"]");
                     const nodeRect = nodeEl.getBoundingClientRect();
                     startX = nodeRect.left + nodeRect.width / 2 - 14 - containerRect.left;
                     startY = nodeRect.top + nodeRect.height / 2 - 14 - containerRect.top;
@@ -1270,7 +1726,7 @@ function checkRankPromotion(newScore) {
 
                 const r = dir === "V" ? row + i : row;
                 const c = dir === "H" ? col + i : col;
-                const targetTile = crosswordGrid.querySelector(`.tile[data-row="${r}"][data-col="${c}"]`);
+                const targetTile = crosswordGrid.querySelector(".tile[data-row=\"" + r + "\"][data-col=\"" + c + "\"]");
 
                 if (!targetTile) continue;
 
@@ -1280,16 +1736,19 @@ function checkRankPromotion(newScore) {
 
                 const flyer = document.createElement('div');
                 flyer.className = 'flying-tile';
+                flyer.style.width = targetRect.width + "px";
+                flyer.style.height = targetRect.height + "px";
+                flyer.style.fontSize = Math.floor(targetRect.height * 0.55) + "px";
                 flyer.textContent = word[i];
-                flyer.style.left = `${startX}px`;
-                flyer.style.top = `${startY}px`;
+                flyer.style.left = startX + "px";
+                flyer.style.top = startY + "px";
 
                 gameContainer.appendChild(flyer);
 
                 setTimeout(() => {
-                    flyer.style.left = `${targetX}px`;
-                    flyer.style.top = `${targetY}px`;
-                }, i * 70);
+                    flyer.style.left = targetX + "px";
+                    flyer.style.top = targetY + "px";
+                }, i * 60);
 
                 setTimeout(() => {
                     flyer.remove();
@@ -1297,7 +1756,7 @@ function checkRankPromotion(newScore) {
                     targetTile.classList.add('solved');
                     targetTile.classList.add('solved-pop');
                     setTimeout(() => targetTile.classList.remove('solved-pop'), 400);
-                }, 500 + i * 70);
+                }, 480 + i * 60);
             }
         }
 
@@ -1309,8 +1768,9 @@ function checkRankPromotion(newScore) {
         function validateWord(word) {
             if (word.length < 3) return;
 
-            /* Ensure user guess is strictly formable from current wheel letters */
             if (!canFormWordFromWheel(word, currentLevelData.wheelLetters)) {
+                soundManager.playErrorTone();
+                triggerHaptic('error');
                 showToast("TRY AGAIN", "wrong");
                 return;
             }
@@ -1323,18 +1783,49 @@ function checkRankPromotion(newScore) {
                     highlightAlreadyFoundWord(targetWordObj);
                 } else {
                     solvedWords.add(word);
-                    score += calculateWordScore(word.length);
+                    const pts = calculateWordScore(word.length);
+                    score += pts;
                     updateScoreDisplay();
                     saveProgress();
+
+                    soundManager.playWordSuccess();
+                    triggerHaptic('solve');
                     showToast("CORRECT!", "correct");
-                    
+
+                    const rect = previewEl.getBoundingClientRect();
+                    spawnFloatingScore("+" + pts, rect.left + rect.width / 2, rect.top, false);
+
                     animateWordToGrid(targetWordObj);
-                    
+
                     setTimeout(() => {
                         checkLevelCompletion();
-                    }, 500 + word.length * 70);
+                    }, 500 + word.length * 60);
+                }
+            } else if (currentLevelData.allSeedWords && currentLevelData.allSeedWords.includes(word)) {
+                // BONUS WORD DISCOVERY!
+                if (bonusWords.has(word)) {
+                    showToast("BONUS ALREADY FOUND!", "already");
+                } else {
+                    bonusWords.add(word);
+                    const bonusPts = 15;
+                    score += bonusPts;
+                    updateScoreDisplay();
+                    updateBonusDisplay();
+                    saveProgress();
+
+                    soundManager.playBonusWordTone();
+                    triggerHaptic('bonus');
+                    showToast("⭐ BONUS WORD! +" + bonusPts, "bonus");
+
+                    btnBonusJar.classList.add('bounce');
+                    setTimeout(() => btnBonusJar.classList.remove('bounce'), 450);
+
+                    const rect = previewEl.getBoundingClientRect();
+                    spawnFloatingScore("+" + bonusPts + " ⭐", rect.left + rect.width / 2, rect.top, true);
                 }
             } else {
+                soundManager.playErrorTone();
+                triggerHaptic('error');
                 showToast("TRY AGAIN", "wrong");
             }
         }
@@ -1350,7 +1841,7 @@ function checkRankPromotion(newScore) {
                     for (let i = 0; i < word.length; i++) {
                         const r = dir === "V" ? row + i : row;
                         const c = dir === "H" ? col + i : col;
-                        const tile = crosswordGrid.querySelector(`.tile[data-row="${r}"][data-col="${c}"]`);
+                        const tile = crosswordGrid.querySelector(".tile[data-row=\"" + r + "\"][data-col=\"" + c + "\"]");
                         if (tile && tile.classList.contains('unsolved')) {
                             unsolvedCells.push({ tile, letter: word[i], wordObj: wObj });
                         }
@@ -1365,6 +1856,7 @@ function checkRankPromotion(newScore) {
                 randomPick.tile.classList.add('solved-pop');
                 setTimeout(() => randomPick.tile.classList.remove('solved-pop'), 400);
 
+                soundManager.playBonusWordTone();
                 showToast("HINT REVEALED (-500 PTS)", "info");
 
                 currentLevelData.words.forEach(wObj => {
@@ -1374,7 +1866,7 @@ function checkRankPromotion(newScore) {
                         for (let i = 0; i < word.length; i++) {
                             const r = dir === "V" ? row + i : row;
                             const c = dir === "H" ? col + i : col;
-                            const tile = crosswordGrid.querySelector(`.tile[data-row="${r}"][data-col="${c}"]`);
+                            const tile = crosswordGrid.querySelector(".tile[data-row=\"" + r + "\"][data-col=\"" + c + "\"]");
                             if (tile && tile.classList.contains('unsolved')) {
                                 fullRevealed = false;
                                 break;
@@ -1401,7 +1893,7 @@ function checkRankPromotion(newScore) {
                 for (let i = 0; i < word.length; i++) {
                     const r = dir === "V" ? row + i : row;
                     const c = dir === "H" ? col + i : col;
-                    const tile = crosswordGrid.querySelector(`.tile[data-row="${r}"][data-col="${c}"]`);
+                    const tile = crosswordGrid.querySelector(".tile[data-row=\"" + r + "\"][data-col=\"" + c + "\"]");
                     if (tile && tile.classList.contains('unsolved')) {
                         tile.classList.remove('unsolved');
                         tile.classList.add('solved');
@@ -1426,18 +1918,75 @@ function checkRankPromotion(newScore) {
                 currentLevelData.words.forEach(wObj => solvedWords.add(wObj.word));
                 saveProgress();
 
+                soundManager.playLevelWinFanfare();
+                startConfetti();
+
                 setTimeout(() => {
-                    document.getElementById('win-subtitle').textContent = `Final Score: ${score}\nRank: ${getTitleForScore(score)}`;
+                    document.getElementById('win-subtitle').textContent = "Level " + (currentLevelIdx + 1) + " Cleared!\nScore: " + score + " | Bonus Words: " + bonusWords.size;
                     winModal.classList.add('active');
-                }, 600);
+                }, 500);
             }
         }
 
         function showToast(msg, type) {
             clearTimeout(toastTimeout);
             toastEl.textContent = msg;
-            toastEl.className = `toast ${type} show`;
-            toastTimeout = setTimeout(() => toastEl.classList.remove('show'), 1800);
+            toastEl.className = "toast " + type + " show";
+            toastTimeout = setTimeout(() => toastEl.classList.remove('show'), 1600);
+        }
+
+        /* ==================== CONFETTI CELEBRATION ==================== */
+        let confettiParticles = [];
+        let confettiAnimationId = null;
+
+        function startConfetti() {
+            confettiParticles = [];
+            confettiCanvas.width = gameContainer.clientWidth;
+            confettiCanvas.height = gameContainer.clientHeight;
+            const ctx = confettiCanvas.getContext('2d');
+            const colors = ['#38bdf8', '#fbbf24', '#34d399', '#f87171', '#c084fc', '#f472b6'];
+
+            for (let i = 0; i < 75; i++) {
+                confettiParticles.push({
+                    x: Math.random() * confettiCanvas.width,
+                    y: Math.random() * -confettiCanvas.height * 0.5,
+                    w: Math.random() * 8 + 4,
+                    h: Math.random() * 6 + 4,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    vx: (Math.random() - 0.5) * 3,
+                    vy: Math.random() * 3 + 2.5,
+                    rot: Math.random() * 360,
+                    rotSpeed: (Math.random() - 0.5) * 8
+                });
+            }
+
+            function updateConfetti() {
+                ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+                confettiParticles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.rot += p.rotSpeed;
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate((p.rot * Math.PI) / 180);
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+                    ctx.restore();
+                });
+                confettiParticles = confettiParticles.filter(p => p.y < confettiCanvas.height + 20);
+                if (confettiParticles.length > 0) {
+                    confettiAnimationId = requestAnimationFrame(updateConfetti);
+                }
+            }
+            if (confettiAnimationId) cancelAnimationFrame(confettiAnimationId);
+            updateConfetti();
+        }
+
+        function clearConfetti() {
+            if (confettiAnimationId) cancelAnimationFrame(confettiAnimationId);
+            const ctx = confettiCanvas.getContext('2d');
+            ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+            confettiParticles = [];
         }
 
         window.addEventListener('DOMContentLoaded', init);
