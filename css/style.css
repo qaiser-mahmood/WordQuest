@@ -421,6 +421,87 @@ html, body {
 .toast.wrong { background: #ef4444; color: #ffffff; }
 .toast.info { background: #0284c7; color: #ffffff; }
 
+/* ================= WORD DEFINITION BUBBLE ================= */
+.def-bubble {
+    position: absolute;
+    bottom: calc(var(--wheel-size) + 40px);
+    width: 90%;
+    max-width: 410px;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 2px solid #38bdf8;
+    border-radius: 18px;
+    padding: 10px 14px;
+    box-shadow: 0 12px 35px rgba(2, 132, 199, 0.28), 0 4px 12px rgba(15, 23, 42, 0.08);
+    z-index: 120;
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+    pointer-events: none;
+    transition: opacity 0.26s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.26s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.def-bubble.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.def-bubble-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.def-bubble-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.def-icon {
+    font-size: 15px;
+}
+
+.def-word {
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #0369a1;
+}
+
+.def-pos {
+    font-size: 10px;
+    font-weight: 800;
+    color: #7e22ce;
+    background: #f3e8ff;
+    padding: 1px 7px;
+    border-radius: 10px;
+    border: 1px solid #d8b4fe;
+    text-transform: lowercase;
+}
+
+.def-bubble-close {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 19px;
+    font-weight: 800;
+    color: #94a3b8;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 4px;
+}
+.def-bubble-close:active { color: #0f172a; }
+
+.def-text {
+    font-size: 12.5px;
+    line-height: 1.38;
+    color: #334155;
+    font-weight: 600;
+}
+
 /* ================= WHEEL & CONTROLS ================= */
 #wheel-wrapper {
     position: relative;

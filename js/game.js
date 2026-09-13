@@ -4,6 +4,7 @@ import { SoundManager } from './sound.js';
 import { startConfetti, clearConfetti } from './confetti.js';
 import { generateLevel } from './grid.js';
 import { saveGameState, loadGameState, getTitleForScore, getRankIndex } from './storage.js';
+import { getWordDefinition } from './definitions.js';
 
 /* ==================== STATE ==================== */
 let currentLevelIdx = 0;
@@ -21,6 +22,7 @@ let selectedNodeIndices = [];
 let currentPointerPos = { x: 0, y: 0 };
 let currentWheelLetters = [];
 let toastTimeout = null;
+let defBubbleTimeout = null;
 
 const soundManager = new SoundManager();
 
@@ -51,6 +53,12 @@ const btnHint = document.getElementById('btn-hint');
 const btnSkip = document.getElementById('btn-skip');
 const btnShuffle = document.getElementById('btn-shuffle');
 
+const defBubble = document.getElementById('def-bubble');
+const defBubbleWord = document.getElementById('def-bubble-word');
+const defBubblePos = document.getElementById('def-bubble-pos');
+const defBubbleText = document.getElementById('def-bubble-text');
+const btnCloseDefBubble = document.getElementById('btn-close-def-bubble');
+
 const confettiCanvas = document.getElementById('confetti-canvas');
 const winModal = document.getElementById('win-modal');
 const btnNextLevel = document.getElementById('btn-next-level');
@@ -73,6 +81,28 @@ const btnPerkLetter = document.getElementById('btn-perk-letter');
 const btnPerkPinpoint = document.getElementById('btn-perk-pinpoint');
 const btnPerkSolveWord = document.getElementById('btn-perk-solve-word');
 const btnPerkTheme = document.getElementById('btn-perk-theme');
+
+/* Word Definition Popup Bubble */
+function showWordDefinitionBubble(word) {
+    if (!defBubble || !word) return;
+    const info = getWordDefinition(word);
+    if (!info) return;
+
+    clearTimeout(defBubbleTimeout);
+    defBubbleWord.textContent = word.toUpperCase();
+    defBubblePos.textContent = info.pos || 'word';
+    defBubbleText.textContent = info.def;
+
+    defBubble.classList.add('show');
+    defBubbleTimeout = setTimeout(() => {
+        hideWordDefinitionBubble();
+    }, 4500);
+}
+
+function hideWordDefinitionBubble() {
+    clearTimeout(defBubbleTimeout);
+    if (defBubble) defBubble.classList.remove('show');
+}
 
 /* ==================== INITIALIZATION ==================== */
 export function init() {
@@ -289,6 +319,16 @@ function renderCrosswordGrid() {
         tile.style.top = (cell.r * (tileSize + gap)) + 'px';
         tile.style.left = (cell.c * (tileSize + gap)) + 'px';
 
+        // Tap solved tile to see word definition bubble
+        tile.addEventListener('click', () => {
+            if (tile.classList.contains('solved') && cell.wordRefs && cell.wordRefs.length > 0) {
+                const word = cell.wordRefs[0];
+                showWordDefinitionBubble(word);
+                const matching = currentLevelData.words.find(w => w.word === word);
+                if (matching) highlightAlreadySolved(matching);
+            }
+        });
+
         crosswordGrid.appendChild(tile);
     });
 }
@@ -336,6 +376,7 @@ function shuffleWheel() {
 /* ==================== SWIPING & TOUCH HANDLERS ==================== */
 function handlePointerDown(e) {
     soundManager.init();
+    hideWordDefinitionBubble();
     isSwiping = true;
     selectedNodeIndices = [];
     currentPointerPos = { x: e.clientX, y: e.clientY };
@@ -500,6 +541,7 @@ function processWordSubmission(word) {
             animateWordSolved(matchingBoardWord);
             spawnFloatingScore(pointsEarned, false);
             showToast(`+${pointsEarned} Pts!`, "correct");
+            showWordDefinitionBubble(word);
             saveProgress();
 
             setTimeout(checkLevelCompletion, 500);
@@ -522,6 +564,7 @@ function processWordSubmission(word) {
             soundManager.playBonusWord();
             spawnFloatingScore("+1 ⭐", true);
             showToast("Bonus Word +1 ⭐!", "bonus");
+            showWordDefinitionBubble(word);
             saveProgress();
         }
         return;
@@ -652,6 +695,12 @@ function openStarShopModal() {
             const chip = document.createElement('div');
             chip.className = 'bonus-word-chip';
             chip.textContent = w;
+            chip.style.cursor = 'pointer';
+            chip.title = 'Tap to see meaning';
+            chip.addEventListener('click', () => {
+                starShopModal.classList.remove('active');
+                showWordDefinitionBubble(w);
+            });
             bonusWordsList.appendChild(chip);
         });
     }
@@ -794,6 +843,10 @@ function setupEventListeners() {
     btnCloseRankUp.addEventListener('click', () => {
         rankUpModal.classList.remove('active');
     });
+
+    if (btnCloseDefBubble) {
+        btnCloseDefBubble.addEventListener('click', hideWordDefinitionBubble);
+    }
 
     if (btnPerkLetter) btnPerkLetter.addEventListener('click', buyPerkLetter);
     if (btnPerkPinpoint) btnPerkPinpoint.addEventListener('click', buyPerkPinpoint);
