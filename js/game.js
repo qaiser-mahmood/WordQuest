@@ -257,6 +257,64 @@ function applyLevelTheme(lvl) {
     scenicBg.classList.add(theme.id);
 }
 
+function findWordForTiles(keys) {
+    if (!currentLevelData || !keys || keys.length === 0) return null;
+    const firstKey = keys[0];
+    const [r0, c0] = firstKey.split(',').map(Number);
+
+    const candidates = currentLevelData.words.filter(wObj => {
+        if (!solvedWords.has(wObj.word)) return false;
+        for (let i = 0; i < wObj.word.length; i++) {
+            const r = wObj.dir === 'V' ? wObj.row + i : wObj.row;
+            const c = wObj.dir === 'H' ? wObj.col + i : wObj.col;
+            if (r === r0 && c === c0) return true;
+        }
+        return false;
+    });
+
+    if (candidates.length === 0) return null;
+    if (candidates.length === 1 || keys.length === 1) return candidates[0];
+
+    const secondKey = keys[1];
+    const [r1, c1] = secondKey.split(',').map(Number);
+    const isHorizontal = r0 === r1;
+    const match = candidates.find(c => isHorizontal ? c.dir === 'H' : c.dir === 'V');
+    return match || candidates[0];
+}
+
+let isGridSwiping = false;
+let gridSwipedKeys = [];
+
+function handleGridPointerDown(e) {
+    const tile = e.target.closest('.tile.solved');
+    if (tile) {
+        isGridSwiping = true;
+        gridSwipedKeys = [tile.dataset.key];
+    }
+}
+
+function handleGridPointerMove(e) {
+    if (!isGridSwiping) return;
+    const el = document.elementFromPoint(e.clientX, e.clientY);
+    const tile = el ? el.closest('.tile.solved') : null;
+    if (tile && !gridSwipedKeys.includes(tile.dataset.key)) {
+        gridSwipedKeys.push(tile.dataset.key);
+    }
+}
+
+function handleGridPointerEnd() {
+    if (!isGridSwiping) return;
+    isGridSwiping = false;
+    if (gridSwipedKeys.length > 0) {
+        const matched = findWordForTiles(gridSwipedKeys);
+        if (matched) {
+            showWordDefinitionBubble(matched.word);
+            highlightAlreadySolved(matched);
+        }
+    }
+    gridSwipedKeys = [];
+}
+
 /* ==================== CROSSWORD GRID RENDERING ==================== */
 function renderCrosswordGrid() {
     crosswordGrid.innerHTML = '';
@@ -320,12 +378,14 @@ function renderCrosswordGrid() {
         tile.style.left = (cell.c * (tileSize + gap)) + 'px';
 
         // Tap solved tile to see word definition bubble
-        tile.addEventListener('click', () => {
-            if (tile.classList.contains('solved') && cell.wordRefs && cell.wordRefs.length > 0) {
-                const word = cell.wordRefs[0];
-                showWordDefinitionBubble(word);
-                const matching = currentLevelData.words.find(w => w.word === word);
-                if (matching) highlightAlreadySolved(matching);
+        tile.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (tile.classList.contains('solved')) {
+                const matched = findWordForTiles([tile.dataset.key]);
+                if (matched) {
+                    showWordDefinitionBubble(matched.word);
+                    highlightAlreadySolved(matched);
+                }
             }
         });
 
@@ -527,9 +587,10 @@ function processWordSubmission(word) {
 
     if (matchingBoardWord) {
         if (solvedWords.has(word)) {
-            soundManager.playWordWrong();
+            soundManager.playWordCorrect();
             highlightAlreadySolved(matchingBoardWord);
-            showToast("Already Found!", "already");
+            showWordDefinitionBubble(word);
+            showToast(`${word} (Solved)`, "already");
         } else {
             // Newly solved crossword word!
             solvedWords.add(word);
@@ -541,7 +602,6 @@ function processWordSubmission(word) {
             animateWordSolved(matchingBoardWord);
             spawnFloatingScore(pointsEarned, false);
             showToast(`+${pointsEarned} Pts!`, "correct");
-            showWordDefinitionBubble(word);
             saveProgress();
 
             setTimeout(checkLevelCompletion, 500);
@@ -552,8 +612,9 @@ function processWordSubmission(word) {
     // Check if it's a bonus word
     if (currentLevelData.allSeedWords && currentLevelData.allSeedWords.includes(word)) {
         if (bonusWords.has(word)) {
-            soundManager.playWordWrong();
-            showToast("Bonus Already Found!", "already");
+            soundManager.playWordCorrect();
+            showWordDefinitionBubble(word);
+            showToast(`${word} (Bonus)`, "bonus");
         } else {
             bonusWords.add(word);
             stars += 1;
@@ -564,7 +625,6 @@ function processWordSubmission(word) {
             soundManager.playBonusWord();
             spawnFloatingScore("+1 ⭐", true);
             showToast("Bonus Word +1 ⭐!", "bonus");
-            showWordDefinitionBubble(word);
             saveProgress();
         }
         return;
@@ -858,6 +918,21 @@ function setupEventListeners() {
     window.addEventListener('pointermove', handlePointerMove);
     window.addEventListener('pointerup', handlePointerUp);
     window.addEventListener('pointercancel', handlePointerUp);
+
+    // Crossword grid swiping to inspect solved words
+    crosswordContainer.addEventListener('pointerdown', handleGridPointerDown);
+    crosswordContainer.addEventListener('pointermove', handleGridPointerMove);
+    window.addEventListener('pointerup', handleGridPointerEnd);
+    window.addEventListener('pointercancel', handleGridPointerEnd);
+
+    // Touch outside definition bubble to dismiss it immediately
+    window.addEventListener('pointerdown', (e) => {
+        if (defBubble && defBubble.classList.contains('show')) {
+            if (!defBubble.contains(e.target) && !e.target.closest('.tile.solved') && !e.target.closest('.bonus-word-chip')) {
+                hideWordDefinitionBubble();
+            }
+        }
+    }, true);
 }
 
 // Auto-start on load
