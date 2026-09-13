@@ -116,7 +116,6 @@
             100% { transform: translateY(50%); }
         }
 
-        /* Floating Hot Air Balloon in background */
         .scenic-balloon {
             position: absolute;
             right: 22px;
@@ -133,7 +132,7 @@
             100% { transform: translateY(-16px) rotate(3deg); }
         }
 
-        /* THEME 2: Cherry Blossom Spring (Floating Petals) */
+        /* THEME 2: Cherry Blossom Spring */
         .theme-blossom {
             background: linear-gradient(180deg, #fbcfe8 0%, #fed7aa 50%, #fef3c7 100%);
         }
@@ -318,7 +317,7 @@
             color: #b91c1c;
         }
 
-        /* ================= CROSSWORD CONTAINER (HUGE TILES, NO CUTOFF) ================= */
+        /* ================= CROSSWORD CONTAINER ================= */
         #crossword-container {
             width: 100%;
             flex: 1 1 auto;
@@ -341,7 +340,6 @@
             transition: transform 0.25s ease;
         }
 
-        /* Large, prominent, juicy tiles */
         .tile {
             border-radius: 10px;
             display: flex;
@@ -508,7 +506,6 @@
             -webkit-backdrop-filter: blur(12px);
         }
 
-        /* Large, prominent wheel letter nodes */
         .wheel-node {
             position: absolute;
             width: 52px;
@@ -537,7 +534,6 @@
             box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5);
         }
 
-        /* Shuffle button in center of wheel */
         .btn-shuffle {
             position: absolute;
             width: 48px;
@@ -572,7 +568,6 @@
             stroke-linejoin: round;
         }
 
-        /* Flying animation tile */
         .flying-tile {
             position: absolute;
             border-radius: 10px;
@@ -589,7 +584,6 @@
             transition: all 0.48s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Floating Score Text */
         .floating-score {
             position: absolute;
             font-size: 17px;
@@ -673,7 +667,6 @@
         .modal-btn-danger { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); box-shadow: 0 4px 14px rgba(239, 68, 68, 0.35); }
         .modal-btn-cancel { background: #e2e8f0; color: #334155; box-shadow: none; }
 
-        /* Confetti Canvas for Win */
         #confetti-canvas {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -681,7 +674,6 @@
             z-index: 199;
         }
 
-        /* Bonus Words Jar List */
         .bonus-words-list {
             display: flex;
             flex-wrap: wrap;
@@ -763,7 +755,7 @@
 <body>
 
     <div id="game-container">
-        <!-- Bright Scenic Animated Background System -->
+        <!-- Bright Scenic Background System -->
         <div id="scenic-bg" class="scenic-bg-container theme-clouds">
             <div id="cloud-track-1" class="cloud-track cloud-layer-1"></div>
             <div id="cloud-track-2" class="cloud-track cloud-layer-2"></div>
@@ -782,8 +774,8 @@
             </div>
             <div class="top-bar-row">
                 <div class="badge" id="level-badge">LVL 1</div>
-                <div class="difficulty-badge diff-easy" id="diff-badge">EASY</div>
-                <div class="title-badge" id="player-title-badge">🐣 WORD NOVICE</div>
+                <div class="difficulty-badge diff-easy" id="diff-badge">BEGINNER</div>
+                <div class="title-badge" id="player-title-badge">🌟 NOVICE</div>
             </div>
         </div>
 
@@ -818,7 +810,7 @@
             <div class="start-card">
                 <div style="font-size: 13px; color: #64748b; font-weight: 800; letter-spacing: 1px;">STARTING LEVEL</div>
                 <div id="start-level-title" style="font-size: 28px; font-weight: 900; color: #0f172a; margin: 4px 0 10px 0;">LEVEL 1</div>
-                <div id="start-diff-tag" class="difficulty-badge diff-easy" style="font-size: 13px; display: inline-block; padding: 6px 14px;">DIFFICULTY: EASY</div>
+                <div id="start-diff-tag" class="difficulty-badge diff-easy" style="font-size: 13px; display: inline-block; padding: 6px 14px;">BEGINNER</div>
             </div>
         </div>
 
@@ -837,7 +829,7 @@
             <div class="modal-card">
                 <div style="font-size: 36px; margin-bottom: 6px;">🏺⭐</div>
                 <div class="modal-title" style="color: #b45309;">BONUS WORDS</div>
-                <div class="modal-subtitle" id="bonus-modal-subtitle">Found extra valid words that are not on the crossword puzzle. +15 pts each!</div>
+                <div class="modal-subtitle" id="bonus-modal-subtitle">Found extra valid words not on the crossword puzzle. +15 pts each!</div>
                 <div class="bonus-words-list" id="bonus-words-list"></div>
                 <button class="modal-btn" id="btn-close-bonus" style="background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);">COLLECTED!</button>
             </div>
@@ -877,8 +869,8 @@
     </div>
 
     <script>
-        /* ==================== EXPANDED SEEDS DATABASE (68 HIGH-YIELD ANAGRAM BASES) ==================== */
-        const ANAGRAM_SEEDS = [{"wheel":["P","L","A","N","E","T"],"words":["PLANET","PLANE","PLANT","PLATE","PANEL","LEANT","PLEAT","LANE","LEAN","TALE","NEAT","PEAT","PLEA","PALE","LATE","PATE","TAPE","LEAP","PEAL","LENT","PAN","PET","NET","PAT","TAP","ALE","APE","PEN","ANT","TEN","TEA","EAT","TAN","PAL","LAP","LET","ATE"]},{"wheel":["S","I","L","E","N","T"],"words":["SILENT","LISTEN","INLET","TINSEL","ENLIST","LENT","LINE","LIST","NEST","SENT","TILE","LIES","SILT","SLIT","TIES","SITE","LINT","LITE","NET","SET","TIN","LIT","NIL","SIT","TEN","LIE","LET","TIE","SIN","ITS"]},{"wheel":["C","A","S","T","L","E"],"words":["CASTLE","SCALE","LEAST","STALE","SLATE","TALES","CLEAT","LACE","CAST","TALE","SEAT","EAST","LAST","CASE","SEAL","SALE","LATE","CATS","ACTS","SECT","CAT","ACT","LET","TEA","SET","ACE","SAT","ALE","ALT","EAT","ATE","SEA"]},{"wheel":["S","T","R","E","A","M"],"words":["STREAM","MASTER","SMART","STEAM","TAMER","TEAM","TEAR","MEAT","RATE","REST","SEAT","TERM","SAME","MATE","MARE","TAME","STEM","STAR","SEAM","SEAR","TRAM","MARS","ARMS","RAMS","MAT","MET","TEA","SEA","RAM","ART","SET","RAT","ARM","EAT","ATE","TAR","EAR","ARE"]},{"wheel":["A","C","T","O","R","S"],"words":["ACTORS","ACTOR","COAST","ROAST","TACOS","COATS","COAT","STAR","CATS","ACTS","CARS","CART","COST","OATS","ARTS","TSAR","SORT","SCAR","SOAR","ACT","CAT","OAR","RAT","ART","COT","ROT","SAT","SOT","CAR","ARC","TAR","OAT"]},{"wheel":["B","A","N","K","E","R"],"words":["BANKER","BARK","BARN","BEAK","BEAR","BAKE","BANK","BRAE","BARE","BEAN","BANE","EARN","NEAR","RANK","RAKE","BAR","ARK","RAN","ARE","EAR","KEN","BAN","NAB","BRA"]},{"wheel":["C","A","R","P","E","T"],"words":["CARPET","TRACE","CRAPE","PACER","CRATE","REACT","CATER","CAPE","CART","PATE","PEAT","PEAR","PART","PACE","RACE","RATE","TARE","TEAR","TRAP","RAPT","TAPE","REAP","CARE","CAT","ACT","PET","PAT","TAP","TEA","EAT","ACE","CAR","ARC","PAR","RAP","PER","TAR","RAT","ATE","APE","CAP"]},{"wheel":["C","R","A","F","T","S"],"words":["CRAFTS","CRAFT","FACTS","ACTS","ARTS","CARS","CART","CAST","CATS","FACT","RAFT","STAR","FAST","TSAR","SCAR","SCAT","ACT","CAT","RAT","ART","SAT","FAR","FAT","CAR","ARC","TAR"]},{"wheel":["C","R","A","T","E","S"],"words":["CRATES","CASTER","CRATE","REACT","TRACE","CATER","STARE","TEARS","RATES","ACRES","CARE","CART","CASE","CAST","CATS","RACE","RATE","SEAT","STAR","TARE","TEAR","CARS","ACTS","REST","EAST","SEAR","ACRE","ACT","CAT","RAT","ART","TEA","EAT","SET","SAT","ACE","CAR","ARC","EAR","ARE","TAR","ATE","SEA"]},{"wheel":["C","R","E","A","T","E"],"words":["CREATE","CRATE","REACT","TRACE","CATER","CARET","EATER","CART","RATE","TARE","TEAR","TREE","CARE","RACE","ACRE","CATE","RETE","CAT","ACT","RAT","ART","TEA","EAT","ACE","TEE","CAR","ARC","EAR","ARE","TAR","ATE","ERA"]},{"wheel":["D","A","N","C","E","R"],"words":["DANCER","CRANE","CANER","NACRE","CADRE","CEDAR","ACNE","DARE","DEAR","EARN","NEAR","RACE","READ","REND","CANE","CARD","CARE","DEAN","NARD","ACRE","CAN","DEN","END","RED","EAR","ARE","RAN","ACE","CAR","ARC","AND","ERA"]},{"wheel":["D","E","A","L","E","R"],"words":["DEALER","LEADER","ELDER","DEAL","DEAR","DARE","DALE","LEAD","READ","REAL","REEL","LADE","LARD","EARL","DEER","REED","RED","EAR","ARE","LED","ALE","LAD","EEL","LEE","ERA"]},{"wheel":["D","R","E","A","M","S"],"words":["DREAMS","DREAM","DARES","DEARS","DAMES","READS","ARMED","DARE","DEAR","DAME","MADE","MARS","READ","SAME","SEAM","SEAR","ARMS","RAMS","MARE","RED","RAM","ARM","EAR","ARE","SEA","SAD","MAD","DAM","ERA"]},{"wheel":["E","A","R","T","H","S"],"words":["EARTHS","EARTH","HEART","HASTE","SHARE","HATER","ARTS","EARS","EAST","HATE","HEAR","HEAT","RATS","REST","SEAT","STAR","TEAR","HARE","RASH","ART","RAT","TEA","EAT","SAT","SET","ASH","HAS","HAT","EAR","ARE","TAR","ERA","THE"]},{"wheel":["F","I","L","T","E","R"],"words":["FILTER","LIFTER","RIFLE","LITRE","TILER","FLIRT","FILE","FIRE","LIFE","LIFT","LITE","RIFT","TIER","TILE","TIRE","RIFE","RITE","FLIT","FIT","LIT","LET","TIE","REF","LIE","FIR"]},{"wheel":["G","R","A","N","I","T"],"words":["RATING","GIANT","GRAIN","TRAIN","ANTI","GAIN","GRIN","RAIN","RING","RANT","TANG","TARN","TRIG","GNAT","GRIT","RAT","ART","TAN","TIN","GIN","RIG","RAN","AIR","NIT","TAG","RAG","NAG"]},{"wheel":["G","R","A","P","E","S"],"words":["GRAPES","GEARS","GRAPE","PAGES","PARES","PARSE","PEARS","REAPS","SPARE","SPEAR","PAGER","AGES","APES","GEAR","GASP","PAGE","PARE","PEAR","PEAS","RAGE","RAPS","REAP","SAGE","SEAR","SPAR","AGE","PEG","PER","RAP","PAR","EAR","ARE","SEA","GAS","RAG","PAS","SAP","APE"]},{"wheel":["H","A","R","V","E","S"],"words":["SHARE","SHAVE","HAVE","HEAR","RAVE","SAVE","VASE","HARE","EARS","ASH","HAS","EAR","ARE","SEA"]},{"wheel":["H","E","A","R","T","S"],"words":["HEARTS","EARTHS","EARTH","HEART","HASTE","SHARE","HATER","ARTS","EARS","EAST","HATE","HEAR","HEAT","RATS","REST","SEAT","STAR","TEAR","HARE","RASH","SEAR","ART","RAT","TEA","EAT","SAT","SET","ASH","HAS","HAT","EAR","ARE","SEA","THE","TAR"]},{"wheel":["H","O","N","E","S","T"],"words":["HONEST","ONSET","STONE","SHONE","NOTES","TONES","HENS","NEST","NOSE","NOTE","SENT","SHOE","SHOT","TOES","TONE","TENS","HOSE","HOST","HEN","NET","TEN","TOE","NOT","HOT","SON","SOT","SET","ONE","EON","THE"]},{"wheel":["M","A","R","K","E","T"],"words":["MARKET","MAKER","TAMER","MATE","MEAT","RAKE","RATE","TARE","TEAR","TERM","MAKE","MARE","MARK","TEAM","TAME","MAT","MET","TEA","EAT","RAM","ARM","ART","RAT","ARK","TAR","ATE","EAR","ARE"]},{"wheel":["M","A","S","T","E","R"],"words":["MASTER","SMART","STREAM","TAMER","TEARS","RATES","STARE","MATS","RATE","REST","SEAT","STAR","STEAM","TEAM","TEAR","TERM","MARE","SAME","SEAM","SEAR","TAME","TRAM","MARS","ARMS","MAT","MET","TEA","EAT","SET","SAT","RAM","ARM","ART","RAT","EAR","ARE","SEA","TAR"]},{"wheel":["M","E","T","A","L","S"],"words":["METALS","METAL","LAMES","MALES","STEAM","TEAMS","TALES","STALE","SLATE","LEAST","LAME","LATE","MALE","MATE","MEAL","MEAT","SALT","SEAL","SEAT","TALE","TEAM","TAME","STEM","SLAM","MELT","MAT","MET","TEA","EAT","LET","SET","SAT","ALE","ALT","SEA"]},{"wheel":["N","A","T","U","R","E"],"words":["NATURE","TUNER","URATE","ANTE","AUNT","EARN","NEAR","NEAT","RENT","RUNE","RATE","TARE","TEAR","TUNE","TURN","TRUE","RUNT","NET","TEN","TEA","EAT","RAT","ART","RAN","NUT","ANT","RUN","EAR","ARE","RUE","TAR","ERA"]},{"wheel":["O","R","A","N","G","E"],"words":["ORANGE","GROAN","ORGAN","RANGE","ANGER","GEAR","GONE","NEAR","RAGE","ROAN","OGRE","EARN","GORE","AGE","EAR","ARE","RAN","RAG","ONE","EON","NOR","OAR","EGO","NAG"]},{"wheel":["G","A","R","D","E","N"],"words":["GARDEN","DANGER","GANDER","RANGED","GRADE","RAGED","DARE","DEAR","EARN","NEAR","READ","REND","GEAR","RAGE","AGED","DEAN","DRAG","RED","DEN","END","EAR","ARE","RAN","AGE","RAG","AND","NAG"]},{"wheel":["S","P","R","I","N","G"],"words":["SPRING","RINGS","GRIPS","PRIGS","PINGS","SIGN","SING","RING","GRIP","PING","SPIN","SNIP","PIGS","RIPS","PINS","RIGS","GINS","RIG","PIG","PIN","NIP","RIP","SIN","SIP","SIR"]},{"wheel":["W","I","N","T","E","R"],"words":["WINTER","INTER","TWINE","WRITE","INERT","WINE","WIRE","WENT","WREN","RENT","TIER","TIRE","RITE","TWIN","NEW","WIN","WET","NET","TEN","TIN","TIE","NIT"]},{"wheel":["B","R","I","D","G","E"],"words":["BRIDGE","DIRGE","RIDGE","BRIDE","BRED","BIRD","GRID","RIDE","DIRE","BIDE","RED","BED","BIG","BEG","RIB","BID","DIE","DIG","RIG"]},{"wheel":["C","A","N","D","L","E"],"words":["CANDLE","LANCED","CLEAN","LANCE","CANE","CLAN","DALE","DEAL","DEAN","LACE","LADE","LAND","LEAD","LEAN","LANE","ACNE","CAN","DEN","END","LAD","LED","ALE","ACE","AND"]},{"wheel":["S","I","L","V","E","R"],"words":["SILVER","SLIVER","LIVER","LIVE","VILE","VEIL","EVIL","SIRE","RISE","LIES","RILE","RIVE","SIR","LIE","REV","RES","VIE"]},{"wheel":["T","R","A","V","E","L"],"words":["TRAVEL","VALET","LATER","ALTER","ALERT","LAVE","LATE","TALE","TEAL","REAL","RATE","TARE","TEAR","RAVE","VEAL","VALE","ALE","ALT","ART","RAT","TAR","TEA","EAT","VET","LET","EAR","ARE"]},{"wheel":["W","O","N","D","E","R"],"words":["WONDER","ROWED","DROWN","OWNED","ENDOW","DOWN","DREW","WORD","WORN","NODE","WORE","RODE","RED","ROD","ROW","WON","NOW","ONE","EON","DEN","END","NOR","OWE"]},{"wheel":["F","O","R","E","S","T"],"words":["FOREST","FORTE","FROST","STORE","TORSE","ROTE","ROSE","SOFT","SORT","FORT","REST","TORE","FRET","FRO","FOR","ROT","SET","SOT","TOE","REF","ORE","OFT"]},{"wheel":["P","A","L","A","C","E"],"words":["PALACE","PLACE","PLEA","PALE","PACE","LACE","LEAP","PEAL","CAPE","ACE","ALE","APE","CAP","LAP","PAL"]},{"wheel":["F","A","R","M","E","R"],"words":["FARMER","FRAME","ARMER","FARM","FARE","FEAR","MARE","REAR","RARE","FAR","REF","RAM","ARM","EAR","ARE","ERA","MAR"]},{"wheel":["D","R","A","G","O","N"],"words":["DRAGON","GROAN","RADON","ADORN","ROAD","ROAN","DOG","RAG","RAN","ROD","OAR","AND","NAG","GOD","NOR"]},{"wheel":["C","A","S","T","O","R"],"words":["CASTOR","ACTOR","COAST","ROAST","TACO","CART","COAT","STAR","SCAR","SORT","OATS","ACT","CAT","CAR","ARC","ROT","COT","OAR","RAT","ART","SAT","SOT","TAR"]},{"wheel":["F","R","I","E","N","D"],"words":["FRIEND","FINDER","FIEND","FINED","DINER","FERN","FIND","FINE","FIRE","RIDE","RIFE","DINE","RED","REF","DEN","END","FIR","DIE"]},{"wheel":["P","I","R","A","T","E"],"words":["PIRATE","TRIPE","TAPIR","PART","PATE","PEAR","PEAT","PIER","RAPT","RATE","REAP","RIPE","RITE","TAPE","TARE","TEAR","TIRE","TRAP","TRIP","PET","PAT","TAP","TIE","TEA","EAT","PIE","PIT","TIP","RAT","ART","RIP","APE","EAR","ARE","TAR","ATE","AIR"]},{"wheel":["I","S","L","A","N","D"],"words":["ISLAND","SNAIL","SLAIN","LANDS","DIALS","LAID","LAND","LADS","NAIL","SAIL","SAND","SLID","LAD","SAD","AND","SIN","NIL","AID"]},{"wheel":["C","A","R","T","O","N"],"words":["CARTON","ACTOR","ACORN","COAT","CART","CORN","RANT","ROAN","TORN","ACT","CAT","OAR","OAT","RAN","RAT","ART","ROT","COT","CAN","NOT","TON","TAR"]},{"wheel":["P","A","S","T","E","L"],"words":["PASTEL","PLEAT","PLATE","PETAL","LEAST","STALE","SLATE","TALES","PASTE","TAPE","PEAT","PATE","PLEA","PALE","LEAP","PEAL","TALE","LATE","SEAT","EAST","LAST","SALE","SEAL","STEP","PET","PAT","TAP","LET","SET","SAT","TEA","EAT","ALE","APE","PAL","LAP"]},{"wheel":["S","T","A","B","L","E"],"words":["STABLE","TABLES","BLEAT","BLAST","TABLE","BALE","BEAT","BETA","BELT","LATE","TALE","TEAL","EAST","LAST","SEAT","SALE","SEAL","BATS","BETS","LABS","TAB","BAT","BET","LET","SET","SAT","TEA","EAT","ALE","ALT","SEA"]},{"wheel":["F","R","O","Z","E","N"],"words":["FROZEN","ZONE","FORE","ZERO","FERN","ONE","EON","FOR","FOE","NOR","REF","ZEN"]},{"wheel":["T","H","R","O","N","E"],"words":["THRONE","HORNET","NORTH","HERON","OTHER","TENOR","TONER","HORN","RENT","HERO","NOTE","TONE","TORN","THEN","HEN","HER","HOT","NOT","ONE","EON","NET","TEN","TOE","ROT","THE"]},{"wheel":["S","E","N","I","O","R"],"words":["SENIOR","NOISER","ROSIN","SIREN","IRONE","REINS","RESIN","NOSE","ROSE","IRON","REIN","SORE","SINE","ONES","EONS","ONE","EON","SON","SIN","SIR","NOR","ION","ROE"]},{"wheel":["C","R","E","D","I","T"],"words":["CREDIT","DIRECT","CITED","TRIED","TIRED","CIDER","RICE","RIDE","DIRE","DIRT","TIED","TIRE","RITE","TIER","CITE","RED","RID","DIE","TIE","ICE"]},{"wheel":["D","E","T","A","I","L"],"words":["DETAIL","DILATE","TAILED","TIDAL","IDEAL","LATE","TALE","TEAL","DATE","TIDE","TIED","DIAL","LAID","LEAD","DEAL","DALE","LIT","LET","LAD","LED","TEA","EAT","TIE","DIE","ALE","ALT","AID"]},{"wheel":["S","A","L","U","T","E"],"words":["SALUTE","LUTES","TULES","SAUTE","LATE","TALE","TEAL","LUTE","LAST","SALT","SEAT","EAST","SEAL","SALE","SUET","LET","SET","SAT","TEA","EAT","ALE","ALT","SUE","USE"]},{"wheel":["S","T","R","I","D","E"],"words":["STRIDE","DIREST","DRIEST","TIRED","TRIED","RIDES","TIRES","RITES","DIRE","DIRT","RIDE","RITE","TIRE","TIED","TIDE","REST","SIDE","SITE","STIR","RED","RID","DIE","SET","SIT","TIE","SIR"]},{"wheel":["P","O","E","T","R","Y"],"words":["POETRY","ROPETY","TROPE","POETY","ROTE","TORE","TYRE","POET","ROPE","PORT","TYPE","TOPE","TREY","PREY","PET","POT","TOP","ROT","TOE","RYE","TOY","TRY","PER"]},{"wheel":["F","A","T","H","E","R"],"words":["FATHER","HATER","AFTER","HEART","EARTH","HATE","HEAR","HEAT","HARE","FARE","FEAR","FATE","FEAT","FRAT","RATE","TARE","TEAR","FAR","FAT","HAT","HER","RAT","ART","TAR","TEA","EAT","THE","REF","EAR","ARE"]},{"wheel":["W","A","T","E","R","S"],"words":["WATERS","WASTER","STREW","SWEAR","TARES","TEARS","STARE","RATES","WARES","WASTE","WATER","WEAR","WEST","STAR","RATE","TEAR","TARE","REST","SEAT","EAST","SAW","WAR","WET","SET","SAT","TEA","EAT","RAW","TAR","ART","RAT","SEA","EAR","ARE"]},{"wheel":["G","O","L","D","E","N"],"words":["GOLDEN","LONGED","LODGE","GLEN","GOLD","GONE","LONE","NODE","NOEL","DOG","DEN","END","GOD","LED","LOG","OLD","ONE","EON"]},{"wheel":["S","I","M","P","L","E"],"words":["SIMPLE","IMPEL","SLIME","SMILE","LIME","LIMP","MILE","SLIP","SLIM","PILE","PIES","LIPS","ELMS","PIE","LIP","SIP","LIE","IMP"]},{"wheel":["P","R","I","N","C","E"],"words":["PRINCE","RIPEN","PINER","PRICE","RIPE","PINE","NICE","REIN","RICE","PIER","PEN","PIN","NIP","RIP","PIE","ICE","PER"]},{"wheel":["S","U","N","S","E","T"],"words":["SUNSET","SUETS","STUNS","NESTS","SENTS","NEST","NETS","SENT","SETS","SUET","STUN","TENS","TUNE","NET","SET","SUN","TEN","NUT","SUE","USE"]},{"wheel":["R","E","S","C","U","E"],"words":["RESCUE","CURSE","SECURE","CERUS","CURE","USER","RUSE","CRUE","SURE","CUE","SUE","RUE","USE","SEC"]},{"wheel":["S","H","A","D","O","W"],"words":["SHADOW","SHOWD","DASH","SHOW","SODA","WASH","WHOA","ASH","HAD","HAS","HOW","SAD","SAW","WHO","SOW"]},{"wheel":["H","E","R","O","E","S"],"words":["HEROES","HORSE","SHORE","HERE","HERO","HOSE","ROSE","SEER","SHOE","SORE","SEE","SHE","HER","ROE"]},{"wheel":["L","E","M","O","N","S"],"words":["LEMONS","LEMON","MELON","MOLES","LONE","MOLE","NOSE","OMEN","SOLE","SOME","MEN","ONE","EON","SON","ELM"]},{"wheel":["B","L","A","N","K","E"],"words":["BLANK","BLEAK","LEAK","LANE","LEAN","BALE","BAKE","BEAK","BEAN","BANE","ALE","BAN","NAB","KEN","LAB"]},{"wheel":["B","A","S","K","E","T"],"words":["BASKET","BEAKS","BAKES","STEAK","SKATE","BAKE","BEAK","BASE","BASK","BEAT","BETA","EAST","SEAT","TAKE","TEAK","BATS","BETS","BAT","BET","TAB","SET","SAT","TEA","EAT","ASK"]},{"wheel":["F","L","I","G","H","T"],"words":["FLIGHT","LIGHT","FILTH","GILT","LIFT","FLIT","GIFT","HILT","FIT","FIG","HIT","LIT"]},{"wheel":["C","A","N","D","O","R"],"words":["CANDOR","ACORN","RADON","ADORN","ROAN","ROAD","CARD","CORN","DARN","CAN","AND","CAR","ARC","RAN","ROD","OAR","NOR","COD"]},{"wheel":["B","R","I","G","H","T"],"words":["BRIGHT","GIRTH","BIRTH","RIGHT","GRIT","BRIG","GIRT","BIG","BIT","HIT","RIB","RIG"]},{"wheel":["F","O","R","T","U","N"],"words":["FOUNT","FRONT","FORT","FONT","FOUR","FRO","FOR","NOT","NOR","NUT","OUT","ROT","RUN","TON"]}];
+        /* ==================== 200+ CURATED MULTI-TIER PUZZLE DATABASE ==================== */
+        const WORD_DATABASE = {"tier4":[{"root":"GOOD","wheel":["G","O","O","D"],"words":["GOOD","DOG","GOD","GOO"]},{"root":"WOOD","wheel":["W","O","O","D"],"words":["WOOD","WOO"]},{"root":"BALL","wheel":["B","A","L","L"],"words":["BALL","ALL","LAB"]},{"root":"BELL","wheel":["B","E","L","L"],"words":["BELL","ELL"]},{"root":"STAR","wheel":["S","T","A","R"],"words":["STAR","RATS","ARTS","TAR","RAT","ART","SAT"]},{"root":"FISH","wheel":["F","I","S","H"],"words":["FISH","HIS"]},{"root":"BIRD","wheel":["B","I","R","D"],"words":["BIRD","RIB","BID","RID"]},{"root":"BEAR","wheel":["B","E","A","R"],"words":["BEAR","BARE","BAR","BRA","EAR","ARE"]},{"root":"COLD","wheel":["C","O","L","D"],"words":["COLD","CLOD","OLD","COD"]},{"root":"WARM","wheel":["W","A","R","M"],"words":["WARM","ARM","RAM","WAR","RAW"]},{"root":"FIRE","wheel":["F","I","R","E"],"words":["FIRE","RIFE","REF","FIR"]},{"root":"RAIN","wheel":["R","A","I","N"],"words":["RAIN","RAN","AIR"]},{"root":"WIND","wheel":["W","I","N","D"],"words":["WIND","WIN","DIN"]},{"root":"SNOW","wheel":["S","N","O","W"],"words":["SNOW","SOW","NOW","WON","SON"]},{"root":"MOON","wheel":["M","O","O","N"],"words":["MOON","MOO"]},{"root":"TREE","wheel":["T","R","E","E"],"words":["TREE","TEE"]},{"root":"BOOK","wheel":["B","O","O","K"],"words":["BOOK","BOO"]},{"root":"DOOR","wheel":["D","O","O","R"],"words":["DOOR","ROD"]},{"root":"CAKE","wheel":["C","A","K","E"],"words":["CAKE","ACE"]},{"root":"GOLD","wheel":["G","O","L","D"],"words":["GOLD","OLD","GOD","LOG","DOG"]},{"root":"LION","wheel":["L","I","O","N"],"words":["LION","LOIN","OIL","ION","NIL"]},{"root":"FROG","wheel":["F","R","O","G"],"words":["FROG","FOR","FOG"]},{"root":"ROSE","wheel":["R","O","S","E"],"words":["ROSE","SORE","ROE","ORE"]},{"root":"PINK","wheel":["P","I","N","K"],"words":["PINK","PIN","NIP","KIN"]},{"root":"LEAF","wheel":["L","E","A","F"],"words":["LEAF","ALE","ELF"]},{"root":"SHIP","wheel":["S","H","I","P"],"words":["SHIP","HIPS","HIP","SIP","HIS"]},{"root":"BOAT","wheel":["B","O","A","T"],"words":["BOAT","BAT","TAB","OAT","BOT"]},{"root":"RING","wheel":["R","I","N","G"],"words":["RING","GRIN","GIN","RIG"]},{"root":"KING","wheel":["K","I","N","G"],"words":["KING","KIN","GIN","INK"]},{"root":"HERO","wheel":["H","E","R","O"],"words":["HERO","HER","ROE","ORE"]},{"root":"PARK","wheel":["P","A","R","K"],"words":["PARK","PAR","RAP","ARK"]},{"root":"LAKE","wheel":["L","A","K","E"],"words":["LAKE","LEAK","ALE","ELK"]},{"root":"HILL","wheel":["H","I","L","L"],"words":["HILL","ILL"]},{"root":"COIN","wheel":["C","O","I","N"],"words":["COIN","ICON","CON","ION"]},{"root":"ROAD","wheel":["R","O","A","D"],"words":["ROAD","ROD","OAR","RAD"]},{"root":"HOME","wheel":["H","O","M","E"],"words":["HOME","HEM"]},{"root":"LOVE","wheel":["L","O","V","E"],"words":["LOVE","VOLE"]}],"tier5":[{"root":"APPLE","wheel":["A","P","P","L","E"],"words":["APPLE","PLEA","PALE","LEAP","PEAL","APE","ALE","PAL","LAP"]},{"root":"SWEET","wheel":["S","W","E","E","T"],"words":["SWEET","WEST","STEW","WETS","WET","SET","TEE","SEE"]},{"root":"GREEN","wheel":["G","R","E","E","N"],"words":["GREEN","GENRE","GENE","EGER"]},{"root":"SMILE","wheel":["S","M","I","L","E"],"words":["SMILE","SLIME","MILES","LIMES","MILE","LIME","SLIM","LIE","MIL"]},{"root":"HEART","wheel":["H","E","A","R","T"],"words":["HEART","EARTH","HATER","HEAT","HATE","HEAR","TEAR","RATE","TARE","HAT","EAR","ARE","ART","RAT","TEA","EAT","TAR","THE"]},{"root":"TRAIN","wheel":["T","R","A","I","N"],"words":["TRAIN","RANT","RAIN","ANTI","TARN","RAT","ART","TAN","TIN","RAN","AIR","NIT","TAR"]},{"root":"BEACH","wheel":["B","E","A","C","H"],"words":["BEACH","EACH","ACHE","CAB","ACE"]},{"root":"BREAD","wheel":["B","R","E","A","D"],"words":["BREAD","BARED","BEARD","DEBAR","BEAR","BARE","BRED","READ","DEAR","DARE","BRAD","BAR","BED","RED","EAR","ARE","BAD"]},{"root":"CLOCK","wheel":["C","L","O","C","K"],"words":["CLOCK","LOCK","COCK"]},{"root":"PLANT","wheel":["P","L","A","N","T"],"words":["PLANT","PLAN","PLAT","PANT","PAN","PAT","TAP","ANT","TAN","PAL","LAP","ALT"]},{"root":"WATER","wheel":["W","A","T","E","R"],"words":["WATER","TEAR","RATE","TARE","WEAR","WART","WAR","RAW","WET","TEA","EAT","TAR","ART","RAT","EAR","ARE"]},{"root":"HOUSE","wheel":["H","O","U","S","E"],"words":["HOUSE","HOSE","SHOE","SUE","USE","SHE"]},{"root":"LIGHT","wheel":["L","I","G","H","T"],"words":["LIGHT","HILT","GILT","HIT","LIT"]},{"root":"DREAM","wheel":["D","R","E","A","M"],"words":["DREAM","ARMED","DARE","DEAR","DAME","MADE","MARE","READ","MEAD","RED","DAM","MAD","RAM","ARM","EAR","ARE"]},{"root":"EARTH","wheel":["E","A","R","T","H"],"words":["EARTH","HEART","HATER","HEAT","HATE","HEAR","TEAR","RATE","TARE","HAT","EAR","ARE","ART","RAT","TEA","EAT","THE"]},{"root":"RIVER","wheel":["R","I","V","E","R"],"words":["RIVER","RIVE","REV","ERR"]},{"root":"STONE","wheel":["S","T","O","N","E"],"words":["STONE","ONSET","TONES","NOTES","NOSE","NOTE","TONE","TOES","SENT","NEST","NET","TEN","TOE","NOT","SON","SET","ONE","EON"]},{"root":"CLOUD","wheel":["C","L","O","U","D"],"words":["CLOUD","COLD","CLOD","LOUD","OLD","COD"]},{"root":"STORM","wheel":["S","T","O","R","M"],"words":["STORM","MORT","SORT","MOST","ROTS","ROT","TOM","MOT"]},{"root":"MUSIC","wheel":["M","U","S","I","C"],"words":["MUSIC","SCUM","SUM"]},{"root":"PIANO","wheel":["P","I","A","N","O"],"words":["PIANO","PAIN","PINA","PIN","NIP","PAN","ION"]},{"root":"HORSE","wheel":["H","O","R","S","E"],"words":["HORSE","SHORE","HERO","HOSE","ROSE","SORE","SHOE","HER","SHE","ROE","ORE"]},{"root":"TIGER","wheel":["T","I","G","E","R"],"words":["TIGER","TIRE","GRIT","RITE","TRIG","TIER","RIG","GET","TIE"]},{"root":"SHARK","wheel":["S","H","A","R","K"],"words":["SHARK","RASH","ARK","ASH","HAS"]},{"root":"CROWN","wheel":["C","R","O","W","N"],"words":["CROWN","WORN","ROW","NOW","WON","NOR","COW"]},{"root":"MAGIC","wheel":["M","A","G","I","C"],"words":["MAGIC","MICA","AIM","CAM"]},{"root":"FAIRY","wheel":["F","A","I","R","Y"],"words":["FAIRY","FAIR","AIR","FAR","RAY","FRY"]},{"root":"SPACE","wheel":["S","P","A","C","E"],"words":["SPACE","CAPE","PACE","APES","PEAS","CASE","CAP","APE","ACE","SAP","PAS","SEA"]},{"root":"OCEAN","wheel":["O","C","E","A","N"],"words":["OCEAN","ACNE","CANE","ONCE","CAN","ONE","EON","ACE"]},{"root":"TOWER","wheel":["T","O","W","E","R"],"words":["TOWER","WROTE","TORE","ROTE","WORE","ROW","WET","TOE","ROT","TWO","OWE"]},{"root":"STREET","wheel":["S","T","R","E","E","T"],"words":["STREET","TESTER","SETTER","TREES","RESET","STEER","REST","TREE","TEST","SET","TEE","SEE"]},{"root":"SHEEP","wheel":["S","H","E","E","P"],"words":["SHEEP","SEE","SHE"]},{"root":"CHEST","wheel":["C","H","E","S","T"],"words":["CHEST","ETCH","TECH","SECT","SET","THE"]},{"root":"SWORD","wheel":["S","W","O","R","D"],"words":["SWORD","WORD","ROWS","ROD","ROW","SOW"]},{"root":"SHIELD","wheel":["S","H","I","E","L","D"],"words":["SHIELD","HIDES","SHED","HIDE","HELD","IDLE","LIES","SHI","LED","LID","DIE","SHE"]},{"root":"FLAME","wheel":["F","L","A","M","E"],"words":["FLAME","LAME","MALE","MEAL","FLEA","ALE","ELF"]},{"root":"SPARK","wheel":["S","P","A","R","K"],"words":["SPARK","PARK","PAR","RAP","ARK","SAP","PAS","ASK"]},{"root":"BLOOM","wheel":["B","L","O","O","M"],"words":["BLOOM","BOOM","LOOM","MOO"]},{"root":"FRUIT","wheel":["F","R","U","I","T"],"words":["FRUIT","RUT","FIT","FUR"]},{"root":"GRAPE","wheel":["G","R","A","P","E"],"words":["GRAPE","GEAR","PAGE","PEAR","REAP","RAGE","PARE","AGE","APE","PEG","PER","EAR","ARE","RAG","RAP","PAR"]},{"root":"LEMON","wheel":["L","E","M","O","N"],"words":["LEMON","MELON","MOLE","LONE","OMEN","NOEL","MEN","ONE","EON","ELM"]},{"root":"BERRY","wheel":["B","E","R","R","Y"],"words":["BERRY","BYRE","ERR","BYE"]},{"root":"PEACH","wheel":["P","E","A","C","H"],"words":["PEACH","CHEAP","EACH","ACHE","CAPE","PACE","HEAP","CAP","APE","ACE"]},{"root":"CHERRY","wheel":["C","H","E","R","R","Y"],"words":["CHERRY","HERRY","CRY","HER","ERR","RYE"]},{"root":"HONEY","wheel":["H","O","N","E","Y"],"words":["HONEY","HEN","HEY","ONE","EON"]},{"root":"SUGAR","wheel":["S","U","G","A","R"],"words":["SUGAR","RAGS","RAG","GAS"]},{"root":"GHOST","wheel":["G","H","O","S","T"],"words":["GHOST","SHOT","HOST","GOSH","TOGS","GOT","HOT","SOT"]},{"root":"ANGEL","wheel":["A","N","G","E","L"],"words":["ANGEL","GLEAN","LANE","LEAN","GALE","GLEN","AGE","ALE","NAG"]},{"root":"PEACE","wheel":["P","E","A","C","E"],"words":["PEACE","CAPE","PACE","PEE","CAP","APE","ACE"]},{"root":"FORCE","wheel":["F","O","R","C","E"],"words":["FORCE","FORE","CORE","FOR","FOE","ROE","ORE"]}],"tier6":[{"root":"SCHOOL","wheel":["S","C","H","O","O","L"],"words":["SCHOOL","COOL","SHOO","LOOS","LOCH"]},{"root":"BREEZE","wheel":["B","R","E","E","Z","E"],"words":["BREEZE","BEER","BEE"]},{"root":"FOREST","wheel":["F","O","R","E","S","T"],"words":["FOREST","FORTE","FROST","STORE","TORSE","ROTE","ROSE","SOFT","SORT","FORT","REST","TORE","FRET","FOR","ROT","SET","SOT","TOE","REF","ORE"]},{"root":"PLANET","wheel":["P","L","A","N","E","T"],"words":["PLANET","PLANE","PLANT","PLATE","PANEL","LEANT","PLEAT","LANE","LEAN","TALE","NEAT","PEAT","PLEA","PALE","LATE","PATE","TAPE","LEAP","PEAL","PAN","PET","NET","PAT","TAP","ALE","APE","PEN","ANT","TEN","TEA","EAT","TAN","PAL","LAP","LET"]},{"root":"SILENT","wheel":["S","I","L","E","N","T"],"words":["SILENT","LISTEN","INLET","TINSEL","ENLIST","LENT","LINE","LIST","NEST","SENT","TILE","LIES","SILT","SLIT","TIES","SITE","LINT","LITE","NET","SET","TIN","LIT","NIL","SIT","TEN","LIE","LET","TIE","SIN"]},{"root":"CASTLE","wheel":["C","A","S","T","L","E"],"words":["CASTLE","SCALE","LEAST","STALE","SLATE","TALES","CLEAT","LACE","CAST","TALE","SEAT","EAST","LAST","CASE","SEAL","SALE","LATE","SECT","CAT","ACT","LET","TEA","SET","ACE","SAT","ALE","ALT","EAT","SEA"]},{"root":"STREAM","wheel":["S","T","R","E","A","M"],"words":["STREAM","MASTER","SMART","STEAM","TAMER","TEAM","TEAR","MEAT","RATE","REST","SEAT","TERM","SAME","MATE","MARE","TAME","STEM","STAR","SEAM","SEAR","TRAM","MARS","MAT","MET","TEA","SEA","RAM","ART","SET","RAT","ARM","EAT","TAR","EAR","ARE"]},{"root":"GARDEN","wheel":["G","A","R","D","E","N"],"words":["GARDEN","DANGER","GANDER","RANGED","GRADE","RAGED","DARE","DEAR","EARN","NEAR","READ","REND","GEAR","RAGE","AGED","DEAN","DRAG","RED","DEN","END","EAR","ARE","RAN","AGE","RAG","AND","NAG"]},{"root":"WINTER","wheel":["W","I","N","T","E","R"],"words":["WINTER","INTER","TWINE","WRITE","INERT","WINE","WIRE","WENT","WREN","RENT","TIER","TIRE","RITE","TWIN","NEW","WIN","WET","NET","TEN","TIN","TIE","NIT"]},{"root":"SPRING","wheel":["S","P","R","I","N","G"],"words":["SPRING","SIGN","SING","RING","GRIP","PING","SPIN","SNIP","RIG","PIG","PIN","NIP","RIP","SIN","SIP","SIR"]},{"root":"BRIDGE","wheel":["B","R","I","D","G","E"],"words":["BRIDGE","DIRGE","RIDGE","BRIDE","BRED","BIRD","GRID","RIDE","DIRE","BIDE","RED","BED","BIG","BEG","RIB","BID","DIE","DIG","RIG"]},{"root":"CANDLE","wheel":["C","A","N","D","L","E"],"words":["CANDLE","LANCED","CLEAN","LANCE","CANE","CLAN","DALE","DEAL","DEAN","LACE","LADE","LAND","LEAD","LEAN","LANE","ACNE","CAN","DEN","END","LAD","LED","ALE","ACE","AND"]},{"root":"SILVER","wheel":["S","I","L","V","E","R"],"words":["SILVER","SLIVER","LIVER","LIVE","VILE","VEIL","EVIL","SIRE","RISE","LIES","RILE","RIVE","SIR","LIE","REV","VIE"]},{"root":"TRAVEL","wheel":["T","R","A","V","E","L"],"words":["TRAVEL","VALET","LATER","ALTER","ALERT","LAVE","LATE","TALE","TEAL","REAL","RATE","TARE","TEAR","RAVE","VEAL","VALE","ALE","ALT","ART","RAT","TAR","TEA","EAT","VET","LET","EAR","ARE"]},{"root":"WONDER","wheel":["W","O","N","D","E","R"],"words":["WONDER","ROWED","DROWN","OWNED","ENDOW","DOWN","DREW","WORD","WORN","NODE","WORE","RODE","RED","ROD","ROW","WON","NOW","ONE","EON","DEN","END","NOR","OWE"]},{"root":"PALACE","wheel":["P","A","L","A","C","E"],"words":["PALACE","PLACE","PLEA","PALE","PACE","LACE","LEAP","PEAL","CAPE","ACE","ALE","APE","CAP","LAP","PAL"]},{"root":"FARMER","wheel":["F","A","R","M","E","R"],"words":["FARMER","FRAME","ARMER","FARM","FARE","FEAR","MARE","REAR","RARE","FAR","REF","RAM","ARM","EAR","ARE","MAR"]},{"root":"DRAGON","wheel":["D","R","A","G","O","N"],"words":["DRAGON","GROAN","RADON","ADORN","ROAD","ROAN","DOG","RAG","RAN","ROD","OAR","AND","NAG","GOD","NOR"]},{"root":"CASTOR","wheel":["C","A","S","T","O","R"],"words":["CASTOR","ACTOR","COAST","ROAST","TACO","CART","COAT","STAR","SCAR","SORT","ACT","CAT","CAR","ARC","ROT","COT","OAR","RAT","ART","SAT","SOT","TAR"]},{"root":"FRIEND","wheel":["F","R","I","E","N","D"],"words":["FRIEND","FINDER","FIEND","FINED","DINER","FERN","FIND","FINE","FIRE","RIDE","RIFE","DINE","RED","REF","DEN","END","FIR","DIE"]},{"root":"PIRATE","wheel":["P","I","R","A","T","E"],"words":["PIRATE","TRIPE","TAPIR","PART","PATE","PEAR","PEAT","PIER","RAPT","RATE","REAP","RIPE","RITE","TAPE","TARE","TEAR","TIRE","TRAP","TRIP","PET","PAT","TAP","TIE","TEA","EAT","PIE","PIT","TIP","RAT","ART","RIP","APE","EAR","ARE","TAR","AIR"]},{"root":"ISLAND","wheel":["I","S","L","A","N","D"],"words":["ISLAND","SNAIL","SLAIN","LAID","LAND","NAIL","SAIL","SAND","SLID","LAD","SAD","AND","SIN","NIL","AID"]},{"root":"PASTEL","wheel":["P","A","S","T","E","L"],"words":["PASTEL","PLEAT","PLATE","PETAL","LEAST","STALE","SLATE","TALES","PASTE","TAPE","PEAT","PATE","PLEA","PALE","LEAP","PEAL","TALE","LATE","SEAT","EAST","LAST","SALE","SEAL","STEP","PET","PAT","TAP","LET","SET","SAT","TEA","EAT","ALE","APE","PAL","LAP"]},{"root":"STABLE","wheel":["S","T","A","B","L","E"],"words":["STABLE","TABLES","BLEAT","BLAST","TABLE","BALE","BEAT","BETA","BELT","LATE","TALE","TEAL","EAST","LAST","SEAT","SALE","SEAL","TAB","BAT","BET","LET","SET","SAT","TEA","EAT","ALE","ALT","SEA"]},{"root":"THRONE","wheel":["T","H","R","O","N","E"],"words":["THRONE","HORNET","NORTH","HERON","OTHER","TENOR","TONER","HORN","RENT","HERO","NOTE","TONE","TORN","THEN","HEN","HER","HOT","NOT","ONE","EON","NET","TEN","TOE","ROT","THE"]},{"root":"SENIOR","wheel":["S","E","N","I","O","R"],"words":["SENIOR","NOISER","ROSIN","SIREN","NOSE","ROSE","IRON","REIN","SORE","SINE","ONE","EON","SON","SIN","SIR","NOR","ION","ROE"]},{"root":"CREDIT","wheel":["C","R","E","D","I","T"],"words":["CREDIT","DIRECT","CITED","TRIED","TIRED","CIDER","RICE","RIDE","DIRE","DIRT","TIED","TIRE","RITE","TIER","CITE","RED","RID","DIE","TIE","ICE"]},{"root":"DETAIL","wheel":["D","E","T","A","I","L"],"words":["DETAIL","DILATE","TAILED","TIDAL","IDEAL","LATE","TALE","TEAL","DATE","TIDE","TIED","DIAL","LAID","LEAD","DEAL","DALE","LIT","LET","LAD","LED","TEA","EAT","TIE","DIE","ALE","ALT","AID"]},{"root":"SALUTE","wheel":["S","A","L","U","T","E"],"words":["SALUTE","SAUTE","LATE","TALE","TEAL","LUTE","LAST","SALT","SEAT","EAST","SEAL","SALE","SUET","LET","SET","SAT","TEA","EAT","ALE","ALT","SUE","USE"]},{"root":"STRIDE","wheel":["S","T","R","I","D","E"],"words":["STRIDE","DRIEST","TIRED","TRIED","DIRE","DIRT","RIDE","RITE","TIRE","TIED","TIDE","REST","SIDE","SITE","STIR","RED","RID","DIE","SET","SIT","TIE","SIR"]},{"root":"POETRY","wheel":["P","O","E","T","R","Y"],"words":["POETRY","TROPE","ROTE","TORE","TYRE","POET","ROPE","PORT","TYPE","TOPE","TREY","PREY","PET","POT","TOP","ROT","TOE","RYE","TOY","TRY","PER"]},{"root":"WATERS","wheel":["W","A","T","E","R","S"],"words":["WATERS","STREW","SWEAR","WASTE","WATER","WEAR","WEST","STAR","RATE","TEAR","TARE","REST","SEAT","EAST","SAW","WAR","WET","SET","SAT","TEA","EAT","RAW","TAR","ART","RAT","SEA","EAR","ARE"]},{"root":"GOLDEN","wheel":["G","O","L","D","E","N"],"words":["GOLDEN","LODGE","GLEN","GOLD","GONE","LONE","NODE","NOEL","DOG","DEN","END","GOD","LED","LOG","OLD","ONE","EON"]},{"root":"SIMPLE","wheel":["S","I","M","P","L","E"],"words":["SIMPLE","IMPEL","SLIME","SMILE","LIME","LIMP","MILE","SLIP","SLIM","PILE","PIE","LIP","SIP","LIE","IMP"]},{"root":"PRINCE","wheel":["P","R","I","N","C","E"],"words":["PRINCE","PRICE","RIPE","PINE","NICE","REIN","RICE","PIER","PEN","PIN","NIP","RIP","PIE","ICE","PER"]},{"root":"SUNSET","wheel":["S","U","N","S","E","T"],"words":["SUNSET","SUET","STUN","TUNE","NEST","SENT","NET","SET","SUN","TEN","NUT","SUE","USE"]},{"root":"LITTLE","wheel":["L","I","T","T","L","E"],"words":["LITTLE","TITLE","TELL","LITE","TILL","LET","LIT","TIE"]},{"root":"YELLOW","wheel":["Y","E","L","L","O","W"],"words":["YELLOW","YELL","WELL","OWE","LOW"]},{"root":"PURPLE","wheel":["P","U","R","P","L","E"],"words":["PURPLE","RULE","PURE","PULP"]},{"root":"ORANGE","wheel":["O","R","A","N","G","E"],"words":["ORANGE","GROAN","ORGAN","RANGE","ANGER","GEAR","GONE","NEAR","RAGE","ROAN","OGRE","EARN","GORE","AGE","EAR","ARE","RAN","RAG","ONE","EON","NOR","OAR","EGO","NAG"]},{"root":"DOCTOR","wheel":["D","O","C","T","O","R"],"words":["DOCTOR","ROOT","ODOR","CORD","ROD","COT","TOO","ROT"]},{"root":"POLICE","wheel":["P","O","L","I","C","E"],"words":["POLICE","CLOP","COIL","CLIP","POLE","LICE","LIP","OIL","PIE","ICE","LIE"]},{"root":"MARKET","wheel":["M","A","R","K","E","T"],"words":["MARKET","MAKER","TAMER","MATE","MEAT","RAKE","RATE","TARE","TEAR","TERM","MAKE","MARE","MARK","TEAM","TAME","MAT","MET","TEA","EAT","RAM","ARM","ART","RAT","ARK","TAR","EAR","ARE"]},{"root":"CAMERA","wheel":["C","A","M","E","R","A"],"words":["CAMERA","CREAM","RACE","ACRE","MARE","CAME","ACME","CRAM","RAM","ARM","CAR","ARC","ACE","EAR","ARE"]},{"root":"WINDOW","wheel":["W","I","N","D","O","W"],"words":["WINDOW","WIND","DOWN","WIN","NOW","WON"]},{"root":"BASKET","wheel":["B","A","S","K","E","T"],"words":["BASKET","STEAK","SKATE","BAKE","BEAK","BASE","BASK","BEAT","BETA","EAST","SEAT","TAKE","TEAK","BAT","BET","TAB","SET","SAT","TEA","EAT","ASK"]},{"root":"PENCIL","wheel":["P","E","N","C","I","L"],"words":["PENCIL","LINE","LICE","PEN","PIN","NIP","NIL","ICE","LIE","LIP"]},{"root":"FLIGHT","wheel":["F","L","I","G","H","T"],"words":["FLIGHT","LIGHT","FILTH","GILT","LIFT","FLIT","GIFT","HILT","FIT","FIG","HIT","LIT"]},{"root":"DESERT","wheel":["D","E","S","E","R","T"],"words":["DESERT","DETER","RESET","STEER","DEER","REED","REST","SEER","TREE","RED","SET","TEE","SEE"]},{"root":"JUNGLE","wheel":["J","U","N","G","L","E"],"words":["JUNGLE","LUNGE","GLUE","JUNE","LUNG","GEL","GUN","JUG","LUG"]},{"root":"RESCUE","wheel":["R","E","S","C","U","E"],"words":["RESCUE","CURSE","SECURE","CURE","USER","RUSE","SURE","CUE","SUE","RUE","USE","SEC"]},{"root":"SHADOW","wheel":["S","H","A","D","O","W"],"words":["SHADOW","DASH","SHOW","SODA","WASH","WHOA","ASH","HAD","HAS","HOW","SAD","SAW","WHO","SOW"]},{"root":"HEROES","wheel":["H","E","R","O","E","S"],"words":["HEROES","HORSE","SHORE","HERE","HERO","HOSE","ROSE","SEER","SHOE","SORE","SEE","SHE","HER","ROE"]},{"root":"LEMONS","wheel":["L","E","M","O","N","S"],"words":["LEMONS","LEMON","MELON","MOLE","LONE","NOSE","OMEN","SOLE","SOME","MEN","ONE","EON","SON","ELM"]},{"root":"CANDOR","wheel":["C","A","N","D","O","R"],"words":["CANDOR","ACORN","RADON","ADORN","ROAN","ROAD","CARD","CORN","DARN","CAN","AND","CAR","ARC","RAN","ROD","OAR","NOR","COD"]},{"root":"BRIGHT","wheel":["B","R","I","G","H","T"],"words":["BRIGHT","GIRTH","BIRTH","RIGHT","GRIT","BRIG","GIRT","BIG","BIT","HIT","RIB","RIG"]},{"root":"CHEESE","wheel":["C","H","E","E","S","E"],"words":["CHEESE","SEE","SHE"]},{"root":"BUTTER","wheel":["B","U","T","T","E","R"],"words":["BUTTER","BRUTE","TUBER","TRUE","TUBE","BUTT","RUT","TUB","BET","BUT"]},{"root":"BOTTLE","wheel":["B","O","T","T","L","E"],"words":["BOTTLE","LOB","LOT","BOT"]},{"root":"ROCKET","wheel":["R","O","C","K","E","T"],"words":["ROCKET","CORT","ROTE","TORE","COTE","COT","ROT","TOE"]},{"root":"KNIGHT","wheel":["K","N","I","G","H","T"],"words":["KNIGHT","THIN","HINT","NIGH","TIN","HIT","INK","KIT"]},{"root":"WIZARD","wheel":["W","I","Z","A","R","D"],"words":["WIZARD","DRAW","RAID","ARID","WARD","WAR","RAW","RAD"]},{"root":"MONKEY","wheel":["M","O","N","K","E","Y"],"words":["MONKEY","MONK","OMEN","YOKE","KEY","ONE","EON","MEN"]},{"root":"RABBIT","wheel":["R","A","B","B","I","T"],"words":["RABBIT","BAIT","BART","BAR","BAT","TAB","BIT","RIB","AIR"]},{"root":"KITTEN","wheel":["K","I","T","T","E","N"],"words":["KITTEN","TENT","TINT","KNIT","NET","TEN","TIE","KIT","INK"]}],"tier7":[{"root":"FORTUNE","wheel":["F","O","R","T","U","N","E"],"words":["FORTUNE","FOUNT","FRONT","TENOR","FORT","FONT","FOUR","TRUE","TUNE","TURN","RENT","NOTE","TONE","RUNT","FOR","NOT","NOR","NUT","OUT","ROT","RUN","TON","RUE","TOE","ONE","EON"]},{"root":"MYSTERY","wheel":["M","Y","S","T","E","R","Y"],"words":["MYSTERY","TREY","REST","TERM","SET","MET","RYE","YES","TRY"]},{"root":"SPARKLE","wheel":["S","P","A","R","K","L","E"],"words":["SPARKLE","SPEAR","SPARK","SPEAK","PARK","PEAK","PEAR","PLEA","PALE","LEAP","PEAL","REAL","LAKE","LEAK","SEAL","SALE","SPAR","APES","PEAS","PAR","RAP","PER","APE","ALE","PAL","LAP","ASK","SEA","EAR","ARE"]},{"root":"FREEDOM","wheel":["F","R","E","E","D","O","M"],"words":["FREEDOM","REED","DEER","FREE","FROM","FEED","FORD","MORE","MODE","RODE","RED","FOR","FOE","FEE","REF","ROD","MOD"]},{"root":"JOURNEY","wheel":["J","O","U","R","N","E","Y"],"words":["JOURNEY","ENJOY","RUNE","JURY","RUE","ONE","EON","RUN","NOR","JOY"]},{"root":"HARVEST","wheel":["H","A","R","V","E","S","T"],"words":["HARVEST","STARVE","SHARE","SHAVE","HEART","EARTH","HATE","HAVE","HEAR","HEAT","RAVE","SAVE","SEAT","STAR","TEAR","VASE","VEST","ART","RAT","TEA","EAT","SAT","SET","ASH","HAS","HAT","EAR","ARE","SEA","TAR"]},{"root":"BALANCE","wheel":["B","A","L","A","N","C","E"],"words":["BALANCE","CABAL","LANCE","CLEAN","CABLE","BALE","BEAN","BANE","LACE","LANE","LEAN","ACNE","BAN","NAB","CAN","CAB","ALE","ACE"]},{"root":"KITCHEN","wheel":["K","I","T","C","H","E","N"],"words":["KITCHEN","THICK","HINT","CHIN","ITCH","CHIT","TICK","KITE","TECH","HEN","HIT","KIT","ICE","NET","TEN","TIE","INK"]},{"root":"BALLOON","wheel":["B","A","L","L","O","O","N"],"words":["BALLOON","BALL","BOLL","BOON","LOAN","LAB","NAB"]},{"root":"FEATHER","wheel":["F","E","A","T","H","E","R"],"words":["FEATHER","FATHER","HEATER","AFTER","HEART","EARTH","HATER","THERE","THREE","HATE","HEAR","HEAT","HARE","FARE","FEAR","FATE","FEAT","FREE","TREE","RATE","TARE","TEAR","FAT","HAT","HER","REF","FEE","THE","TEA","EAT","EAR","ARE","TAR"]},{"root":"DIAMOND","wheel":["D","I","A","M","O","N","D"],"words":["DIAMOND","DOMAIN","MAID","MIND","MAIN","DAM","MAD","DIM","MID","MAN","AND","AIM","ION"]},{"root":"RAINBOW","wheel":["R","A","I","N","B","O","W"],"words":["RAINBOW","BRAWN","BRAIN","BARON","BROWN","ROAN","RAIN","BARN","BRAN","BORN","WAR","RAW","WIN","BAR","BRA","BAN","NAB","RAN","BOW","ROW","NOW","WON","AIR","RIB","OAR","NOR"]},{"root":"THUNDER","wheel":["T","H","U","N","D","E","R"],"words":["THUNDER","TUNED","UNDER","RUDE","TRUE","TUNE","TURN","RENT","HERD","DENT","HURT","HUNT","RED","HEN","HER","NUT","RUN","RUE","NET","TEN","THE","END","DEN"]},{"root":"MORNING","wheel":["M","O","R","N","I","N","G"],"words":["MORNING","GROIN","MINOR","RING","GRIN","IRON","NORM","GIN","RIG","RIM","ION","NOR"]},{"root":"EVENING","wheel":["E","V","E","N","I","N","G"],"words":["EVENING","VEIN","VINE","NINE","EVEN","GIVE","GIN"]},{"root":"HOLIDAY","wheel":["H","O","L","I","D","A","Y"],"words":["HOLIDAY","DAILY","HOLD","LADY","IDLY","LOAD","LAID","HAIL","DAY","HAD","HAY","LAD","LAY","LID","OIL"]},{"root":"VILLAGE","wheel":["V","I","L","L","A","G","E"],"words":["VILLAGE","GIVE","GALE","VEIL","VILE","LIVE","GEL","ALE","ALL","ILL"]},{"root":"BLANKET","wheel":["B","L","A","N","K","E","T"],"words":["BLANKET","BLANK","BLEAK","LEAK","LANE","LEAN","BALE","BAKE","BEAK","BEAN","BANE","LATE","TALE","NEAT","ALE","BAN","NAB","KEN","LAB","LET","NET","TAB","TEA","EAT"]},{"root":"CAPTAIN","wheel":["C","A","P","T","A","I","N"],"words":["CAPTAIN","PAINT","PANIC","PACT","PAIN","PANT","ANTI","CAN","CAP","PAN","PIN","NIP","PAT","TAP","CAT","ACT","TAN","TIN","TIP","PIT"]},{"root":"LANTERN","wheel":["L","A","N","T","E","R","N"],"words":["LANTERN","LEARN","ALERT","ALTER","LATER","RENT","LANE","LEAN","LATE","TALE","TEAL","NEAR","EARN","NEAT","RANT","RATE","TARE","TEAR","ALE","ALT","ANT","TAN","NET","TEN","TEA","EAT","RAN","RAT","ART","TAR","EAR","ARE"]},{"root":"MONSTER","wheel":["M","O","N","S","T","E","R"],"words":["MONSTER","MENTOR","STONE","ONSET","NOTES","TONES","STERN","SNORE","MORE","NOSE","NOTE","TONE","TOES","TERM","STEM","REST","RENT","ROSE","SORE","SENT","NEST","NET","TEN","SET","NOT","SON","SOT","TOE","ROT","MEN","MET","ONE","EON","NOR","ROE","ORE"]},{"root":"DOLPHIN","wheel":["D","O","L","P","H","I","N"],"words":["DOLPHIN","HOLD","LION","LOIN","HIP","HOP","LIP","NIL","OIL","PIN","NIP","POD","ION"]},{"root":"PENGUIN","wheel":["P","E","N","G","U","I","N"],"words":["PENGUIN","PINE","PING","PEN","PIN","NIP","PIG","GUN","PUN"]},{"root":"GIRAFFE","wheel":["G","I","R","A","F","F","E"],"words":["GIRAFFE","GRIEF","FAIR","FEAR","FARE","FIRE","RIFE","GEAR","RAGE","AGE","FAR","FIG","REF","RIG","AIR","EAR","ARE"]},{"root":"HAMSTER","wheel":["H","A","M","S","T","E","R"],"words":["HAMSTER","MASTER","SMART","STREAM","TAMER","TEARS","RATES","STARE","SHARE","HEART","EARTH","HATER","HASTE","HATE","HEAR","HEAT","HARE","TEAM","TEAR","MEAT","RATE","REST","SEAT","TERM","SAME","MATE","MARE","TAME","STEM","STAR","SEAM","SEAR","RASH","MAT","MET","TEA","EAT","SET","SAT","RAM","ARM","ART","RAT","ASH","HAS","HAT","THE","EAR","ARE","SEA","TAR"]},{"root":"SPARROW","wheel":["S","P","A","R","R","O","W"],"words":["SPARROW","ARROW","WARP","SWAP","WASP","SPAR","SOAR","ROAR","WAR","RAW","SAW","SOW","RAP","PAR","OAR","ROW"]},{"root":"PEACOCK","wheel":["P","E","A","C","O","C","K"],"words":["PEACOCK","CAPE","PACE","COCK","COPE","CAP","APE","ACE"]},{"root":"CRYSTAL","wheel":["C","R","Y","S","T","A","L"],"words":["CRYSTAL","CART","CAST","STAR","SCAR","SALT","STAY","CLAY","RAY","SAY","TRY","CAT","ACT","CAR","ARC","RAT","ART","SAT","TAR","ALT","LAY"]},{"root":"FIREFLY","wheel":["F","I","R","E","F","L","Y"],"words":["FIREFLY","FILE","LIFE","FIRE","RIFE","FLY","REF","FIR","FRY"]},{"root":"BLOSSOM","wheel":["B","L","O","S","S","O","M"],"words":["BLOSSOM","BLOOM","BOOM","LOOM","MOSS","BOLO","SOB","MOB"]},{"root":"COMPASS","wheel":["C","O","M","P","A","S","S"],"words":["COMPASS","CAMP","COMA","SCAM","PASS","MASS","SOAP","CAP","MAP","MOP","SAP","PAS","COP"]},{"root":"WARRIOR","wheel":["W","A","R","R","I","O","R"],"words":["WARRIOR","ARROW","ROAR","WAR","RAW","ROW","OAR"]},{"root":"MAJESTY","wheel":["M","A","J","E","S","T","Y"],"words":["MAJESTY","STEAM","SAME","SEAM","MATE","MEAT","TAME","STEM","EAST","SEAT","STAY","MAT","MET","TEA","EAT","SET","SAT","SAY","YES","MAY","SEA"]},{"root":"VICTORY","wheel":["V","I","C","T","O","R","Y"],"words":["VICTORY","CITY","TRIO","RIOT","ROT","COT","TRY","TOY"]},{"root":"KINGDOM","wheel":["K","I","N","G","D","O","M"],"words":["KINGDOM","DOING","MIND","KIND","KING","DING","DOG","GOD","KID","KIN","INK","DIM","MID","ION"]},{"root":"GARDENS","wheel":["G","A","R","D","E","N","S"],"words":["GARDENS","DANGER","GARDEN","GANDER","RANGED","GRADE","SANDER","SNARED","DARE","DEAR","EARN","NEAR","READ","REND","GEAR","RAGE","AGED","DEAN","DRAG","SAND","SEND","RED","DEN","END","EAR","ARE","RAN","AGE","RAG","AND","NAG","SAD","SEA"]}]};
 
         function canFormWordFromWheel(word, wheelLetters) {
             const letterCounts = {};
@@ -894,9 +886,14 @@
             return true;
         }
 
-        ANAGRAM_SEEDS.forEach(seed => {
-            seed.words = seed.words.filter(word => canFormWordFromWheel(word, seed.wheel));
-        });
+        // Anti-Plural / Redundancy Filter: ensures 'ANT' and 'ANTS' or 'WOOD' and 'WOODS' never appear on the same board
+        function filterRedundantPlurals(words) {
+            const wordSet = new Set(words);
+            return words.filter(w => {
+                if (w.length >= 3 && wordSet.has(w + 'S')) return false;
+                return true;
+            });
+        }
 
         /* ==================== WEB AUDIO SYNTHESIZER ==================== */
         class SoundManager {
@@ -1078,7 +1075,7 @@
         let score = 0;
         let previousScore = 0;
         let currentRankTitle = "";
-        let lastUsedSeedIndex = -1;
+        let recentRoots = [];
         let solvedWords = new Set();
         let bonusWords = new Set();
         let currentLevelData = null;
@@ -1143,15 +1140,15 @@
             });
         }
 
-        /* ==================== RANK SYSTEM ==================== */
+        /* ==================== PLAYER RANKS (HIGHER EARNED MILESTONES) ==================== */
         const RANK_THRESHOLDS = [
-            { minScore: 25000, title: "🔮 OMNISCIENT ORACLE" },
-            { minScore: 12000, title: "👑 GRAND VIRTUOSO" },
-            { minScore: 6000,  title: "⚔️ LINGUISTIC SCHOLAR" },
-            { minScore: 3000,  title: "🧠 MASTER WORDSMITH" },
-            { minScore: 1200,  title: "💡 ANAGRAM ACE" },
-            { minScore: 0,     title: "📚 LEXICON SCOUT" },
-            { minScore: -Infinity, title: "🐣 WORD NOVICE" }
+            { minScore: 120000, title: "👑 GRAND MASTER" },
+            { minScore: 65000,  title: "🏆 CHAMPION" },
+            { minScore: 35000,  title: "🎯 EXPERT" },
+            { minScore: 18000,  title: "💡 WORDSMITH" },
+            { minScore: 7500,   title: "🧭 EXPLORER" },
+            { minScore: 2500,   title: "🔍 SEEKER" },
+            { minScore: -Infinity, title: "🌟 NOVICE" }
         ];
 
         function getRankIndex(currentScore) {
@@ -1167,7 +1164,7 @@
             for (let item of RANK_THRESHOLDS) {
                 if (currentScore >= item.minScore) return item.title;
             }
-            return "🐣 WORD NOVICE";
+            return "🌟 NOVICE";
         }
 
         function checkRankPromotion(newScore) {
@@ -1185,7 +1182,7 @@
                     modalIcon.textContent = "🌟";
                     modalTitle.textContent = "RANK UP!";
                     modalTitle.style.color = "#7e22ce";
-                    rankUpSubtitle.textContent = "Congratulations! You have been promoted to:\n" + newTitle;
+                    rankUpSubtitle.textContent = "Congratulations! You have reached:\n" + newTitle;
                     rankUpSubtitle.style.color = "#1e293b";
                     btnCloseRankUp.textContent = "AWESOME!";
                     btnCloseRankUp.style.background = "linear-gradient(135deg, #a855f7 0%, #7e22ce 100%)";
@@ -1210,44 +1207,49 @@
             playerTitleBadge.textContent = currentRankTitle;
         }
 
-        /* ==================== COMPACT CROSSWORD GENERATOR (MAX 6x6 FOR HUGE TILES) ==================== */
-        function getRandomDifficulty() {
-            const difficulties = ["Easy", "Medium", "Hard", "Hardest"];
-            const weights = [0.35, 0.35, 0.20, 0.10];
-            let rand = Math.random();
-            for (let i = 0; i < weights.length; i++) {
-                if (rand < weights[i]) return difficulties[i];
-                rand -= weights[i];
+        /* ==================== TIERED LEVEL PROGRESSION ==================== */
+        function getTierInfoForLevel(lvl) {
+            if (lvl <= 5) {
+                return { tierKey: 'tier4', name: 'BEGINNER', css: 'diff-easy', minTarget: 2, maxGrid: 5 };
+            } else if (lvl <= 20) {
+                return { tierKey: 'tier5', name: 'EXPLORER', css: 'diff-medium', minTarget: 3, maxGrid: 6 };
+            } else if (lvl <= 50) {
+                return { tierKey: 'tier6', name: 'CHALLENGER', css: 'diff-hard', minTarget: 4, maxGrid: 6 };
+            } else {
+                return { tierKey: 'tier7', name: 'MASTER', css: 'diff-hardest', minTarget: 4, maxGrid: 7 };
             }
-            return "Easy";
         }
 
-        function generateLevelForDifficulty(difficulty) {
-            // Strict 6x6 max bounds ensures puzzle tiles will be large (42px-52px) and never overflow the screen
-            const maxGridSize = 6;
-            const targetMin = (difficulty === "Hard" || difficulty === "Hardest") ? 5 : 4;
+        function generateLevel(lvlNum) {
+            const tierInfo = getTierInfoForLevel(lvlNum);
+            const poolList = WORD_DATABASE[tierInfo.tierKey] || WORD_DATABASE.tier5;
 
-            let availableIndices = [];
-            for (let i = 0; i < ANAGRAM_SEEDS.length; i++) {
-                if (i !== lastUsedSeedIndex) availableIndices.push(i);
+            // Pick a root, avoiding recent roots
+            let available = poolList.filter(item => !recentRoots.includes(item.root));
+            if (available.length === 0) {
+                recentRoots = [];
+                available = poolList;
             }
-            const chosenIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
-            lastUsedSeedIndex = chosenIndex;
+            const chosenItem = available[Math.floor(Math.random() * available.length)];
+            recentRoots.push(chosenItem.root);
+            if (recentRoots.length > 20) recentRoots.shift();
 
-            const seed = ANAGRAM_SEEDS[chosenIndex];
-            const wheelLetters = [...seed.wheel];
+            const wheelLetters = [...chosenItem.wheel];
+            const maxGridSize = tierInfo.maxGrid;
+            const minWords = tierInfo.minTarget;
 
-            let pool = seed.words.filter(w => canFormWordFromWheel(w, wheelLetters));
-            pool.sort((a, b) => b.length - a.length);
+            // Filter out duplicate plurals (e.g. ANT + ANTS or WOOD + WOODS)
+            let candidateWords = filterRedundantPlurals(chosenItem.words);
+            candidateWords.sort((a, b) => b.length - a.length);
 
             let attempts = 0;
-            while (attempts < 250) {
+            while (attempts < 200) {
                 attempts++;
                 const grid = Array(maxGridSize).fill(null).map(() => Array(maxGridSize).fill(null));
                 const placedWords = [];
 
                 const byLen = {};
-                pool.forEach(w => {
+                candidateWords.forEach(w => {
                     byLen[w.length] = byLen[w.length] || [];
                     byLen[w.length].push(w);
                 });
@@ -1286,20 +1288,22 @@
                     }
                 }
 
-                if (placedWords.length >= targetMin) {
+                if (placedWords.length >= minWords) {
                     const cropped = cropGridAndAdjustCoordinates(maxGridSize, maxGridSize, placedWords);
                     return {
-                        difficulty,
+                        difficulty: tierInfo.name,
+                        diffClass: tierInfo.css,
                         gridWidth: cropped.width,
                         gridHeight: cropped.height,
                         words: cropped.words,
                         wheelLetters,
-                        allSeedWords: pool
+                        allSeedWords: chosenItem.words
                     };
                 }
             }
 
-            return generateFallbackLevel(difficulty, seed);
+            // Fallback to simple clean placement if needed
+            return generateFallbackLevel(tierInfo, chosenItem);
         }
 
         function cropGridAndAdjustCoordinates(origW, origH, words) {
@@ -1374,18 +1378,32 @@
             }
         }
 
-        function generateFallbackLevel(difficulty, seed) {
-            const wheel = seed ? seed.wheel : ["P", "L", "A", "N", "E", "T"];
-            const pool = seed ? seed.words : ["PLANET", "PLANE", "PLANT", "PLATE", "PANEL", "LANE", "LEAN", "TALE", "NEAT", "PET", "NET", "TEA"];
-            const fallbackWords = [
-                { word: "PLANET", row: 0, col: 0, dir: "H" },
-                { word: "LANE",   row: 0, col: 1, dir: "V" },
-                { word: "NEAT",   row: 0, col: 3, dir: "V" },
-                { word: "TEA",    row: 2, col: 3, dir: "H" },
-                { word: "PET",    row: 0, col: 0, dir: "V" }
-            ].filter(wObj => canFormWordFromWheel(wObj.word, wheel));
+        function generateFallbackLevel(tierInfo, item) {
+            const wheel = item.wheel;
+            const words = item.words.filter(w => canFormWordFromWheel(w, wheel));
+            const first = words[0] || item.root;
+            const second = words[1] || "";
+            const placed = [{ word: first, row: 0, col: 0, dir: "H" }];
 
-            return { difficulty, gridWidth: 6, gridHeight: 4, wheelLetters: wheel, words: fallbackWords, allSeedWords: pool };
+            if (second) {
+                for (let i = 0; i < first.length; i++) {
+                    const matchIdx = second.indexOf(first[i]);
+                    if (matchIdx !== -1) {
+                        placed.push({ word: second, row: 0, col: i, dir: "V" });
+                        break;
+                    }
+                }
+            }
+
+            return {
+                difficulty: tierInfo.name,
+                diffClass: tierInfo.css,
+                gridWidth: Math.max(first.length, 5),
+                gridHeight: 5,
+                wheelLetters: wheel,
+                words: placed,
+                allSeedWords: words
+            };
         }
 
         /* ==================== PERSISTENCE ==================== */
@@ -1393,23 +1411,23 @@
             const data = {
                 levelIdx: currentLevelIdx,
                 score: score,
-                lastUsedSeedIndex: lastUsedSeedIndex,
+                recentRoots: recentRoots,
                 solved: Array.from(solvedWords),
                 bonus: Array.from(bonusWords),
                 levelData: currentLevelData,
                 soundEnabled: soundManager.enabled
             };
-            localStorage.setItem('wordquest_save_v4', JSON.stringify(data));
+            localStorage.setItem('wordquest_save_v5', JSON.stringify(data));
         }
 
         function loadProgress() {
-            const saved = localStorage.getItem('wordquest_save_v4') || localStorage.getItem('wordquest_save_v3');
+            const saved = localStorage.getItem('wordquest_save_v5') || localStorage.getItem('wordquest_save_v4') || localStorage.getItem('wordquest_save_v3');
             if (saved) {
                 try {
                     const data = JSON.parse(saved);
                     if (data.levelIdx !== undefined) currentLevelIdx = data.levelIdx;
                     if (data.score !== undefined) score = data.score;
-                    if (data.lastUsedSeedIndex !== undefined) lastUsedSeedIndex = data.lastUsedSeedIndex;
+                    if (data.recentRoots) recentRoots = data.recentRoots;
                     if (data.solved) solvedWords = new Set(data.solved);
                     if (data.bonus) bonusWords = new Set(data.bonus);
                     if (data.levelData) currentLevelData = data.levelData;
@@ -1440,7 +1458,6 @@
             const theme = SCENIC_THEMES[(lvl - 1) % SCENIC_THEMES.length];
             scenicBg.classList.add(theme.id);
 
-            // Dynamically customize decoration per theme
             if (theme.id === 'theme-clouds') {
                 scenicDecor.className = 'scenic-balloon';
                 scenicDecor.style.display = 'block';
@@ -1470,29 +1487,28 @@
                 currentLevelIdx = idx;
                 solvedWords.clear();
                 bonusWords.clear();
-                const difficulty = getRandomDifficulty();
-                currentLevelData = generateLevelForDifficulty(difficulty);
+                currentLevelData = generateLevel(currentLevelIdx + 1);
             }
 
             applyLevelTheme(currentLevelIdx + 1);
             levelBadge.textContent = "LVL " + (currentLevelIdx + 1);
-            updateDifficultyBadge(currentLevelData.difficulty);
+            updateDifficultyBadge(currentLevelData.difficulty, currentLevelData.diffClass);
             updateBonusDisplay();
-            showLevelStartNotification(currentLevelIdx + 1, currentLevelData.difficulty);
+            showLevelStartNotification(currentLevelIdx + 1, currentLevelData.difficulty, currentLevelData.diffClass);
             renderCrosswordGrid();
             renderWheel();
             saveProgress();
         }
 
-        function updateDifficultyBadge(diff) {
+        function updateDifficultyBadge(diff, diffClass) {
             diffBadge.textContent = diff;
-            diffBadge.className = "difficulty-badge diff-" + diff.toLowerCase();
+            diffBadge.className = "difficulty-badge " + (diffClass || "diff-easy");
         }
 
-        function showLevelStartNotification(lvlNum, diff) {
+        function showLevelStartNotification(lvlNum, diff, diffClass) {
             startLevelTitle.textContent = "LEVEL " + lvlNum;
-            startDiffTag.textContent = "DIFFICULTY: " + diff.toUpperCase();
-            startDiffTag.className = "difficulty-badge diff-" + diff.toLowerCase();
+            startDiffTag.textContent = diff;
+            startDiffTag.className = "difficulty-badge " + (diffClass || "diff-easy");
             levelStartOverlay.classList.add('active');
 
             setTimeout(() => {
