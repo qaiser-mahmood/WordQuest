@@ -3,112 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>WordQuest - Crossword Adventure</title>
+    <title>WordQuest - Sky Voyage</title>
     <meta name="apple-mobile-web-app-title" content="WordQuest">
     <meta name="application-name" content="WordQuest">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#090d16">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#38bdf8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='512' height='512'><rect width='512' height='512' rx='128' fill='%230f172a'/><rect x='32' y='32' width='448' height='448' rx='96' fill='none' stroke='%2338bdf8' stroke-width='16'/><text x='50%' y='68%' font-family='Outfit, sans-serif' font-weight='900' font-size='320' fill='%2338bdf8' text-anchor='middle'>W</text></svg>">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='512' height='512'><rect width='512' height='512' rx='128' fill='%230f172a'/><text x='50%' y='68%' font-family='Outfit, sans-serif' font-weight='900' font-size='320' fill='%2338bdf8' text-anchor='middle'>W</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='512' height='512'><rect width='512' height='512' rx='128' fill='%2338bdf8'/><text x='50%' y='68%' font-family='Outfit, sans-serif' font-weight='900' font-size='320' fill='%23ffffff' text-anchor='middle'>W</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='512' height='512'><rect width='512' height='512' rx='128' fill='%2338bdf8'/><text x='50%' y='68%' font-family='Outfit, sans-serif' font-weight='900' font-size='320' fill='%23ffffff' text-anchor='middle'>W</text></svg>">
 
     <style>
         :root {
-            --bg-gradient-start: #14052b;
-            --bg-gradient-end: #2d0b4e;
-            --blob-1: #e11d48;
-            --blob-2: #8b5cf6;
-            --blob-3: #06b6d4;
-            --card-bg: rgba(22, 16, 44, 0.72);
-            --accent-cyan: #38bdf8;
-            --accent-glow: rgba(56, 189, 248, 0.5);
-            --gold-gradient: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
-            --wheel-size: clamp(235px, 35vh, 290px);
-        }
-
-        /* 8 Funky Level Background Themes */
-        .theme-neon-disco {
-            --bg-gradient-start: #120324;
-            --bg-gradient-end: #280946;
-            --blob-1: #f43f5e;
-            --blob-2: #a855f7;
-            --blob-3: #06b6d4;
-            --card-bg: rgba(25, 12, 45, 0.75);
-            --accent-cyan: #38bdf8;
-            --accent-glow: rgba(56, 189, 248, 0.5);
-        }
-        .theme-sunset-blaze {
-            --bg-gradient-start: #230818;
-            --bg-gradient-end: #3f1122;
-            --blob-1: #f97316;
-            --blob-2: #ec4899;
-            --blob-3: #eab308;
-            --card-bg: rgba(45, 15, 30, 0.75);
-            --accent-cyan: #fb923c;
-            --accent-glow: rgba(251, 146, 60, 0.5);
-        }
-        .theme-jungle-groove {
-            --bg-gradient-start: #041a14;
-            --bg-gradient-end: #092e23;
-            --blob-1: #10b981;
-            --blob-2: #84cc16;
-            --blob-3: #06b6d4;
-            --card-bg: rgba(8, 38, 30, 0.75);
-            --accent-cyan: #34d399;
-            --accent-glow: rgba(52, 211, 153, 0.5);
-        }
-        .theme-cyber-arcade {
-            --bg-gradient-start: #080d26;
-            --bg-gradient-end: #17103a;
-            --blob-1: #6366f1;
-            --blob-2: #d946ef;
-            --blob-3: #38bdf8;
-            --card-bg: rgba(18, 20, 52, 0.75);
-            --accent-cyan: #c084fc;
-            --accent-glow: rgba(192, 132, 252, 0.5);
-        }
-        .theme-bubblegum-pop {
-            --bg-gradient-start: #20061e;
-            --bg-gradient-end: #3b0d35;
-            --blob-1: #f43f5e;
-            --blob-2: #a855f7;
-            --blob-3: #fbbf24;
-            --card-bg: rgba(45, 14, 40, 0.75);
-            --accent-cyan: #f472b6;
-            --accent-glow: rgba(244, 114, 182, 0.5);
-        }
-        .theme-oceanic-wave {
-            --bg-gradient-start: #041724;
-            --bg-gradient-end: #0a293d;
-            --blob-1: #0284c7;
-            --blob-2: #14b8a6;
-            --blob-3: #6366f1;
-            --card-bg: rgba(10, 32, 50, 0.75);
-            --accent-cyan: #22d3ee;
-            --accent-glow: rgba(34, 211, 238, 0.5);
-        }
-        .theme-cosmic-nebula {
-            --bg-gradient-start: #0d0722;
-            --bg-gradient-end: #1d0f3e;
-            --blob-1: #9333ea;
-            --blob-2: #3b82f6;
-            --blob-3: #f43f5e;
-            --card-bg: rgba(25, 14, 52, 0.75);
-            --accent-cyan: #a855f7;
-            --accent-glow: rgba(168, 85, 247, 0.5);
-        }
-        .theme-golden-galaxy {
-            --bg-gradient-start: #1c1103;
-            --bg-gradient-end: #362208;
-            --blob-1: #eab308;
-            --blob-2: #ea580c;
-            --blob-3: #ec4899;
-            --card-bg: rgba(42, 26, 8, 0.75);
-            --accent-cyan: #fbbf24;
-            --accent-glow: rgba(251, 191, 36, 0.5);
+            --bg-sky: #38bdf8;
+            --wheel-size: clamp(230px, 34vh, 275px);
         }
 
         * {
@@ -123,8 +33,8 @@
 
         body {
             font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #050811;
-            color: #f8fafc;
+            background-color: #bae6fd;
+            color: #0f172a;
             height: 100dvh;
             width: 100vw;
             display: flex;
@@ -138,77 +48,137 @@
             max-width: 460px;
             height: 100dvh;
             max-height: 940px;
-            background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
             padding: 8px 12px;
             padding-top: max(8px, env(safe-area-inset-top));
-            padding-bottom: max(10px, env(safe-area-inset-bottom));
+            padding-bottom: max(8px, env(safe-area-inset-bottom));
             position: relative;
             overflow: hidden;
-            transition: background 0.8s ease;
+            background: #e0f2fe;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
         }
 
         @media (min-width: 500px) {
             #game-container {
                 height: 96dvh;
-                border-radius: 28px;
-                border: 2px solid rgba(255, 255, 255, 0.14);
-                box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px var(--accent-glow);
+                border-radius: 30px;
+                border: 4px solid #ffffff;
+                box-shadow: 0 25px 60px -10px rgba(14, 165, 233, 0.35), 0 10px 30px rgba(0,0,0,0.1);
             }
         }
 
-        /* Funky Floating Animated Blobs */
-        .funky-bg-blobs {
+        /* ================= BRIGHT SCENIC BACKGROUNDS ================= */
+        .scenic-bg-container {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            overflow: hidden;
             pointer-events: none;
             z-index: 0;
-        }
-        .funky-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(55px);
-            opacity: 0.42;
-            transition: background 0.8s ease;
-        }
-        .blob-1 {
-            width: 240px; height: 240px;
-            background: var(--blob-1);
-            top: 5%; left: -30px;
-            animation: floatBlob1 13s infinite alternate ease-in-out;
-        }
-        .blob-2 {
-            width: 260px; height: 260px;
-            background: var(--blob-2);
-            bottom: 12%; right: -40px;
-            animation: floatBlob2 16s infinite alternate ease-in-out;
-        }
-        .blob-3 {
-            width: 200px; height: 200px;
-            background: var(--blob-3);
-            top: 42%; left: 30%;
-            animation: floatBlob3 19s infinite alternate ease-in-out;
+            overflow: hidden;
+            transition: opacity 0.8s ease;
         }
 
-        @keyframes floatBlob1 {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(35px, 25px) scale(1.18); }
-            100% { transform: translate(-20px, 40px) scale(0.9); }
+        /* THEME 1: Sky & Clouds (Flying Upward) */
+        .theme-clouds {
+            background: linear-gradient(180deg, #0284c7 0%, #38bdf8 45%, #bae6fd 80%, #f0f9ff 100%);
         }
-        @keyframes floatBlob2 {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-40px, -30px) scale(1.15); }
-            100% { transform: translate(25px, -20px) scale(0.95); }
+        .cloud-track {
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            background-repeat: repeat-y;
+            animation: cloudsFlyDown 22s linear infinite;
         }
-        @keyframes floatBlob3 {
-            0% { transform: translate(0, 0) scale(0.9); }
-            50% { transform: translate(-25px, 35px) scale(1.22); }
-            100% { transform: translate(30px, -25px) scale(1); }
+        .cloud-layer-1 {
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.75) 40px, transparent 65px),
+                radial-gradient(circle at 35% 22%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.85) 60px, transparent 85px),
+                radial-gradient(circle at 28% 25%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 55px, transparent 80px),
+                radial-gradient(circle at 80% 60%, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.75) 45px, transparent 70px),
+                radial-gradient(circle at 70% 64%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.85) 65px, transparent 95px);
+            animation-duration: 26s;
+            opacity: 0.65;
+        }
+        .cloud-layer-2 {
+            background-image: 
+                radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.85) 50px, transparent 75px),
+                radial-gradient(circle at 15% 70%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.85) 65px, transparent 95px),
+                radial-gradient(circle at 45% 45%, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.75) 40px, transparent 65px);
+            animation-duration: 16s;
+            opacity: 0.85;
+        }
+        @keyframes cloudsFlyDown {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(50%); }
+        }
+
+        /* Floating Hot Air Balloon in background */
+        .scenic-balloon {
+            position: absolute;
+            right: 22px;
+            top: 20%;
+            width: 46px;
+            height: 58px;
+            background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 80'><path d='M32 4 C14 4 4 18 4 34 C4 48 18 60 28 66 L36 66 C46 60 60 48 60 34 C60 18 50 4 32 4 Z' fill='%23f43f5e'/><path d='M20 4 C12 18 12 48 24 65 L28 66 C18 60 12 46 12 34 Z' fill='%23fbbf24'/><path d='M44 4 C52 18 52 48 40 65 L36 66 C46 60 52 46 52 34 Z' fill='%2338bdf8'/><rect x='28' y='72' width='8' height='6' rx='1' fill='%2378350f'/><line x1='28' y1='66' x2='29' y2='72' stroke='%23334155' stroke-width='1.2'/><line x1='36' y1='66' x2='35' y2='72' stroke='%23334155' stroke-width='1.2'/></svg>") no-repeat center/contain;
+            animation: balloonFloat 6s ease-in-out infinite alternate;
+            opacity: 0.85;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
+        }
+        @keyframes balloonFloat {
+            0% { transform: translateY(0) rotate(-3deg); }
+            100% { transform: translateY(-16px) rotate(3deg); }
+        }
+
+        /* THEME 2: Cherry Blossom Spring (Floating Petals) */
+        .theme-blossom {
+            background: linear-gradient(180deg, #fbcfe8 0%, #fed7aa 50%, #fef3c7 100%);
+        }
+        .blossom-track {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+        .petal {
+            position: absolute;
+            width: 14px;
+            height: 18px;
+            background: radial-gradient(ellipse at center, #f472b6 0%, #fda4af 60%, rgba(255,255,255,0.8) 100%);
+            border-radius: 12px 2px 12px 2px;
+            opacity: 0.75;
+            filter: drop-shadow(0 2px 4px rgba(244, 63, 94, 0.2));
+            animation: petalDrift 8s linear infinite;
+        }
+        @keyframes petalDrift {
+            0% { transform: translate(0, -30px) rotate(0deg); }
+            50% { transform: translate(60px, 45vh) rotate(180deg); }
+            100% { transform: translate(-20px, 105vh) rotate(360deg); }
+        }
+
+        /* THEME 3: Sunlit Tropical Horizon */
+        .theme-tropical {
+            background: linear-gradient(180deg, #38bdf8 0%, #2dd4bf 45%, #99f6e4 80%, #fef08a 100%);
+        }
+
+        /* THEME 4: Golden Sunrise Rays */
+        .theme-sunrise {
+            background: linear-gradient(180deg, #f97316 0%, #fb923c 35%, #fde047 75%, #fef9c3 100%);
+        }
+        .sun-rays {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(254, 240, 138, 0.5) 45%, transparent 70%);
+            border-radius: 50%;
+            animation: sunPulse 5s ease-in-out infinite alternate;
+        }
+        @keyframes sunPulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            100% { transform: scale(1.18); opacity: 0.95; }
         }
 
         /* ================= TOP BAR ================= */
@@ -216,16 +186,16 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 5px;
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             padding: 6px 10px;
-            border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.95);
             z-index: 20;
             flex-shrink: 0;
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
         }
 
         .top-bar-row {
@@ -239,11 +209,11 @@
         .badge {
             font-size: 11px;
             font-weight: 800;
-            color: var(--accent-cyan);
-            background: rgba(255, 255, 255, 0.1);
-            padding: 4px 9px;
+            color: #0369a1;
+            background: #e0f2fe;
+            padding: 4px 10px;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1.5px solid #bae6fd;
             white-space: nowrap;
             letter-spacing: 0.5px;
         }
@@ -251,26 +221,26 @@
         .difficulty-badge {
             font-size: 11px;
             font-weight: 800;
-            padding: 4px 9px;
+            padding: 4px 10px;
             border-radius: 20px;
             text-transform: uppercase;
             white-space: nowrap;
             letter-spacing: 0.5px;
         }
 
-        .diff-easy { background: rgba(16, 185, 129, 0.25); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.45); }
-        .diff-medium { background: rgba(245, 158, 11, 0.25); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.45); }
-        .diff-hard { background: rgba(239, 68, 68, 0.25); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.45); }
-        .diff-hardest { background: rgba(168, 85, 247, 0.25); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.45); }
+        .diff-easy { background: #dcfce7; color: #15803d; border: 1.5px solid #86efac; }
+        .diff-medium { background: #fef3c7; color: #b45309; border: 1.5px solid #fde68a; }
+        .diff-hard { background: #fee2e2; color: #b91c1c; border: 1.5px solid #fca5a5; }
+        .diff-hardest { background: #f3e8ff; color: #7e22ce; border: 1.5px solid #d8b4fe; }
 
         .score-badge {
             font-size: 12px;
-            font-weight: 800;
-            color: #fbbf24;
-            background: rgba(245, 158, 11, 0.18);
+            font-weight: 900;
+            color: #b45309;
+            background: #fef3c7;
             padding: 4px 10px;
             border-radius: 20px;
-            border: 1px solid rgba(245, 158, 11, 0.4);
+            border: 1.5px solid #fde68a;
             white-space: nowrap;
             display: flex;
             align-items: center;
@@ -280,11 +250,11 @@
         .title-badge {
             font-size: 11px;
             font-weight: 800;
-            color: #e2e8f0;
-            background: rgba(255, 255, 255, 0.08);
+            color: #334155;
+            background: #f1f5f9;
             padding: 4px 10px;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1.5px solid #e2e8f0;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             text-align: center;
@@ -295,18 +265,19 @@
         }
 
         .btn-icon {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            color: #e2e8f0;
+            background: #ffffff;
+            border: 1.5px solid #cbd5e1;
+            color: #1e293b;
             padding: 4px 8px;
             border-radius: 12px;
             font-size: 12px;
-            font-weight: 700;
+            font-weight: 800;
             cursor: pointer;
             white-space: nowrap;
             display: flex;
             align-items: center;
             gap: 3px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             transition: transform 0.15s ease, background 0.15s ease;
         }
         .btn-icon:active { transform: scale(0.92); }
@@ -317,10 +288,10 @@
         }
 
         .btn-bonus-jar {
-            background: rgba(234, 179, 8, 0.2);
-            border: 1px solid rgba(234, 179, 8, 0.45);
-            color: #fde047;
-            font-weight: 800;
+            background: #fef08a;
+            border: 1.5px solid #eab308;
+            color: #854d0e;
+            font-weight: 900;
         }
         .btn-bonus-jar.bounce {
             animation: jarBounce 0.4s ease;
@@ -334,51 +305,51 @@
         }
 
         .btn-hint-top {
-            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-            border: 1px solid #818cf8;
+            background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+            border: 1.5px solid #0369a1;
             color: #ffffff;
             font-weight: 800;
-            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.35);
+            box-shadow: 0 3px 10px rgba(2, 132, 199, 0.3);
         }
 
         .btn-skip-top {
-            background: rgba(239, 68, 68, 0.18);
-            border: 1px solid rgba(239, 68, 68, 0.45);
-            color: #fca5a5;
+            background: #fee2e2;
+            border: 1.5px solid #f87171;
+            color: #b91c1c;
         }
 
-        /* ================= CROSSWORD CONTAINER ================= */
+        /* ================= CROSSWORD CONTAINER (HUGE TILES, NO CUTOFF) ================= */
         #crossword-container {
             width: 100%;
             flex: 1 1 auto;
             min-height: 0;
+            max-height: 48vh;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
-            margin: 4px 0;
-            padding: 4px;
-            overflow: hidden;
+            margin: 2px 0;
+            padding: 6px;
+            overflow: visible;
             z-index: 10;
         }
 
         #crossword-grid {
             display: grid;
             position: relative;
-            gap: 3px;
+            gap: 4px;
             transition: transform 0.25s ease;
-            max-width: 100%;
-            max-height: 100%;
         }
 
+        /* Large, prominent, juicy tiles */
         .tile {
-            border-radius: 9px;
+            border-radius: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
             font-weight: 900;
             text-transform: uppercase;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.12);
             transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
             cursor: pointer;
@@ -391,18 +362,18 @@
         }
 
         .tile.unsolved {
-            background: rgba(18, 24, 38, 0.88);
-            border: 2px solid rgba(255, 255, 255, 0.15);
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.55), 0 3px 8px rgba(0,0,0,0.3);
+            background: #ffffff;
+            border: 2.5px solid #cbd5e1;
             color: transparent;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06), inset 0 2px 3px rgba(0,0,0,0.03);
         }
 
         .tile.solved {
-            background: linear-gradient(145deg, #fbbf24 0%, #d97706 100%);
-            border: 2px solid #fef08a;
+            background: linear-gradient(135deg, #fbbf24 0%, #ea580c 100%);
+            border: 2.5px solid #ffffff;
             color: #ffffff;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.6);
-            box-shadow: inset 0 2px 2px rgba(255,255,255,0.45), 0 5px 14px rgba(0,0,0,0.45), 0 0 16px rgba(251, 191, 36, 0.5);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 16px rgba(234, 88, 12, 0.35), inset 0 2px 2px rgba(255,255,255,0.6);
         }
 
         .tile.solved-pop {
@@ -412,15 +383,15 @@
         .tile.already-highlight {
             animation: alreadyPulse 0.6s ease-in-out;
             background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%) !important;
-            border-color: #7dd3fc !important;
-            box-shadow: 0 0 22px rgba(56, 189, 248, 0.95) !important;
+            border-color: #ffffff !important;
+            box-shadow: 0 0 24px rgba(2, 132, 199, 0.8) !important;
             z-index: 50;
         }
 
         @keyframes alreadyPulse {
             0% { transform: scale(1); }
-            25% { transform: scale(1.2) rotate(-4deg); }
-            50% { transform: scale(1.2) rotate(4deg); }
+            25% { transform: scale(1.18) rotate(-4deg); }
+            50% { transform: scale(1.18) rotate(4deg); }
             75% { transform: scale(1.1) rotate(-1deg); }
             100% { transform: scale(1) rotate(0deg); }
         }
@@ -433,7 +404,7 @@
 
         /* ================= PREVIEW & TOAST ================= */
         #preview-container {
-            height: 30px;
+            height: 28px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -443,17 +414,17 @@
         }
 
         #word-preview {
-            background: rgba(15, 23, 42, 0.92);
-            border: 2px solid var(--accent-cyan);
-            padding: 3px 18px;
+            background: #ffffff;
+            border: 2.5px solid #0284c7;
+            padding: 2px 18px;
             border-radius: 16px;
             font-size: 17px;
             font-weight: 900;
             letter-spacing: 3px;
-            color: #f8fafc;
+            color: #0369a1;
             min-width: 95px;
             text-align: center;
-            box-shadow: 0 0 22px var(--accent-glow);
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
             opacity: 0;
             transform: translateY(4px);
             transition: opacity 0.2s, transform 0.2s;
@@ -465,7 +436,7 @@
         }
 
         #toast-container {
-            height: 22px;
+            height: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -476,15 +447,15 @@
 
         .toast {
             font-size: 11px;
-            font-weight: 800;
+            font-weight: 900;
             letter-spacing: 0.8px;
-            padding: 3px 10px;
+            padding: 3px 12px;
             border-radius: 10px;
             text-transform: uppercase;
             opacity: 0;
             transform: scale(0.9);
             transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
         .toast.show { opacity: 1; transform: scale(1); }
@@ -492,7 +463,7 @@
         .toast.already { background: #f59e0b; color: #ffffff; }
         .toast.bonus { background: linear-gradient(135deg, #a855f7, #6366f1); color: #ffffff; }
         .toast.wrong { background: #ef4444; color: #ffffff; }
-        .toast.info { background: #3b82f6; color: #ffffff; }
+        .toast.info { background: #0284c7; color: #ffffff; }
 
         /* ================= WHEEL & CONTROLS ================= */
         #wheel-wrapper {
@@ -505,7 +476,7 @@
             flex-shrink: 0;
             touch-action: none;
             margin-bottom: max(4px, env(safe-area-inset-bottom));
-            z-index: 10;
+            z-index: 15;
         }
 
         #svg-canvas {
@@ -519,10 +490,10 @@
         }
 
         #svg-canvas line {
-            stroke: var(--accent-cyan);
+            stroke: #0284c7;
             stroke-width: 7;
             stroke-linecap: round;
-            filter: drop-shadow(0 0 10px var(--accent-cyan));
+            filter: drop-shadow(0 2px 6px rgba(2, 132, 199, 0.4));
         }
 
         .wheel-background {
@@ -530,22 +501,22 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: rgba(22, 16, 44, 0.5);
-            border: 2.5px solid rgba(255, 255, 255, 0.14);
-            box-shadow: inset 0 0 35px rgba(0,0,0,0.65), 0 12px 35px rgba(0,0,0,0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.72);
+            border: 3px solid rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12), inset 0 0 20px rgba(255,255,255,0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
-        /* Enriched Bigger Wheel Letters */
+        /* Large, prominent wheel letter nodes */
         .wheel-node {
             position: absolute;
             width: 52px;
             height: 52px;
             border-radius: 50%;
-            background: linear-gradient(145deg, #242b45 0%, #111628 100%);
-            border: 2.5px solid rgba(255, 255, 255, 0.22);
-            color: #f8fafc;
+            background: #ffffff;
+            border: 2.5px solid #e2e8f0;
+            color: #0f172a;
             font-size: 26px;
             font-weight: 900;
             display: flex;
@@ -553,18 +524,17 @@
             align-items: center;
             cursor: pointer;
             z-index: 4;
-            box-shadow: 0 5px 14px rgba(0,0,0,0.45);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            box-shadow: 0 5px 14px rgba(15, 23, 42, 0.14);
             transition: transform 0.15s, border-color 0.15s, background 0.15s;
             pointer-events: none;
         }
 
         .wheel-node.selected {
-            background: linear-gradient(145deg, #0284c7 0%, #0369a1 100%);
-            border-color: #7dd3fc;
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            border-color: #38bdf8;
             color: #ffffff;
             transform: scale(1.22);
-            box-shadow: 0 0 24px rgba(56, 189, 248, 0.95);
+            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5);
         }
 
         /* Shuffle button in center of wheel */
@@ -573,21 +543,21 @@
             width: 48px;
             height: 48px;
             border-radius: 50%;
-            background: rgba(18, 14, 38, 0.9);
-            border: 2px solid rgba(255, 255, 255, 0.22);
-            color: #f8fafc;
+            background: #ffffff;
+            border: 2px solid #bae6fd;
+            color: #0284c7;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
             z-index: 5;
-            box-shadow: 0 5px 14px rgba(0, 0, 0, 0.55);
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
             transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s;
         }
         .btn-shuffle:active {
             transform: scale(0.88);
-            background: rgba(56, 189, 248, 0.25);
-            border-color: var(--accent-cyan);
+            background: #e0f2fe;
+            border-color: #0284c7;
         }
         .btn-shuffle.spin {
             transform: rotate(360deg) scale(1.12);
@@ -597,7 +567,7 @@
             height: 22px;
             fill: none;
             stroke: currentColor;
-            stroke-width: 2.4;
+            stroke-width: 2.5;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
@@ -605,16 +575,16 @@
         /* Flying animation tile */
         .flying-tile {
             position: absolute;
-            border-radius: 9px;
-            background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
-            border: 2px solid #7dd3fc;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #fbbf24 0%, #ea580c 100%);
+            border: 2px solid #ffffff;
             color: #ffffff;
             font-weight: 900;
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 100;
-            box-shadow: 0 0 24px rgba(56, 189, 248, 0.95);
+            box-shadow: 0 6px 20px rgba(234, 88, 12, 0.4);
             pointer-events: none;
             transition: all 0.48s cubic-bezier(0.25, 1, 0.5, 1);
         }
@@ -622,16 +592,16 @@
         /* Floating Score Text */
         .floating-score {
             position: absolute;
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 900;
-            color: #fbbf24;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+            color: #ea580c;
+            text-shadow: 0 2px 8px rgba(255,255,255,0.9);
             pointer-events: none;
             z-index: 150;
             animation: floatUp 0.85s ease-out forwards;
         }
         .floating-score.bonus-float {
-            color: #c084fc;
+            color: #9333ea;
         }
 
         @keyframes floatUp {
@@ -645,9 +615,9 @@
         .modal-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(9, 6, 22, 0.88);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -666,18 +636,18 @@
         }
 
         .modal-card {
-            background: #171131;
-            border: 2px solid rgba(255, 255, 255, 0.16);
-            border-radius: 24px;
-            padding: 26px 20px;
+            background: #ffffff;
+            border: 3px solid #e0f2fe;
+            border-radius: 28px;
+            padding: 28px 22px;
             width: 100%;
             max-width: 330px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.75);
+            box-shadow: 0 25px 60px rgba(15, 23, 42, 0.2);
             position: relative;
         }
 
-        .modal-title { font-size: 24px; font-weight: 900; color: #f8fafc; margin-bottom: 8px; }
-        .modal-subtitle { font-size: 14px; color: #cbd5e1; margin-bottom: 18px; line-height: 1.45; }
+        .modal-title { font-size: 24px; font-weight: 900; color: #0f172a; margin-bottom: 8px; }
+        .modal-subtitle { font-size: 14px; color: #475569; margin-bottom: 18px; line-height: 1.45; }
 
         .modal-btn-group {
             display: flex;
@@ -693,7 +663,7 @@
             padding: 12px;
             border-radius: 16px;
             font-size: 14px;
-            font-weight: 800;
+            font-weight: 900;
             cursor: pointer;
             box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
             transition: transform 0.15s ease;
@@ -701,7 +671,7 @@
         .modal-btn:active { transform: scale(0.96); }
 
         .modal-btn-danger { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); box-shadow: 0 4px 14px rgba(239, 68, 68, 0.35); }
-        .modal-btn-cancel { background: linear-gradient(135deg, #475569 0%, #334155 100%); box-shadow: none; }
+        .modal-btn-cancel { background: #e2e8f0; color: #334155; box-shadow: none; }
 
         /* Confetti Canvas for Win */
         #confetti-canvas {
@@ -721,24 +691,24 @@
             justify-content: center;
             margin: 12px 0;
             padding: 8px;
-            background: rgba(15, 23, 42, 0.6);
+            background: #f8fafc;
             border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1.5px solid #e2e8f0;
         }
         .bonus-word-chip {
-            background: rgba(168, 85, 247, 0.25);
-            border: 1px solid rgba(168, 85, 247, 0.45);
-            color: #e9d5ff;
+            background: #f3e8ff;
+            border: 1.5px solid #d8b4fe;
+            color: #7e22ce;
             padding: 3px 9px;
             border-radius: 8px;
             font-size: 12px;
-            font-weight: 800;
+            font-weight: 900;
             letter-spacing: 0.5px;
         }
 
         .rank-up-card {
-            border-color: #c084fc !important;
-            box-shadow: 0 0 35px rgba(192, 132, 252, 0.4);
+            border-color: #d8b4fe !important;
+            box-shadow: 0 10px 40px rgba(168, 85, 247, 0.25);
             animation: bounceIn 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
@@ -755,16 +725,16 @@
         }
 
         @keyframes pulseGlow {
-            0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(192, 132, 252, 0.5)); }
-            100% { transform: scale(1.14); filter: drop-shadow(0 0 20px rgba(192, 132, 252, 0.9)); }
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
         }
 
         #level-start-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(9, 6, 22, 0.85);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -780,24 +750,24 @@
         }
 
         .start-card {
-            background: #171131;
-            border: 2px solid var(--accent-cyan);
-            border-radius: 20px;
+            background: #ffffff;
+            border: 3px solid #38bdf8;
+            border-radius: 24px;
             padding: 24px;
             text-align: center;
-            box-shadow: 0 0 32px var(--accent-glow);
+            box-shadow: 0 15px 40px rgba(2, 132, 199, 0.25);
             animation: popIn 0.3s ease-out;
         }
     </style>
 </head>
 <body>
 
-    <div id="game-container" class="theme-neon-disco">
-        <!-- Floating Funky Background Blobs -->
-        <div class="funky-bg-blobs">
-            <div class="funky-blob blob-1"></div>
-            <div class="funky-blob blob-2"></div>
-            <div class="funky-blob blob-3"></div>
+    <div id="game-container">
+        <!-- Bright Scenic Animated Background System -->
+        <div id="scenic-bg" class="scenic-bg-container theme-clouds">
+            <div id="cloud-track-1" class="cloud-track cloud-layer-1"></div>
+            <div id="cloud-track-2" class="cloud-track cloud-layer-2"></div>
+            <div id="scenic-decor" class="scenic-balloon"></div>
         </div>
 
         <canvas id="confetti-canvas"></canvas>
@@ -846,8 +816,8 @@
         <!-- Level Start Overlay -->
         <div id="level-start-overlay">
             <div class="start-card">
-                <div style="font-size: 13px; color: #cbd5e1; font-weight: 700; letter-spacing: 1px;">STARTING LEVEL</div>
-                <div id="start-level-title" style="font-size: 28px; font-weight: 900; color: #f8fafc; margin: 4px 0 10px 0;">LEVEL 1</div>
+                <div style="font-size: 13px; color: #64748b; font-weight: 800; letter-spacing: 1px;">STARTING LEVEL</div>
+                <div id="start-level-title" style="font-size: 28px; font-weight: 900; color: #0f172a; margin: 4px 0 10px 0;">LEVEL 1</div>
                 <div id="start-diff-tag" class="difficulty-badge diff-easy" style="font-size: 13px; display: inline-block; padding: 6px 14px;">DIFFICULTY: EASY</div>
             </div>
         </div>
@@ -866,7 +836,7 @@
         <div class="modal-overlay" id="bonus-modal">
             <div class="modal-card">
                 <div style="font-size: 36px; margin-bottom: 6px;">🏺⭐</div>
-                <div class="modal-title" style="color: #fde047;">BONUS WORDS</div>
+                <div class="modal-title" style="color: #b45309;">BONUS WORDS</div>
                 <div class="modal-subtitle" id="bonus-modal-subtitle">Found extra valid words that are not on the crossword puzzle. +15 pts each!</div>
                 <div class="bonus-words-list" id="bonus-words-list"></div>
                 <button class="modal-btn" id="btn-close-bonus" style="background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);">COLLECTED!</button>
@@ -877,7 +847,7 @@
         <div class="modal-overlay" id="word-info-modal">
             <div class="modal-card">
                 <div style="font-size: 32px; margin-bottom: 6px;">📖</div>
-                <div class="modal-title" id="word-info-title" style="color: #38bdf8;">WORD</div>
+                <div class="modal-title" id="word-info-title" style="color: #0284c7;">WORD</div>
                 <div class="modal-subtitle" id="word-info-desc">Discovered on the crossword puzzle.</div>
                 <button class="modal-btn modal-btn-cancel" id="btn-close-word-info">CLOSE</button>
             </div>
@@ -887,7 +857,7 @@
         <div class="modal-overlay" id="skip-confirm-modal">
             <div class="modal-card">
                 <div class="modal-title">REVEAL ALL?</div>
-                <div class="modal-subtitle">Reveal all words and skip to the next level?<br><br><strong style="color: #f87171;">Score Penalty: -5000 points</strong></div>
+                <div class="modal-subtitle">Reveal all words and skip to the next level?<br><br><strong style="color: #ef4444;">Score Penalty: -5000 points</strong></div>
                 <div class="modal-btn-group">
                     <button class="modal-btn modal-btn-cancel" id="btn-cancel-skip">Cancel</button>
                     <button class="modal-btn modal-btn-danger" id="btn-confirm-skip">Reveal All</button>
@@ -899,8 +869,8 @@
         <div class="modal-overlay" id="rank-up-modal">
             <div class="modal-card rank-up-card">
                 <div class="rank-up-icon">🌟</div>
-                <div class="modal-title" style="color: #c084fc;">RANK UP!</div>
-                <div class="modal-subtitle" id="rank-up-subtitle" style="font-size: 15px; font-weight: 700; color: #f8fafc;">You have reached a new rank!</div>
+                <div class="modal-title" style="color: #7e22ce;">RANK UP!</div>
+                <div class="modal-subtitle" id="rank-up-subtitle" style="font-size: 15px; font-weight: 700; color: #1e293b;">You have reached a new rank!</div>
                 <button class="modal-btn" id="btn-close-rank-up" style="background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);">AWESOME!</button>
             </div>
         </div>
@@ -910,7 +880,6 @@
         /* ==================== EXPANDED SEEDS DATABASE (68 HIGH-YIELD ANAGRAM BASES) ==================== */
         const ANAGRAM_SEEDS = [{"wheel":["P","L","A","N","E","T"],"words":["PLANET","PLANE","PLANT","PLATE","PANEL","LEANT","PLEAT","LANE","LEAN","TALE","NEAT","PEAT","PLEA","PALE","LATE","PATE","TAPE","LEAP","PEAL","LENT","PAN","PET","NET","PAT","TAP","ALE","APE","PEN","ANT","TEN","TEA","EAT","TAN","PAL","LAP","LET","ATE"]},{"wheel":["S","I","L","E","N","T"],"words":["SILENT","LISTEN","INLET","TINSEL","ENLIST","LENT","LINE","LIST","NEST","SENT","TILE","LIES","SILT","SLIT","TIES","SITE","LINT","LITE","NET","SET","TIN","LIT","NIL","SIT","TEN","LIE","LET","TIE","SIN","ITS"]},{"wheel":["C","A","S","T","L","E"],"words":["CASTLE","SCALE","LEAST","STALE","SLATE","TALES","CLEAT","LACE","CAST","TALE","SEAT","EAST","LAST","CASE","SEAL","SALE","LATE","CATS","ACTS","SECT","CAT","ACT","LET","TEA","SET","ACE","SAT","ALE","ALT","EAT","ATE","SEA"]},{"wheel":["S","T","R","E","A","M"],"words":["STREAM","MASTER","SMART","STEAM","TAMER","TEAM","TEAR","MEAT","RATE","REST","SEAT","TERM","SAME","MATE","MARE","TAME","STEM","STAR","SEAM","SEAR","TRAM","MARS","ARMS","RAMS","MAT","MET","TEA","SEA","RAM","ART","SET","RAT","ARM","EAT","ATE","TAR","EAR","ARE"]},{"wheel":["A","C","T","O","R","S"],"words":["ACTORS","ACTOR","COAST","ROAST","TACOS","COATS","COAT","STAR","CATS","ACTS","CARS","CART","COST","OATS","ARTS","TSAR","SORT","SCAR","SOAR","ACT","CAT","OAR","RAT","ART","COT","ROT","SAT","SOT","CAR","ARC","TAR","OAT"]},{"wheel":["B","A","N","K","E","R"],"words":["BANKER","BARK","BARN","BEAK","BEAR","BAKE","BANK","BRAE","BARE","BEAN","BANE","EARN","NEAR","RANK","RAKE","BAR","ARK","RAN","ARE","EAR","KEN","BAN","NAB","BRA"]},{"wheel":["C","A","R","P","E","T"],"words":["CARPET","TRACE","CRAPE","PACER","CRATE","REACT","CATER","CAPE","CART","PATE","PEAT","PEAR","PART","PACE","RACE","RATE","TARE","TEAR","TRAP","RAPT","TAPE","REAP","CARE","CAT","ACT","PET","PAT","TAP","TEA","EAT","ACE","CAR","ARC","PAR","RAP","PER","TAR","RAT","ATE","APE","CAP"]},{"wheel":["C","R","A","F","T","S"],"words":["CRAFTS","CRAFT","FACTS","ACTS","ARTS","CARS","CART","CAST","CATS","FACT","RAFT","STAR","FAST","TSAR","SCAR","SCAT","ACT","CAT","RAT","ART","SAT","FAR","FAT","CAR","ARC","TAR"]},{"wheel":["C","R","A","T","E","S"],"words":["CRATES","CASTER","CRATE","REACT","TRACE","CATER","STARE","TEARS","RATES","ACRES","CARE","CART","CASE","CAST","CATS","RACE","RATE","SEAT","STAR","TARE","TEAR","CARS","ACTS","REST","EAST","SEAR","ACRE","ACT","CAT","RAT","ART","TEA","EAT","SET","SAT","ACE","CAR","ARC","EAR","ARE","TAR","ATE","SEA"]},{"wheel":["C","R","E","A","T","E"],"words":["CREATE","CRATE","REACT","TRACE","CATER","CARET","EATER","CART","RATE","TARE","TEAR","TREE","CARE","RACE","ACRE","CATE","RETE","CAT","ACT","RAT","ART","TEA","EAT","ACE","TEE","CAR","ARC","EAR","ARE","TAR","ATE","ERA"]},{"wheel":["D","A","N","C","E","R"],"words":["DANCER","CRANE","CANER","NACRE","CADRE","CEDAR","ACNE","DARE","DEAR","EARN","NEAR","RACE","READ","REND","CANE","CARD","CARE","DEAN","NARD","ACRE","CAN","DEN","END","RED","EAR","ARE","RAN","ACE","CAR","ARC","AND","ERA"]},{"wheel":["D","E","A","L","E","R"],"words":["DEALER","LEADER","ELDER","DEAL","DEAR","DARE","DALE","LEAD","READ","REAL","REEL","LADE","LARD","EARL","DEER","REED","RED","EAR","ARE","LED","ALE","LAD","EEL","LEE","ERA"]},{"wheel":["D","R","E","A","M","S"],"words":["DREAMS","DREAM","DARES","DEARS","DAMES","READS","ARMED","DARE","DEAR","DAME","MADE","MARS","READ","SAME","SEAM","SEAR","ARMS","RAMS","MARE","RED","RAM","ARM","EAR","ARE","SEA","SAD","MAD","DAM","ERA"]},{"wheel":["E","A","R","T","H","S"],"words":["EARTHS","EARTH","HEART","HASTE","SHARE","HATER","ARTS","EARS","EAST","HATE","HEAR","HEAT","RATS","REST","SEAT","STAR","TEAR","HARE","RASH","ART","RAT","TEA","EAT","SAT","SET","ASH","HAS","HAT","EAR","ARE","TAR","ERA","THE"]},{"wheel":["F","I","L","T","E","R"],"words":["FILTER","LIFTER","RIFLE","LITRE","TILER","FLIRT","FILE","FIRE","LIFE","LIFT","LITE","RIFT","TIER","TILE","TIRE","RIFE","RITE","FLIT","FIT","LIT","LET","TIE","REF","LIE","FIR"]},{"wheel":["G","R","A","N","I","T"],"words":["RATING","GIANT","GRAIN","TRAIN","ANTI","GAIN","GRIN","RAIN","RING","RANT","TANG","TARN","TRIG","GNAT","GRIT","RAT","ART","TAN","TIN","GIN","RIG","RAN","AIR","NIT","TAG","RAG","NAG"]},{"wheel":["G","R","A","P","E","S"],"words":["GRAPES","GEARS","GRAPE","PAGES","PARES","PARSE","PEARS","REAPS","SPARE","SPEAR","PAGER","AGES","APES","GEAR","GASP","PAGE","PARE","PEAR","PEAS","RAGE","RAPS","REAP","SAGE","SEAR","SPAR","AGE","PEG","PER","RAP","PAR","EAR","ARE","SEA","GAS","RAG","PAS","SAP","APE"]},{"wheel":["H","A","R","V","E","S"],"words":["SHARE","SHAVE","HAVE","HEAR","RAVE","SAVE","VASE","HARE","EARS","ASH","HAS","EAR","ARE","SEA"]},{"wheel":["H","E","A","R","T","S"],"words":["HEARTS","EARTHS","EARTH","HEART","HASTE","SHARE","HATER","ARTS","EARS","EAST","HATE","HEAR","HEAT","RATS","REST","SEAT","STAR","TEAR","HARE","RASH","SEAR","ART","RAT","TEA","EAT","SAT","SET","ASH","HAS","HAT","EAR","ARE","SEA","THE","TAR"]},{"wheel":["H","O","N","E","S","T"],"words":["HONEST","ONSET","STONE","SHONE","NOTES","TONES","HENS","NEST","NOSE","NOTE","SENT","SHOE","SHOT","TOES","TONE","TENS","HOSE","HOST","HEN","NET","TEN","TOE","NOT","HOT","SON","SOT","SET","ONE","EON","THE"]},{"wheel":["M","A","R","K","E","T"],"words":["MARKET","MAKER","TAMER","MATE","MEAT","RAKE","RATE","TARE","TEAR","TERM","MAKE","MARE","MARK","TEAM","TAME","MAT","MET","TEA","EAT","RAM","ARM","ART","RAT","ARK","TAR","ATE","EAR","ARE"]},{"wheel":["M","A","S","T","E","R"],"words":["MASTER","SMART","STREAM","TAMER","TEARS","RATES","STARE","MATS","RATE","REST","SEAT","STAR","STEAM","TEAM","TEAR","TERM","MARE","SAME","SEAM","SEAR","TAME","TRAM","MARS","ARMS","MAT","MET","TEA","EAT","SET","SAT","RAM","ARM","ART","RAT","EAR","ARE","SEA","TAR"]},{"wheel":["M","E","T","A","L","S"],"words":["METALS","METAL","LAMES","MALES","STEAM","TEAMS","TALES","STALE","SLATE","LEAST","LAME","LATE","MALE","MATE","MEAL","MEAT","SALT","SEAL","SEAT","TALE","TEAM","TAME","STEM","SLAM","MELT","MAT","MET","TEA","EAT","LET","SET","SAT","ALE","ALT","SEA"]},{"wheel":["N","A","T","U","R","E"],"words":["NATURE","TUNER","URATE","ANTE","AUNT","EARN","NEAR","NEAT","RENT","RUNE","RATE","TARE","TEAR","TUNE","TURN","TRUE","RUNT","NET","TEN","TEA","EAT","RAT","ART","RAN","NUT","ANT","RUN","EAR","ARE","RUE","TAR","ERA"]},{"wheel":["O","R","A","N","G","E"],"words":["ORANGE","GROAN","ORGAN","RANGE","ANGER","GEAR","GONE","NEAR","RAGE","ROAN","OGRE","EARN","GORE","AGE","EAR","ARE","RAN","RAG","ONE","EON","NOR","OAR","EGO","NAG"]},{"wheel":["G","A","R","D","E","N"],"words":["GARDEN","DANGER","GANDER","RANGED","GRADE","RAGED","DARE","DEAR","EARN","NEAR","READ","REND","GEAR","RAGE","AGED","DEAN","DRAG","RED","DEN","END","EAR","ARE","RAN","AGE","RAG","AND","NAG"]},{"wheel":["S","P","R","I","N","G"],"words":["SPRING","RINGS","GRIPS","PRIGS","PINGS","SIGN","SING","RING","GRIP","PING","SPIN","SNIP","PIGS","RIPS","PINS","RIGS","GINS","RIG","PIG","PIN","NIP","RIP","SIN","SIP","SIR"]},{"wheel":["W","I","N","T","E","R"],"words":["WINTER","INTER","TWINE","WRITE","INERT","WINE","WIRE","WENT","WREN","RENT","TIER","TIRE","RITE","TWIN","NEW","WIN","WET","NET","TEN","TIN","TIE","NIT"]},{"wheel":["B","R","I","D","G","E"],"words":["BRIDGE","DIRGE","RIDGE","BRIDE","BRED","BIRD","GRID","RIDE","DIRE","BIDE","RED","BED","BIG","BEG","RIB","BID","DIE","DIG","RIG"]},{"wheel":["C","A","N","D","L","E"],"words":["CANDLE","LANCED","CLEAN","LANCE","CANE","CLAN","DALE","DEAL","DEAN","LACE","LADE","LAND","LEAD","LEAN","LANE","ACNE","CAN","DEN","END","LAD","LED","ALE","ACE","AND"]},{"wheel":["S","I","L","V","E","R"],"words":["SILVER","SLIVER","LIVER","LIVE","VILE","VEIL","EVIL","SIRE","RISE","LIES","RILE","RIVE","SIR","LIE","REV","RES","VIE"]},{"wheel":["T","R","A","V","E","L"],"words":["TRAVEL","VALET","LATER","ALTER","ALERT","LAVE","LATE","TALE","TEAL","REAL","RATE","TARE","TEAR","RAVE","VEAL","VALE","ALE","ALT","ART","RAT","TAR","TEA","EAT","VET","LET","EAR","ARE"]},{"wheel":["W","O","N","D","E","R"],"words":["WONDER","ROWED","DROWN","OWNED","ENDOW","DOWN","DREW","WORD","WORN","NODE","WORE","RODE","RED","ROD","ROW","WON","NOW","ONE","EON","DEN","END","NOR","OWE"]},{"wheel":["F","O","R","E","S","T"],"words":["FOREST","FORTE","FROST","STORE","TORSE","ROTE","ROSE","SOFT","SORT","FORT","REST","TORE","FRET","FRO","FOR","ROT","SET","SOT","TOE","REF","ORE","OFT"]},{"wheel":["P","A","L","A","C","E"],"words":["PALACE","PLACE","PLEA","PALE","PACE","LACE","LEAP","PEAL","CAPE","ACE","ALE","APE","CAP","LAP","PAL"]},{"wheel":["F","A","R","M","E","R"],"words":["FARMER","FRAME","ARMER","FARM","FARE","FEAR","MARE","REAR","RARE","FAR","REF","RAM","ARM","EAR","ARE","ERA","MAR"]},{"wheel":["D","R","A","G","O","N"],"words":["DRAGON","GROAN","RADON","ADORN","ROAD","ROAN","DOG","RAG","RAN","ROD","OAR","AND","NAG","GOD","NOR"]},{"wheel":["C","A","S","T","O","R"],"words":["CASTOR","ACTOR","COAST","ROAST","TACO","CART","COAT","STAR","SCAR","SORT","OATS","ACT","CAT","CAR","ARC","ROT","COT","OAR","RAT","ART","SAT","SOT","TAR"]},{"wheel":["F","R","I","E","N","D"],"words":["FRIEND","FINDER","FIEND","FINED","DINER","FERN","FIND","FINE","FIRE","RIDE","RIFE","DINE","RED","REF","DEN","END","FIR","DIE"]},{"wheel":["P","I","R","A","T","E"],"words":["PIRATE","TRIPE","TAPIR","PART","PATE","PEAR","PEAT","PIER","RAPT","RATE","REAP","RIPE","RITE","TAPE","TARE","TEAR","TIRE","TRAP","TRIP","PET","PAT","TAP","TIE","TEA","EAT","PIE","PIT","TIP","RAT","ART","RIP","APE","EAR","ARE","TAR","ATE","AIR"]},{"wheel":["I","S","L","A","N","D"],"words":["ISLAND","SNAIL","SLAIN","LANDS","DIALS","LAID","LAND","LADS","NAIL","SAIL","SAND","SLID","LAD","SAD","AND","SIN","NIL","AID"]},{"wheel":["C","A","R","T","O","N"],"words":["CARTON","ACTOR","ACORN","COAT","CART","CORN","RANT","ROAN","TORN","ACT","CAT","OAR","OAT","RAN","RAT","ART","ROT","COT","CAN","NOT","TON","TAR"]},{"wheel":["P","A","S","T","E","L"],"words":["PASTEL","PLEAT","PLATE","PETAL","LEAST","STALE","SLATE","TALES","PASTE","TAPE","PEAT","PATE","PLEA","PALE","LEAP","PEAL","TALE","LATE","SEAT","EAST","LAST","SALE","SEAL","STEP","PET","PAT","TAP","LET","SET","SAT","TEA","EAT","ALE","APE","PAL","LAP"]},{"wheel":["S","T","A","B","L","E"],"words":["STABLE","TABLES","BLEAT","BLAST","TABLE","BALE","BEAT","BETA","BELT","LATE","TALE","TEAL","EAST","LAST","SEAT","SALE","SEAL","BATS","BETS","LABS","TAB","BAT","BET","LET","SET","SAT","TEA","EAT","ALE","ALT","SEA"]},{"wheel":["F","R","O","Z","E","N"],"words":["FROZEN","ZONE","FORE","ZERO","FERN","ONE","EON","FOR","FOE","NOR","REF","ZEN"]},{"wheel":["T","H","R","O","N","E"],"words":["THRONE","HORNET","NORTH","HERON","OTHER","TENOR","TONER","HORN","RENT","HERO","NOTE","TONE","TORN","THEN","HEN","HER","HOT","NOT","ONE","EON","NET","TEN","TOE","ROT","THE"]},{"wheel":["S","E","N","I","O","R"],"words":["SENIOR","NOISER","ROSIN","SIREN","IRONE","REINS","RESIN","NOSE","ROSE","IRON","REIN","SORE","SINE","ONES","EONS","ONE","EON","SON","SIN","SIR","NOR","ION","ROE"]},{"wheel":["C","R","E","D","I","T"],"words":["CREDIT","DIRECT","CITED","TRIED","TIRED","CIDER","RICE","RIDE","DIRE","DIRT","TIED","TIRE","RITE","TIER","CITE","RED","RID","DIE","TIE","ICE"]},{"wheel":["D","E","T","A","I","L"],"words":["DETAIL","DILATE","TAILED","TIDAL","IDEAL","LATE","TALE","TEAL","DATE","TIDE","TIED","DIAL","LAID","LEAD","DEAL","DALE","LIT","LET","LAD","LED","TEA","EAT","TIE","DIE","ALE","ALT","AID"]},{"wheel":["S","A","L","U","T","E"],"words":["SALUTE","LUTES","TULES","SAUTE","LATE","TALE","TEAL","LUTE","LAST","SALT","SEAT","EAST","SEAL","SALE","SUET","LET","SET","SAT","TEA","EAT","ALE","ALT","SUE","USE"]},{"wheel":["S","T","R","I","D","E"],"words":["STRIDE","DIREST","DRIEST","TIRED","TRIED","RIDES","TIRES","RITES","DIRE","DIRT","RIDE","RITE","TIRE","TIED","TIDE","REST","SIDE","SITE","STIR","RED","RID","DIE","SET","SIT","TIE","SIR"]},{"wheel":["P","O","E","T","R","Y"],"words":["POETRY","ROPETY","TROPE","POETY","ROTE","TORE","TYRE","POET","ROPE","PORT","TYPE","TOPE","TREY","PREY","PET","POT","TOP","ROT","TOE","RYE","TOY","TRY","PER"]},{"wheel":["F","A","T","H","E","R"],"words":["FATHER","HATER","AFTER","HEART","EARTH","HATE","HEAR","HEAT","HARE","FARE","FEAR","FATE","FEAT","FRAT","RATE","TARE","TEAR","FAR","FAT","HAT","HER","RAT","ART","TAR","TEA","EAT","THE","REF","EAR","ARE"]},{"wheel":["W","A","T","E","R","S"],"words":["WATERS","WASTER","STREW","SWEAR","TARES","TEARS","STARE","RATES","WARES","WASTE","WATER","WEAR","WEST","STAR","RATE","TEAR","TARE","REST","SEAT","EAST","SAW","WAR","WET","SET","SAT","TEA","EAT","RAW","TAR","ART","RAT","SEA","EAR","ARE"]},{"wheel":["G","O","L","D","E","N"],"words":["GOLDEN","LONGED","LODGE","GLEN","GOLD","GONE","LONE","NODE","NOEL","DOG","DEN","END","GOD","LED","LOG","OLD","ONE","EON"]},{"wheel":["S","I","M","P","L","E"],"words":["SIMPLE","IMPEL","SLIME","SMILE","LIME","LIMP","MILE","SLIP","SLIM","PILE","PIES","LIPS","ELMS","PIE","LIP","SIP","LIE","IMP"]},{"wheel":["P","R","I","N","C","E"],"words":["PRINCE","RIPEN","PINER","PRICE","RIPE","PINE","NICE","REIN","RICE","PIER","PEN","PIN","NIP","RIP","PIE","ICE","PER"]},{"wheel":["S","U","N","S","E","T"],"words":["SUNSET","SUETS","STUNS","NESTS","SENTS","NEST","NETS","SENT","SETS","SUET","STUN","TENS","TUNE","NET","SET","SUN","TEN","NUT","SUE","USE"]},{"wheel":["R","E","S","C","U","E"],"words":["RESCUE","CURSE","SECURE","CERUS","CURE","USER","RUSE","CRUE","SURE","CUE","SUE","RUE","USE","SEC"]},{"wheel":["S","H","A","D","O","W"],"words":["SHADOW","SHOWD","DASH","SHOW","SODA","WASH","WHOA","ASH","HAD","HAS","HOW","SAD","SAW","WHO","SOW"]},{"wheel":["H","E","R","O","E","S"],"words":["HEROES","HORSE","SHORE","HERE","HERO","HOSE","ROSE","SEER","SHOE","SORE","SEE","SHE","HER","ROE"]},{"wheel":["L","E","M","O","N","S"],"words":["LEMONS","LEMON","MELON","MOLES","LONE","MOLE","NOSE","OMEN","SOLE","SOME","MEN","ONE","EON","SON","ELM"]},{"wheel":["B","L","A","N","K","E"],"words":["BLANK","BLEAK","LEAK","LANE","LEAN","BALE","BAKE","BEAK","BEAN","BANE","ALE","BAN","NAB","KEN","LAB"]},{"wheel":["B","A","S","K","E","T"],"words":["BASKET","BEAKS","BAKES","STEAK","SKATE","BAKE","BEAK","BASE","BASK","BEAT","BETA","EAST","SEAT","TAKE","TEAK","BATS","BETS","BAT","BET","TAB","SET","SAT","TEA","EAT","ASK"]},{"wheel":["F","L","I","G","H","T"],"words":["FLIGHT","LIGHT","FILTH","GILT","LIFT","FLIT","GIFT","HILT","FIT","FIG","HIT","LIT"]},{"wheel":["C","A","N","D","O","R"],"words":["CANDOR","ACORN","RADON","ADORN","ROAN","ROAD","CARD","CORN","DARN","CAN","AND","CAR","ARC","RAN","ROD","OAR","NOR","COD"]},{"wheel":["B","R","I","G","H","T"],"words":["BRIGHT","GIRTH","BIRTH","RIGHT","GRIT","BRIG","GIRT","BIG","BIT","HIT","RIB","RIG"]},{"wheel":["F","O","R","T","U","N"],"words":["FOUNT","FRONT","FORT","FONT","FOUR","FRO","FOR","NOT","NOR","NUT","OUT","ROT","RUN","TON"]}];
 
-        /* Helper function: Checks if word can be formed strictly from wheel letters */
         function canFormWordFromWheel(word, wheelLetters) {
             const letterCounts = {};
             for (let char of wheelLetters) {
@@ -925,7 +894,6 @@
             return true;
         }
 
-        /* Clean seed database ensuring 100% strict letter validity */
         ANAGRAM_SEEDS.forEach(seed => {
             seed.words = seed.words.filter(word => canFormWordFromWheel(word, seed.wheel));
         });
@@ -1119,20 +1087,18 @@
         let isDragging = false;
         let toastTimeout = null;
 
-        /* 8 Funky Themes */
-        const THEMES = [
-            'theme-neon-disco',
-            'theme-sunset-blaze',
-            'theme-jungle-groove',
-            'theme-cyber-arcade',
-            'theme-bubblegum-pop',
-            'theme-oceanic-wave',
-            'theme-cosmic-nebula',
-            'theme-golden-galaxy'
+        /* ==================== BRIGHT SCENIC THEMES ==================== */
+        const SCENIC_THEMES = [
+            { id: 'theme-clouds', name: 'Cloud Voyage', decor: 'balloon' },
+            { id: 'theme-blossom', name: 'Cherry Blossom', decor: 'petals' },
+            { id: 'theme-tropical', name: 'Tropical Breeze', decor: 'balloon' },
+            { id: 'theme-sunrise', name: 'Golden Dawn', decor: 'sun' }
         ];
 
         /* ==================== DOM ELEMENTS ==================== */
         const gameContainer = document.getElementById('game-container');
+        const scenicBg = document.getElementById('scenic-bg');
+        const scenicDecor = document.getElementById('scenic-decor');
         const levelBadge = document.getElementById('level-badge');
         const diffBadge = document.getElementById('diff-badge');
         const scoreBadge = document.getElementById('score-badge');
@@ -1218,23 +1184,23 @@
                 if (newRankIdx > oldRankIdx) {
                     modalIcon.textContent = "🌟";
                     modalTitle.textContent = "RANK UP!";
-                    modalTitle.style.color = "#c084fc";
+                    modalTitle.style.color = "#7e22ce";
                     rankUpSubtitle.textContent = "Congratulations! You have been promoted to:\n" + newTitle;
-                    rankUpSubtitle.style.color = "#f8fafc";
+                    rankUpSubtitle.style.color = "#1e293b";
                     btnCloseRankUp.textContent = "AWESOME!";
                     btnCloseRankUp.style.background = "linear-gradient(135deg, #a855f7 0%, #7e22ce 100%)";
                     rankCard.style.borderColor = "#c084fc";
-                    rankCard.style.boxShadow = "0 0 35px rgba(192, 132, 252, 0.45)";
+                    rankCard.style.boxShadow = "0 10px 35px rgba(168, 85, 247, 0.35)";
                 } else {
                     modalIcon.textContent = "📉";
                     modalTitle.textContent = "RANK DEMOTION";
-                    modalTitle.style.color = "#f87171";
+                    modalTitle.style.color = "#dc2626";
                     rankUpSubtitle.textContent = "Your score dropped. You are now:\n" + newTitle;
-                    rankUpSubtitle.style.color = "#cbd5e1";
+                    rankUpSubtitle.style.color = "#475569";
                     btnCloseRankUp.textContent = "I'LL RECOVER!";
                     btnCloseRankUp.style.background = "linear-gradient(135deg, #ef4444 0%, #dc2626 100%)";
                     rankCard.style.borderColor = "#ef4444";
-                    rankCard.style.boxShadow = "0 0 35px rgba(239, 68, 68, 0.45)";
+                    rankCard.style.boxShadow = "0 10px 35px rgba(239, 68, 68, 0.35)";
                 }
 
                 rankUpModal.classList.add('active');
@@ -1244,7 +1210,7 @@
             playerTitleBadge.textContent = currentRankTitle;
         }
 
-        /* ==================== GENERATOR ENGINE (COMPACT & BOLD TILES) ==================== */
+        /* ==================== COMPACT CROSSWORD GENERATOR (MAX 6x6 FOR HUGE TILES) ==================== */
         function getRandomDifficulty() {
             const difficulties = ["Easy", "Medium", "Hard", "Hardest"];
             const weights = [0.35, 0.35, 0.20, 0.10];
@@ -1257,16 +1223,9 @@
         }
 
         function generateLevelForDifficulty(difficulty) {
-            // Tighter bounds so crossword tiles are significantly larger on mobile screens
-            const config = {
-                "Easy": { maxGrid: 7, minWords: 4 },
-                "Medium": { maxGrid: 7, minWords: 5 },
-                "Hard": { maxGrid: 8, minWords: 6 },
-                "Hardest": { maxGrid: 8, minWords: 6 }
-            }[difficulty] || { maxGrid: 7, minWords: 5 };
-
-            const maxGridSize = config.maxGrid;
-            const targetMin = config.minWords;
+            // Strict 6x6 max bounds ensures puzzle tiles will be large (42px-52px) and never overflow the screen
+            const maxGridSize = 6;
+            const targetMin = (difficulty === "Hard" || difficulty === "Hardest") ? 5 : 4;
 
             let availableIndices = [];
             for (let i = 0; i < ANAGRAM_SEEDS.length; i++) {
@@ -1300,6 +1259,7 @@
                 if (wordsShuffled.length === 0) continue;
 
                 const firstWord = wordsShuffled[0];
+                if (firstWord.length > maxGridSize) continue;
                 const startRow = Math.floor(maxGridSize / 2);
                 const startCol = Math.max(0, Math.floor((maxGridSize - firstWord.length) / 2));
 
@@ -1422,11 +1382,10 @@
                 { word: "LANE",   row: 0, col: 1, dir: "V" },
                 { word: "NEAT",   row: 0, col: 3, dir: "V" },
                 { word: "TEA",    row: 2, col: 3, dir: "H" },
-                { word: "PET",    row: 0, col: 0, dir: "V" },
-                { word: "PLANT",  row: 4, col: 0, dir: "H" }
+                { word: "PET",    row: 0, col: 0, dir: "V" }
             ].filter(wObj => canFormWordFromWheel(wObj.word, wheel));
 
-            return { difficulty, gridWidth: 6, gridHeight: 5, wheelLetters: wheel, words: fallbackWords, allSeedWords: pool };
+            return { difficulty, gridWidth: 6, gridHeight: 4, wheelLetters: wheel, words: fallbackWords, allSeedWords: pool };
         }
 
         /* ==================== PERSISTENCE ==================== */
@@ -1440,11 +1399,11 @@
                 levelData: currentLevelData,
                 soundEnabled: soundManager.enabled
             };
-            localStorage.setItem('wordquest_save_v3', JSON.stringify(data));
+            localStorage.setItem('wordquest_save_v4', JSON.stringify(data));
         }
 
         function loadProgress() {
-            const saved = localStorage.getItem('wordquest_save_v3') || localStorage.getItem('wordquest_save_v2');
+            const saved = localStorage.getItem('wordquest_save_v4') || localStorage.getItem('wordquest_save_v3');
             if (saved) {
                 try {
                     const data = JSON.parse(saved);
@@ -1475,11 +1434,35 @@
             btnBonusJar.textContent = "⭐ " + bonusWords.size;
         }
 
-        /* ==================== LEVEL RENDER ENGINE ==================== */
+        /* ==================== SCENIC THEME ENGINE ==================== */
         function applyLevelTheme(lvl) {
-            THEMES.forEach(t => gameContainer.classList.remove(t));
-            const themeIdx = (lvl - 1) % THEMES.length;
-            gameContainer.classList.add(THEMES[themeIdx]);
+            SCENIC_THEMES.forEach(t => scenicBg.classList.remove(t.id));
+            const theme = SCENIC_THEMES[(lvl - 1) % SCENIC_THEMES.length];
+            scenicBg.classList.add(theme.id);
+
+            // Dynamically customize decoration per theme
+            if (theme.id === 'theme-clouds') {
+                scenicDecor.className = 'scenic-balloon';
+                scenicDecor.style.display = 'block';
+            } else if (theme.id === 'theme-sunrise') {
+                scenicDecor.className = 'sun-rays';
+                scenicDecor.style.display = 'block';
+            } else if (theme.id === 'theme-blossom') {
+                scenicDecor.className = 'blossom-track';
+                scenicDecor.style.display = 'block';
+                scenicDecor.innerHTML = '';
+                for (let i = 0; i < 7; i++) {
+                    const p = document.createElement('div');
+                    p.className = 'petal';
+                    p.style.left = (Math.random() * 85 + 5) + '%';
+                    p.style.animationDelay = (i * 1.2) + 's';
+                    p.style.animationDuration = (7 + Math.random() * 4) + 's';
+                    scenicDecor.appendChild(p);
+                }
+            } else {
+                scenicDecor.className = 'scenic-balloon';
+                scenicDecor.style.display = 'block';
+            }
         }
 
         function loadLevel(idx) {
@@ -1522,13 +1505,16 @@
             if (!currentLevelData) return;
             const { gridWidth, gridHeight, words } = currentLevelData;
 
-            // Responsive large tile calculation based on container space
-            const containerW = crosswordContainer.clientWidth || 350;
-            const containerH = crosswordContainer.clientHeight || 290;
-            const sizeW = Math.floor((containerW - 14) / gridWidth);
-            const sizeH = Math.floor((containerH - 14) / gridHeight);
-            // Prominently enlarged tiles: clamp between 32px and 52px
-            const tileSize = Math.max(32, Math.min(52, Math.min(sizeW, sizeH) - 2));
+            // Compute exact fit within container so tiles are genuinely large (42px-54px) and never overflow
+            const containerW = crosswordContainer.clientWidth || 340;
+            const containerH = crosswordContainer.clientHeight || 280;
+            const gap = 4;
+            const padW = 16, padH = 16;
+            const maxTileW = Math.floor((containerW - padW - (gridWidth - 1) * gap) / gridWidth);
+            const maxTileH = Math.floor((containerH - padH - (gridHeight - 1) * gap) / gridHeight);
+
+            // Generously large tile size, strictly capped to container bounds
+            const tileSize = Math.max(34, Math.min(54, Math.min(maxTileW, maxTileH)));
 
             crosswordGrid.style.gridTemplateColumns = "repeat(" + gridWidth + ", " + tileSize + "px)";
             crosswordGrid.style.gridTemplateRows = "repeat(" + gridHeight + ", " + tileSize + "px)";
@@ -1611,7 +1597,7 @@
 
             wheelLetters.forEach((letter, idx) => {
                 const angle = (idx * (360 / totalNodes) - 90) * (Math.PI / 180);
-                // 52px node: half size is 26px
+                // 52px node: offset 26px
                 const x = centerX + radius * Math.cos(angle) - 26;
                 const y = centerY + radius * Math.sin(angle) - 26;
 
@@ -1678,7 +1664,7 @@
         function openBonusJarModal() {
             bonusWordsList.innerHTML = '';
             if (bonusWords.size === 0) {
-                bonusWordsList.innerHTML = '<div style="color: #cbd5e1; font-size: 13px; padding: 12px;">No bonus words collected yet! Find valid words not on the grid to earn bonus stars.</div>';
+                bonusWordsList.innerHTML = '<div style="color: #64748b; font-size: 13px; padding: 12px; font-weight: 600;">No bonus words collected yet! Find valid words not on the grid to earn bonus stars.</div>';
             } else {
                 Array.from(bonusWords).forEach(w => {
                     const chip = document.createElement('div');
@@ -2076,7 +2062,7 @@
             confettiCanvas.width = gameContainer.clientWidth;
             confettiCanvas.height = gameContainer.clientHeight;
             const ctx = confettiCanvas.getContext('2d');
-            const colors = ['#38bdf8', '#fbbf24', '#34d399', '#f87171', '#c084fc', '#f472b6'];
+            const colors = ['#0284c7', '#fbbf24', '#10b981', '#f43f5e', '#a855f7', '#06b6d4'];
 
             for (let i = 0; i < 75; i++) {
                 confettiParticles.push({
